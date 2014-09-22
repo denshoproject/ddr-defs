@@ -11,7 +11,9 @@
             "entity": {
                 "_source": {"enabled": true},
                 "date_detection":0,
-                "properties": {}
+                "properties": {
+                    "digitize_date": { "type": "string" }
+                }
             }
         },
         {
