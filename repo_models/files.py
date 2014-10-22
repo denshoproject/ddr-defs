@@ -239,6 +239,9 @@ FIELDS = [
 newfile_fields = ['public', 'rights', 'path', 'role', 'label', 'sort',]
 FIELDS_NEW = [field for field in FIELDS if field['name'] in newfile_fields]
 
+# List of FIELDS to be excluded when exporting and updating.
+FIELDS_CSV_EXCLUDED = ['role','size','access_rel','sha1','sha256','md5','xmp']
+
 
 
 # display_* --- Display functions --------------------------------------

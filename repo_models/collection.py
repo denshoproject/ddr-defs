@@ -498,6 +498,9 @@ FIELDS = [
 
 ]
 
+# List of FIELDS to be excluded when exporting and updating.
+FIELDS_CSV_EXCLUDED = []
+
 
 
 # display_* --- Display functions --------------------------------------
