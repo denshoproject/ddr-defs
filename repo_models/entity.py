@@ -839,6 +839,32 @@ def _formpost_basic(data):
 
 
 
+# csvvalidate_* --------------------------------------------------------
+#
+# These functions examine data in a CSV field and return True if valid.
+#
+
+def choice_is_valid(field, valid_values, value):
+    if value in valid_values[field]:
+	return True
+    return False
+
+def csvvalidate_status( data ): return choice_is_valid('status', data[0], data[1])
+def csvvalidate_public( data ): return choice_is_valid('public', data[0], data[1])
+def csvvalidate_rights( data ): return choice_is_valid('rights', data[0], data[1])
+def csvvalidate_language( data ):
+    # language can be 'eng', 'eng;jpn', 'eng:English', 'jpn:Japanese'
+    for x in data[1].strip().split(';'):
+        if ':' in x:
+            code = x.strip().split(':')[0]
+        else:
+            code = x.strip()
+        if not choice_is_valid('language', data[0], data[1]) and 'language' not in invalid:
+            return False
+    return True
+def csvvalidate_genre( data ): return choice_is_valid('genre', data[0], data[1])
+def csvvalidate_format( data ): return choice_is_valid('format', data[0], data[1])
+
 # csvimport_* --- import-from-csv functions ----------------------------
 #
 # These functions take data from a CSV field and convert it to Python
