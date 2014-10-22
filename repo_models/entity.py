@@ -96,6 +96,9 @@ FORMAT_CHOICES = [['av','Audio/Visual'],
                   ['img','Still Image'],
                   ['vh','Oral History'],]
 
+REQUIRED_FIELDS_EXCEPTIONS = ['record_created', 'record_lastmod', 'files',]
+
+
 FIELDS = [
     {
         'name':       'id',

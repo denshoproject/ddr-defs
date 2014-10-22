@@ -21,6 +21,9 @@ RIGHTS_CHOICES = [["cc", "DDR Creative Commons"],
                   ["pdm", "Public domain" ],]
 RIGHTS_CHOICES_DEFAULT = 'cc'
 
+REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_rel', 'xmp', 'links']
+
+
 FIELDS = [
     {
         'name':       'role',
