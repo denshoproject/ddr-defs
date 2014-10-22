@@ -865,14 +865,14 @@ def csvvalidate_language( data ):
 def csvvalidate_genre( data ): return choice_is_valid('genre', data[0], data[1])
 def csvvalidate_format( data ): return choice_is_valid('format', data[0], data[1])
 
-# csvimport_* --- import-from-csv functions ----------------------------
+# csvload_* --- import-from-csv functions ----------------------------
 #
 # These functions take data from a CSV field and convert it to Python
 # data for the corresponding Entity field.
 #
 
-def csvimport_creators( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvimport_language( data ):
+def csvload_creators( data ): return [x.strip() for x in data.strip().split(';') if x]
+def csvload_language( data ):
     """language can be 'eng', 'eng;jpn', 'eng:English', 'jpn:Japanese'
     """
     y = []
@@ -882,19 +882,19 @@ def csvimport_language( data ):
         else:
             y.append(x.strip())
     return y
-def csvimport_topics( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvimport_persons( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvimport_facility( data ): return [x.strip() for x in data.strip().split(';') if x]
+def csvload_topics( data ): return [x.strip() for x in data.strip().split(';') if x]
+def csvload_persons( data ): return [x.strip() for x in data.strip().split(';') if x]
+def csvload_facility( data ): return [x.strip() for x in data.strip().split(';') if x]
 
-# csvexport_* --- export-to-csv functions ------------------------------
+# csvdump_* --- export-to-csv functions ------------------------------
 #
 # These functions take Python data from the corresponding Entity field
 # and format it for export in a CSV field.
 #
 
-def csvexport_record_created( data ): return data.strftime(DATETIME_FORMAT)
-def csvexport_record_lastmod( data ): return data.strftime(DATETIME_FORMAT)
-def csvexport_creators( data ):
+def csvdump_record_created( data ): return data.strftime(DATETIME_FORMAT)
+def csvdump_record_lastmod( data ): return data.strftime(DATETIME_FORMAT)
+def csvdump_creators( data ):
     items = []
     for d in data:
         # strings are already in format or close enough
@@ -903,15 +903,13 @@ def csvexport_creators( data ):
         elif isinstance(d, dict):
             items.append('%s:%s' % (d['namepart'],d['role']))
     return ' ; '.join(items)
-def csvexport_language( data ):
+def csvdump_language( data ):
     """only export the language codes ('eng,jpn')
     """
     return ','.join(data)
-def csvexport_topics( data ): return '; '.join(data)
-def csvexport_persons( data ): return '; '.join(data)
-def csvexport_facility( data ): return '; '.join(data)
-
-
+def csvdump_topics( data ): return '; '.join(data)
+def csvdump_persons( data ): return '; '.join(data)
+def csvdump_facility( data ): return '; '.join(data)
 
 
 
