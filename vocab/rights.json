@@ -9,6 +9,11 @@
             "description": "CC DESCRIPTION"
         },
         {
+            "id": "pcc",
+            "title": "Copyright, with special 3rd-party grant permitted",
+            "description": "PCC DESCRIPTION"
+        },
+        {
             "id": "nocc",
             "title": "Copyright restricted",
             "description": "NOCC DESCRIPTION"
