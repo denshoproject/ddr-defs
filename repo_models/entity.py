@@ -2,10 +2,13 @@ from datetime import datetime, date
 import json
 import logging
 logger = logging.getLogger(__name__)
+import re
 
 #from lxml import etree
 
 import tematres
+
+from DDR.converters import csv
 
 
 
@@ -844,26 +847,53 @@ def _formpost_basic(data):
 # These functions examine data in a CSV field and return True if valid.
 #
 
-def choice_is_valid(field, valid_values, value):
+def _choice_is_valid(field, valid_values, value):
     if value in valid_values[field]:
 	return True
     return False
 
-def csvvalidate_status( data ): return choice_is_valid('status', data[0], data[1])
-def csvvalidate_public( data ): return choice_is_valid('public', data[0], data[1])
-def csvvalidate_rights( data ): return choice_is_valid('rights', data[0], data[1])
-def csvvalidate_language( data ):
-    # language can be 'eng', 'eng;jpn', 'eng:English', 'jpn:Japanese'
-    for x in data[1].strip().split(';'):
-        if ':' in x:
-            code = x.strip().split(':')[0]
+def _validate_labelled_kvlist(field, data):
+    """Validate list of keyvalve pairs in which we only care about the keys.
+    """
+    valid_values = data[0]
+    data = data[1]
+    for datum in data:
+        if ':' in datum:
+            code = datum.strip().split(':')[0]
         else:
-            code = x.strip()
-        if not choice_is_valid('language', data[0], data[1]) and 'language' not in invalid:
+            code = datum.strip()
+        if not _choice_is_valid('language', valid_values, datum):
             return False
     return True
-def csvvalidate_genre( data ): return choice_is_valid('genre', data[0], data[1])
-def csvvalidate_format( data ): return choice_is_valid('format', data[0], data[1])
+
+def _validate_vocab_list(field, valid_values, data):
+    """Validate list of keyvalve pairs in which we only care about the keys.
+    
+    Matches terms from the topics and facility controlled vocabs:
+        Activism and involvement: Politics [235]
+        Arts and literature: Literary arts: Fiction: Adult [242]
+    """
+    pattern = '\[([0-9]+)\]'
+    for datum in data:
+        m = re.search(pattern, datum)
+        if m:
+            code = m.group(1)
+            raw_is_valid = _choice_is_valid(field, valid_values, code)
+            int_is_valid = _choice_is_valid(field, valid_values, int(code))
+            if not (raw_is_valid or int_is_valid):
+                print('code %s' % code)
+                print(valid_values[field])
+                return False
+    return True
+
+def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
+def csvvalidate_public( data ): return _choice_is_valid('public', data[0], data[1])
+def csvvalidate_rights( data ): return _choice_is_valid('rights', data[0], data[1])
+def csvvalidate_language( data ): return _validate_labelled_kvlist('language', data)
+def csvvalidate_genre( data ): return _choice_is_valid('genre', data[0], data[1])
+def csvvalidate_format( data ): return _choice_is_valid('format', data[0], data[1])
+def csvvalidate_topics( data ): return _validate_vocab_list('topics', data[0], data[1])
+def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0], data[1])
 
 # csvload_* --- import-from-csv functions ----------------------------
 #
@@ -871,20 +901,11 @@ def csvvalidate_format( data ): return choice_is_valid('format', data[0], data[1
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvload_language( data ):
-    """language can be 'eng', 'eng;jpn', 'eng:English', 'jpn:Japanese'
-    """
-    y = []
-    for x in data.strip().split(';'):
-        if ':' in x:
-            y.append(x.strip().split(':')[0])
-        else:
-            y.append(x.strip())
-    return y
-def csvload_topics( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvload_persons( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvload_facility( data ): return [x.strip() for x in data.strip().split(';') if x]
+def csvload_creators( text ): return csv.load_rolepeople(text)
+def csvload_language( text ): return csv.load_labelledlist(text)
+def csvload_topics( text ): return csv.load_list(text)
+def csvload_persons( text ): return csv.load_list(text)
+def csvload_facility( text ): return csv.load_list(text)
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -892,24 +913,13 @@ def csvload_facility( data ): return [x.strip() for x in data.strip().split(';')
 # and format it for export in a CSV field.
 #
 
-def csvdump_record_created( data ): return data.strftime(DATETIME_FORMAT)
-def csvdump_record_lastmod( data ): return data.strftime(DATETIME_FORMAT)
-def csvdump_creators( data ):
-    items = []
-    for d in data:
-        # strings are already in format or close enough
-        if isinstance(d, str):
-            items.append(d)
-        elif isinstance(d, dict):
-            items.append('%s:%s' % (d['namepart'],d['role']))
-    return ' ; '.join(items)
-def csvdump_language( data ):
-    """only export the language codes ('eng,jpn')
-    """
-    return ','.join(data)
-def csvdump_topics( data ): return '; '.join(data)
-def csvdump_persons( data ): return '; '.join(data)
-def csvdump_facility( data ): return '; '.join(data)
+def csvdump_record_created(data): return csv.dump_datetime(data, DATETIME_FORMAT)
+def csvdump_record_lastmod(data): return csv.dump_datetime(data, DATETIME_FORMAT)
+def csvdump_creators(data): return csv.dump_rolepeople(data)
+def csvdump_language(data): return csv.dump_labelledlist(data)
+def csvdump_topics(data): return csv.dump_list(data)
+def csvdump_persons(data): return csv.dump_list(data)
+def csvdump_facility(data): return csv.dump_list(data)
 
 
 
