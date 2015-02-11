@@ -6,8 +6,6 @@ import re
 
 #from lxml import etree
 
-import tematres
-
 from DDR.converters import csv
 
 
@@ -814,18 +812,14 @@ def formpost_creators(data):
 # credit
 
 def formpost_topics(data):
-    a = []
-    form_urls = [t.strip() for t in data.split(';')]
-    a = tematres.get_terms(form_urls)
+    a = [t.strip() for t in data.split(';')]
     return a
 
 def formpost_persons(data):
     return [n.strip() for n in data.split(';')]
 
 def formpost_facility(data):
-    a = []
-    form_urls = [t.strip() for t in data.split(';')]
-    a = tematres.get_terms(form_urls)
+    a = [t.strip() for t in data.split(';')]
     return a
 
 # notes
