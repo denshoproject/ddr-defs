@@ -33,6 +33,15 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'sha1',
@@ -42,6 +51,15 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'sha256',
@@ -51,6 +69,15 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'md5',
@@ -60,6 +87,15 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'size',
@@ -69,6 +105,15 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "filesize"
+        },
     },
     {
         'name':       'basename_orig',
@@ -78,6 +123,14 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'access_rel',
@@ -87,6 +140,14 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'public',
@@ -104,6 +165,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'rights',
@@ -121,6 +191,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "rights"
+        },
     },
 
     {
@@ -138,6 +217,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'thumb',
@@ -154,6 +242,14 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'label',
@@ -171,6 +267,14 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'digitize_person',
@@ -188,6 +292,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'tech_notes',
@@ -203,6 +316,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "no"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'xmp',
@@ -219,6 +341,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "no"
+            },
+            'display': "string_collapsed"
+        },
     },
     {
         'name':       'links',
@@ -235,6 +366,14 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': ""
+        },
     },
 ]
 

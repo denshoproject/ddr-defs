@@ -58,6 +58,14 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'record_created',
@@ -74,6 +82,16 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
     },
     {
         'name':       'record_lastmod',
@@ -90,6 +108,16 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
     },
     {
         'name':       'status',
@@ -108,6 +136,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'public',
@@ -126,6 +163,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     # overview ---------------------------------------------------------
     {
@@ -144,6 +190,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'unitdateinclusive',
@@ -161,6 +216,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'unitdatebulk',
@@ -178,6 +242,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'creators',
@@ -195,6 +268,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'extent',
@@ -212,6 +294,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'language',
@@ -229,6 +320,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'contributor',
@@ -246,6 +346,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'description',
@@ -262,6 +371,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'notes',
@@ -278,6 +396,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'physloc',
@@ -295,6 +422,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     # administative ----------------------------------------------------
     {
@@ -312,6 +448,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'custodhist',
@@ -328,6 +473,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'accruals',
@@ -344,6 +498,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'processinfo',
@@ -360,6 +523,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'rights',
@@ -378,6 +550,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "rights"
+        },
     },
     {
         'name':       'accessrestrict',
@@ -394,6 +575,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'userrestrict',
@@ -410,6 +600,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'prefercite',
@@ -427,6 +626,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     # bioghist ---------------------------------------------------------
     {
@@ -444,6 +652,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     # scopecontent -----------------------------------------------------
     {
@@ -461,6 +678,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     # related ----------------------------------------------------------
     {
@@ -478,6 +704,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'separatedmaterial',
@@ -494,6 +729,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
 
 ]

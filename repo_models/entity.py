@@ -118,7 +118,15 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'default': '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'record_created',
@@ -134,6 +142,16 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
     },
     {
         'name':       'record_lastmod',
@@ -149,6 +167,16 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
     },
     {
         'name':       'status',
@@ -167,6 +195,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'public',
@@ -185,6 +222,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'title',
@@ -203,6 +249,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'description',
@@ -219,6 +274,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'creation',
@@ -235,6 +299,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'location',
@@ -251,6 +324,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'creators',
@@ -267,6 +349,14 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'language',
@@ -283,6 +373,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'genre',
@@ -299,6 +398,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'format',
@@ -315,6 +423,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'extent',
@@ -331,6 +448,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'contributor',
@@ -347,6 +473,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'alternate_id',
@@ -363,6 +498,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'digitize_person',
@@ -379,6 +523,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'digitize_organization',
@@ -395,6 +548,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'digitize_date',
@@ -410,6 +572,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
     },
     # technical
     {
@@ -427,6 +598,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'rights',
@@ -445,6 +625,15 @@ FIELDS = [
             'required':   True,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "rights"
+        },
     }, 
     {
         'name':       'rights_statement',
@@ -460,6 +649,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
     },
     {
         'name':       'topics',
@@ -476,6 +674,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'persons',
@@ -491,6 +698,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'facility',
@@ -506,6 +722,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
     },
     {
         'name':       'parent',
@@ -522,6 +747,30 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'href': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'label': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'uid': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    }
+                }
+            },
+            'display': ""
+        },
     },
     {
         'name':       'notes',
@@ -537,6 +786,15 @@ FIELDS = [
             'required':   False,
         },
         'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "no"
+            },
+            'display': ""
+        },
     },
     {
         'name':       'files',
@@ -546,6 +804,40 @@ FIELDS = [
         # no form_type
         # no form
         'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'path_rel': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'public': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'md5': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'sha1': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'sha256': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    }
+                }
+            },
+            'display': ""
+        },
     },
 ]
 
