@@ -105,6 +105,10 @@ FIELDS = [
     {
         'name':       'id',
         'model_type': str,
+        'csv': {
+            'export': 'require',
+            'import': 'require',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Object ID',
@@ -133,6 +137,10 @@ FIELDS = [
     {
         'name':       'record_created',
         'model_type': datetime,
+        'csv': {
+            'export': '',
+            'import': 'ignore',
+        },
         'form_type':  'DateTimeField',
         'form': {
             'label':      'Record Created',
@@ -159,6 +167,10 @@ FIELDS = [
     {
         'name':       'record_lastmod',
         'model_type': datetime,
+        'csv': {
+            'export': '',
+            'import': 'ignore',
+        },
         'form_type':  'DateTimeField',
         'form': {
             'label':      'Record Modified',
@@ -187,6 +199,10 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': int,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Production Status',
@@ -215,6 +231,10 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': int,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Privacy Level',
@@ -241,6 +261,10 @@ FIELDS = [
     {
         'name':       'title',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Title',
@@ -269,6 +293,10 @@ FIELDS = [
     {
         'name':       'description',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Description',
@@ -295,6 +323,10 @@ FIELDS = [
     {
         'name':       'creation',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Date (Created)',
@@ -321,6 +353,10 @@ FIELDS = [
     {
         'name':       'location',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Location',
@@ -347,6 +383,10 @@ FIELDS = [
     {
         'name':       'creators',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Creator',
@@ -372,6 +412,10 @@ FIELDS = [
     {
         'name':       'language',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'MultipleChoiceField',
         'form': {
             'label':      'Language',
@@ -398,6 +442,10 @@ FIELDS = [
     {
         'name':       'genre',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Object Genre',
@@ -424,6 +472,10 @@ FIELDS = [
     {
         'name':       'format',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Object Format',
@@ -450,6 +502,10 @@ FIELDS = [
     {
         'name':       'extent',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Physical Description',
@@ -476,6 +532,10 @@ FIELDS = [
     {
         'name':       'contributor',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Contributing Institution',
@@ -502,6 +562,10 @@ FIELDS = [
     {
         'name':       'alternate_id',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Alternate ID',
@@ -528,6 +592,10 @@ FIELDS = [
     {
         'name':       'digitize_person',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Digitizer',
@@ -554,6 +622,10 @@ FIELDS = [
     {
         'name':       'digitize_organization',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Digitizing Institution',
@@ -580,6 +652,10 @@ FIELDS = [
     {
         'name':       'digitize_date',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Digitize Date',
@@ -606,6 +682,10 @@ FIELDS = [
     {
         'name':       'credit',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Preferred Citation',
@@ -634,6 +714,10 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Rights',
@@ -660,6 +744,10 @@ FIELDS = [
     {
         'name':       'rights_statement',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Restrictions on Reproduction and Use',
@@ -685,6 +773,10 @@ FIELDS = [
     {
         'name':       'topics',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Topic',
@@ -711,6 +803,10 @@ FIELDS = [
     {
         'name':       'persons',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Person/Organization',
@@ -736,6 +832,10 @@ FIELDS = [
     {
         'name':       'facility',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Facility',
@@ -761,6 +861,10 @@ FIELDS = [
     {
         'name':       'parent',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Parent Object',
@@ -802,6 +906,10 @@ FIELDS = [
     {
         'name':       'notes',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Notes',
@@ -827,6 +935,10 @@ FIELDS = [
     {
         'name':       'files',
         'model_type': str,
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
         'default':    '',

@@ -29,6 +29,10 @@ FIELDS = [
     {
         'name':       'role',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -48,6 +52,10 @@ FIELDS = [
     {
         'name':       'sha1',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -67,6 +75,10 @@ FIELDS = [
     {
         'name':       'sha256',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -86,6 +98,10 @@ FIELDS = [
     {
         'name':       'md5',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -105,6 +121,10 @@ FIELDS = [
     {
         'name':       'size',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -124,6 +144,10 @@ FIELDS = [
     {
         'name':       'basename_orig',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -142,6 +166,10 @@ FIELDS = [
     {
         'name':       'access_rel',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         # no form_type
         # no form
         'default':    '',
@@ -161,6 +189,10 @@ FIELDS = [
         'name':       'public',
         'group':      '',
         'model_type': int,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Privacy Level',
@@ -188,6 +220,10 @@ FIELDS = [
         'name':       'rights',
         'group':      '',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Rights',
@@ -215,6 +251,10 @@ FIELDS = [
         'name':       'sort',
         'group':      '',
         'model_type': int,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'IntegerField',
         'form': {
             'label':      'Sort',
@@ -241,6 +281,10 @@ FIELDS = [
         'name':       'thumb',
         'group':      '',
         'model_type': int,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'IntegerField',
         'form': {
             'label':      'Thumbnail',
@@ -266,6 +310,10 @@ FIELDS = [
         'name':       'label',
         'group':      '',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Label',
@@ -292,6 +340,10 @@ FIELDS = [
         'name':       'digitize_person',
         'group':      '',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'digitize_person',
@@ -318,6 +370,10 @@ FIELDS = [
     {
         'name':       'tech_notes',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Technical Notes',
@@ -344,6 +400,10 @@ FIELDS = [
         'name':       'xmp',
         'group':      '',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'XMP Metadata',
@@ -369,6 +429,10 @@ FIELDS = [
     {
         'name':       'links',
         'model_type': str,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Associated Files',
