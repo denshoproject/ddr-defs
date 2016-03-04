@@ -28,8 +28,6 @@ FIELDS = [
     
     {
         'name':       'role',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -43,12 +41,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'sha1',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -62,12 +60,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'sha256',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -81,12 +79,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'md5',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -100,12 +98,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'size',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -119,12 +117,12 @@ FIELDS = [
             },
             'display': "filesize"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'basename_orig',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -137,12 +135,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'access_rel',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -155,13 +153,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'public',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': int,
         'form_type':  'ChoiceField',
         'form': {
@@ -182,13 +180,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'rights',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'ChoiceField',
         'form': {
@@ -209,13 +207,13 @@ FIELDS = [
             },
             'display': "rights"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
 
     {
         'name':       'sort',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': int,
         'form_type':  'IntegerField',
         'form': {
@@ -235,13 +233,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'thumb',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': int,
         'form_type':  'IntegerField',
         'form': {
@@ -260,13 +258,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'label',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -286,13 +284,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'digitize_person',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -313,12 +311,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'tech_notes',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -338,13 +336,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'xmp',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -364,12 +362,12 @@ FIELDS = [
             },
             'display': "string_collapsed"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'links',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -389,6 +387,8 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
 
 ]

@@ -46,8 +46,6 @@ FIELDS = [
     {
         'name':       'id',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  ['/ead/archdesc/did/unitid',],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -67,13 +65,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "",
+        'xpath_dup':  ['/ead/archdesc/did/unitid',],
     },
     
     {
         'name':       'record_created',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': datetime,
         'form_type':  'DateTimeField',
         'form': {
@@ -94,13 +92,13 @@ FIELDS = [
             },
             'display': "datetime"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'record_lastmod',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': datetime,
         'form_type':  'DateTimeField',
         'form': {
@@ -121,13 +119,13 @@ FIELDS = [
             },
             'display': "datetime"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'status',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
         'form_type':  'ChoiceField',
@@ -149,13 +147,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'public',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
         'form_type':  'ChoiceField',
@@ -177,14 +175,14 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     # overview ---------------------------------------------------------
     {
         'name':       'title',
         'group':      'overview',
-        'xpath':      '/ead/eadheader/filedesc/titlestmt/titleproper',
-        'xpath_dup':  ['/ead/archdesc/did/unittitle',],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -205,13 +203,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      '/ead/eadheader/filedesc/titlestmt/titleproper',
+        'xpath_dup':  ['/ead/archdesc/did/unittitle',],
     },
     
     {
         'name':       'unitdateinclusive',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/unitdate[@type='inclusive']",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -232,13 +230,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/archdesc/did/unitdate[@type='inclusive']",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'unitdatebulk',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/unitdate[@type='bulk']",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -259,13 +257,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/archdesc/did/unitdate[@type='bulk']",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'creators',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/origination",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -286,13 +284,13 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/ead/archdesc/did/origination",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'extent',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/physdesc/extent",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -313,13 +311,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/archdesc/did/physdesc/extent",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'language',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/langmaterial/language/@langcode",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'MultipleChoiceField',
         'form': {
@@ -340,13 +338,13 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/ead/archdesc/did/langmaterial/language/@langcode",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'contributor',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/repository",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -367,13 +365,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/archdesc/did/repository",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'description',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/abstract",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -393,13 +391,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/archdesc/did/abstract",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'notes',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/note",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -419,13 +417,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/ead/archdesc/did/note",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'physloc',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/physloc",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -446,14 +444,14 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/archdesc/did/physloc",
+        'xpath_dup':  [],
     },
     
     # administative ----------------------------------------------------
     {
         'name':       'acqinfo',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/acqinfo",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -473,13 +471,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/ead/descgrp/acqinfo",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'custodhist',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/custodhist",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -499,13 +497,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/ead/descgrp/custodhist",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'accruals',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/accruals",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -525,13 +523,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/ead/descgrp/accruals",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'processinfo',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/processinfo",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -551,13 +549,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/ead/descgrp/processinfo",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'rights',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': str,
         'form_type':  'ChoiceField',
@@ -579,13 +577,13 @@ FIELDS = [
             },
             'display': "rights"
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'accessrestrict',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/accessrestrict",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -605,13 +603,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/descgrp/accessrestrict",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'userrestrict',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/userrestrict",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -631,13 +629,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/descgrp/userrestrict",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'prefercite',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/prefercite",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -658,14 +656,14 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/descgrp/prefercite",
+        'xpath_dup':  [],
     },
     
     # bioghist ---------------------------------------------------------
     {
         'name':       'bioghist',
         'group':      'bioghist',
-        'xpath':      "/ead/bioghist",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -685,14 +683,14 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/bioghist",
+        'xpath_dup':  [],
     },
     
     # scopecontent -----------------------------------------------------
     {
         'name':       'scopecontent',
         'group':      'scopecontent',
-        'xpath':      "/ead/scopecontent",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -712,14 +710,14 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/scopecontent",
+        'xpath_dup':  [],
     },
     
     # related ----------------------------------------------------------
     {
         'name':       'relatedmaterial',
         'group':      'related',
-        'xpath':      "/ead/relatedmaterial",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -739,13 +737,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/relatedmaterial",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'separatedmaterial',
         'group':      'related',
-        'xpath':      "/ead/separatedmaterial",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -765,6 +763,8 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/ead/separatedmaterial",
+        'xpath_dup':  [],
     },
 
 ]

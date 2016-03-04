@@ -104,11 +104,6 @@ FIELDS = [
     
     {
         'name':       'id',
-        'xpath':      "/mets:mets/@OBJID",
-        'xpath_dup':  [
-            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:identifier",
-            #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
-            ],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -128,12 +123,15 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/mets:mets/@OBJID",
+        'xpath_dup':  [
+            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:identifier",
+            #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
+            ],
     },
     
     {
         'name':       'record_created',
-        'xpath':      "/mets:mets/mets:metsHdr@CREATEDATE",
-        'xpath_dup':  [],
         'model_type': datetime,
         'form_type':  'DateTimeField',
         'form': {
@@ -154,12 +152,12 @@ FIELDS = [
             },
             'display': "datetime"
         },
+        'xpath':      "/mets:mets/mets:metsHdr@CREATEDATE",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'record_lastmod',
-        'xpath':      "/mets:mets/mets:metsHdr@LASTMODDATE",
-        'xpath_dup':  [],
         'model_type': datetime,
         'form_type':  'DateTimeField',
         'form': {
@@ -180,13 +178,13 @@ FIELDS = [
             },
             'display': "datetime"
         },
+        'xpath':      "/mets:mets/mets:metsHdr@LASTMODDATE",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'status',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
         'form_type':  'ChoiceField',
@@ -208,13 +206,13 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'public',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
         'form_type':  'ChoiceField',
@@ -236,14 +234,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'title',
-        'xpath':      "/mets:mets/@LABEL",
-        'xpath_dup':  [
-            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:title",
-            ],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -264,12 +260,14 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/mets:mets/@LABEL",
+        'xpath_dup':  [
+            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:title",
+            ],
     },
     
     {
         'name':       'description',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:abstract",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -290,12 +288,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:abstract",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'creation',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateCreated",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -316,12 +314,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateCreated",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'location',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:place/mods:placeTerm[@type='text']",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -342,12 +340,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:place/mods:placeTerm[@type='text']",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'creators',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -367,12 +365,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'language',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:language/mods:languageTerm",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'MultipleChoiceField',
         'form': {
@@ -393,12 +391,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:language/mods:languageTerm",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'genre',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:genre",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'ChoiceField',
         'form': {
@@ -419,12 +417,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:genre",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'format',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:typeOfResource",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'ChoiceField',
         'form': {
@@ -445,12 +443,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:typeOfResource",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'extent',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:physicalDescription/mods:extent",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -471,12 +469,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:physicalDescription/mods:extent",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'contributor',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:physicalLocation",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -497,12 +495,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:physicalLocation",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'alternate_id',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:holdingExternal/mods:institutionIdentifier/mods:value",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -523,12 +521,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:holdingExternal/mods:institutionIdentifier/mods:value",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'digitize_person',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -549,12 +547,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
     
     {
         'name':       'digitize_organization',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -575,12 +573,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
     
     {
         'name':       'digitize_date',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -600,13 +598,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
     
     # technical
     {
         'name':       'credit',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -627,13 +625,13 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
     
     {
         'name':       'rights',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': str,
         'form_type':  'ChoiceField',
@@ -655,11 +653,12 @@ FIELDS = [
             },
             'display': "rights"
         },
-    }, 
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+    
     {
         'name':       'rights_statement',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -679,13 +678,12 @@ FIELDS = [
             },
             'display': "string"
         },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
     
     {
         'name':       'topics',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -705,12 +703,13 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'persons',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -730,12 +729,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'facility',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -755,12 +754,12 @@ FIELDS = [
             },
             'display': "facet"
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'parent',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier[@type='local']",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -796,12 +795,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier[@type='local']",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'notes',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
-        'xpath_dup':  [],
         'model_type': str,
         'form_type':  'CharField',
         'form': {
@@ -821,12 +820,12 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
+        'xpath_dup':  [],
     },
     
     {
         'name':       'files',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
         # no form_type
         # no form
@@ -865,6 +864,8 @@ FIELDS = [
             },
             'display': ""
         },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
 ]
 
