@@ -105,6 +105,7 @@ FIELDS = [
     {
         'name':       'id',
         'model_type': str,
+        'default': '',
         'csv': {
             'export': 'require',
             'import': 'require',
@@ -118,7 +119,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default': '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -137,6 +137,7 @@ FIELDS = [
     {
         'name':       'record_created',
         'model_type': datetime,
+        'default':    '',
         'csv': {
             'export': '',
             'import': 'ignore',
@@ -149,7 +150,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -167,6 +167,7 @@ FIELDS = [
     {
         'name':       'record_lastmod',
         'model_type': datetime,
+        'default':    '',
         'csv': {
             'export': '',
             'import': 'ignore',
@@ -179,7 +180,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -199,6 +199,7 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': int,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -212,7 +213,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -231,6 +231,7 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': int,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -244,7 +245,6 @@ FIELDS = [
             'initial':    PERMISSIONS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -261,6 +261,7 @@ FIELDS = [
     {
         'name':       'title',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -274,7 +275,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -293,6 +293,7 @@ FIELDS = [
     {
         'name':       'description',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -306,7 +307,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -323,6 +323,7 @@ FIELDS = [
     {
         'name':       'creation',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -336,7 +337,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -353,6 +353,7 @@ FIELDS = [
     {
         'name':       'location',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -366,7 +367,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -383,6 +383,7 @@ FIELDS = [
     {
         'name':       'creators',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -396,7 +397,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -412,6 +412,7 @@ FIELDS = [
     {
         'name':       'language',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -425,7 +426,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -442,6 +442,7 @@ FIELDS = [
     {
         'name':       'genre',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -455,7 +456,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -472,6 +472,7 @@ FIELDS = [
     {
         'name':       'format',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -485,7 +486,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -502,6 +502,7 @@ FIELDS = [
     {
         'name':       'extent',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -515,7 +516,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -532,6 +532,7 @@ FIELDS = [
     {
         'name':       'contributor',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -545,7 +546,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -562,6 +562,7 @@ FIELDS = [
     {
         'name':       'alternate_id',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -575,7 +576,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -592,6 +592,7 @@ FIELDS = [
     {
         'name':       'digitize_person',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -605,7 +606,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -622,6 +622,7 @@ FIELDS = [
     {
         'name':       'digitize_organization',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -635,7 +636,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -652,6 +652,7 @@ FIELDS = [
     {
         'name':       'digitize_date',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -664,7 +665,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -682,6 +682,7 @@ FIELDS = [
     {
         'name':       'credit',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -695,7 +696,6 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -714,6 +714,7 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -727,7 +728,6 @@ FIELDS = [
             'initial':    RIGHTS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -744,6 +744,7 @@ FIELDS = [
     {
         'name':       'rights_statement',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -756,7 +757,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -773,6 +773,7 @@ FIELDS = [
     {
         'name':       'topics',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -785,7 +786,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -803,6 +803,7 @@ FIELDS = [
     {
         'name':       'persons',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -815,7 +816,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -832,6 +832,7 @@ FIELDS = [
     {
         'name':       'facility',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -844,7 +845,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -861,6 +861,7 @@ FIELDS = [
     {
         'name':       'parent',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -874,7 +875,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
@@ -906,6 +906,7 @@ FIELDS = [
     {
         'name':       'notes',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': '',
             'import': '',
@@ -918,7 +919,6 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
         'elasticsearch': {
             'public': False,
             'properties': {
@@ -935,13 +935,13 @@ FIELDS = [
     {
         'name':       'files',
         'model_type': str,
+        'default':    '',
         'csv': {
             'export': 'ignore',
             'import': 'ignore',
         },
         # no form_type
         # no form
-        'default':    '',
         'elasticsearch': {
             'public': True,
             'properties': {
