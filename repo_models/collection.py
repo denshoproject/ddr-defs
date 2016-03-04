@@ -42,6 +42,7 @@ LANGUAGE_CHOICES = [['',''],
                     ['tgl','Tagalog'],]
 
 FIELDS = [
+    
     {
         'name':       'id',
         'group':      '',
@@ -67,6 +68,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'record_created',
         'group':      '',
@@ -93,6 +95,7 @@ FIELDS = [
             'display': "datetime"
         },
     },
+    
     {
         'name':       'record_lastmod',
         'group':      '',
@@ -119,6 +122,7 @@ FIELDS = [
             'display': "datetime"
         },
     },
+    
     {
         'name':       'status',
         'group':      '',
@@ -146,6 +150,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'public',
         'group':      '',
@@ -173,6 +178,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     # overview ---------------------------------------------------------
     {
         'name':       'title',
@@ -200,6 +206,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'unitdateinclusive',
         'group':      'overview',
@@ -226,6 +233,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'unitdatebulk',
         'group':      'overview',
@@ -252,6 +260,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'creators',
         'group':      'overview',
@@ -278,6 +287,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'extent',
         'group':      'overview',
@@ -304,6 +314,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'language',
         'group':      'overview',
@@ -330,6 +341,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'contributor',
         'group':      'overview',
@@ -356,6 +368,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'description',
         'group':      'overview',
@@ -381,6 +394,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'notes',
         'group':      'overview',
@@ -406,6 +420,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'physloc',
         'group':      'overview',
@@ -432,6 +447,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     # administative ----------------------------------------------------
     {
         'name':       'acqinfo',
@@ -458,6 +474,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'custodhist',
         'group':      'administative',
@@ -483,6 +500,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'accruals',
         'group':      'administative',
@@ -508,6 +526,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'processinfo',
         'group':      'administative',
@@ -533,6 +552,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'rights',
         'group':      '',
@@ -560,6 +580,7 @@ FIELDS = [
             'display': "rights"
         },
     },
+    
     {
         'name':       'accessrestrict',
         'group':      'administative',
@@ -585,6 +606,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'userrestrict',
         'group':      'administative',
@@ -610,6 +632,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'prefercite',
         'group':      'administative',
@@ -636,6 +659,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     # bioghist ---------------------------------------------------------
     {
         'name':       'bioghist',
@@ -662,6 +686,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     # scopecontent -----------------------------------------------------
     {
         'name':       'scopecontent',
@@ -688,6 +713,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     # related ----------------------------------------------------------
     {
         'name':       'relatedmaterial',
@@ -714,6 +740,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'separatedmaterial',
         'group':      'related',

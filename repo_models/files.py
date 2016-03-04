@@ -25,6 +25,7 @@ REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_
 
 
 FIELDS = [
+    
     {
         'name':       'role',
         'xpath':      "",
@@ -43,6 +44,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'sha1',
         'xpath':      "",
@@ -61,6 +63,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'sha256',
         'xpath':      "",
@@ -79,6 +82,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'md5',
         'xpath':      "",
@@ -97,6 +101,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'size',
         'xpath':      "",
@@ -115,6 +120,7 @@ FIELDS = [
             'display': "filesize"
         },
     },
+    
     {
         'name':       'basename_orig',
         'xpath':      "",
@@ -132,6 +138,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'access_rel',
         'xpath':      "",
@@ -149,6 +156,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'public',
         'group':      '',
@@ -175,6 +183,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'rights',
         'group':      '',
@@ -227,6 +236,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'thumb',
         'group':      '',
@@ -251,6 +261,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'label',
         'group':      '',
@@ -276,6 +287,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'digitize_person',
         'group':      '',
@@ -302,6 +314,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'tech_notes',
         'xpath':      "",
@@ -326,6 +339,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'xmp',
         'group':      '',
@@ -351,6 +365,7 @@ FIELDS = [
             'display': "string_collapsed"
         },
     },
+    
     {
         'name':       'links',
         'xpath':      "",
@@ -375,6 +390,7 @@ FIELDS = [
             'display': ""
         },
     },
+
 ]
 
 # Subset of FILE_FIELDS that are used when creating a new File.

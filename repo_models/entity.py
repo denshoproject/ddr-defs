@@ -101,6 +101,7 @@ REQUIRED_FIELDS_EXCEPTIONS = ['record_created', 'record_lastmod', 'files',]
 
 
 FIELDS = [
+    
     {
         'name':       'id',
         'xpath':      "/mets:mets/@OBJID",
@@ -128,6 +129,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'record_created',
         'xpath':      "/mets:mets/mets:metsHdr@CREATEDATE",
@@ -153,6 +155,7 @@ FIELDS = [
             'display': "datetime"
         },
     },
+    
     {
         'name':       'record_lastmod',
         'xpath':      "/mets:mets/mets:metsHdr@LASTMODDATE",
@@ -178,6 +181,7 @@ FIELDS = [
             'display': "datetime"
         },
     },
+    
     {
         'name':       'status',
         'group':      '',
@@ -205,6 +209,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'public',
         'group':      '',
@@ -232,6 +237,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'title',
         'xpath':      "/mets:mets/@LABEL",
@@ -259,6 +265,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'description',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:abstract",
@@ -284,6 +291,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'creation',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateCreated",
@@ -309,6 +317,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'location',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:place/mods:placeTerm[@type='text']",
@@ -334,6 +343,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'creators',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
@@ -358,6 +368,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'language',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:language/mods:languageTerm",
@@ -383,6 +394,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'genre',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:genre",
@@ -408,6 +420,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'format',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:typeOfResource",
@@ -433,6 +446,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'extent',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:physicalDescription/mods:extent",
@@ -458,6 +472,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'contributor',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:physicalLocation",
@@ -483,6 +498,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'alternate_id',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:holdingExternal/mods:institutionIdentifier/mods:value",
@@ -508,6 +524,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'digitize_person',
         'xpath':      '',
@@ -533,6 +550,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'digitize_organization',
         'xpath':      '',
@@ -558,6 +576,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'digitize_date',
         'xpath':      '',
@@ -582,6 +601,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     # technical
     {
         'name':       'credit',
@@ -608,6 +628,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'rights',
         'group':      '',
@@ -659,6 +680,7 @@ FIELDS = [
             'display': "string"
         },
     },
+    
     {
         'name':       'topics',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
@@ -684,6 +706,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'persons',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
@@ -708,6 +731,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'facility',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
@@ -732,6 +756,7 @@ FIELDS = [
             'display': "facet"
         },
     },
+    
     {
         'name':       'parent',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier[@type='local']",
@@ -772,6 +797,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'notes',
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
@@ -796,6 +822,7 @@ FIELDS = [
             'display': ""
         },
     },
+    
     {
         'name':       'files',
         'xpath':      "",
