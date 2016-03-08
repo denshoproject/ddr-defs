@@ -29,7 +29,7 @@ FIELDS = [
     {
         'name':       'role',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -52,7 +52,7 @@ FIELDS = [
     {
         'name':       'sha1',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -75,7 +75,7 @@ FIELDS = [
     {
         'name':       'sha256',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -98,7 +98,7 @@ FIELDS = [
     {
         'name':       'md5',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -121,7 +121,7 @@ FIELDS = [
     {
         'name':       'size',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -144,7 +144,7 @@ FIELDS = [
     {
         'name':       'basename_orig',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -166,7 +166,7 @@ FIELDS = [
     {
         'name':       'access_rel',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',
@@ -189,7 +189,7 @@ FIELDS = [
         'name':       'public',
         'group':      '',
         'model_type': int,
-        'default':    '',
+        'default':    PERMISSIONS_CHOICES_DEFAULT,
         'csv': {
             'export': '',
             'import': '',
@@ -220,7 +220,7 @@ FIELDS = [
         'name':       'rights',
         'group':      '',
         'model_type': str,
-        'default':    '',
+        'default':    RIGHTS_CHOICES_DEFAULT,
         'csv': {
             'export': '',
             'import': '',
@@ -251,7 +251,7 @@ FIELDS = [
         'name':       'sort',
         'group':      '',
         'model_type': int,
-        'default':    '',
+        'default':    1,
         'csv': {
             'export': '',
             'import': '',
@@ -281,7 +281,7 @@ FIELDS = [
         'name':       'thumb',
         'group':      '',
         'model_type': int,
-        'default':    '',
+        'default':    -1,
         'csv': {
             'export': '',
             'import': '',
@@ -400,7 +400,7 @@ FIELDS = [
         'name':       'xmp',
         'group':      '',
         'model_type': str,
-        'default':    '',
+        'default':    None,
         'csv': {
             'export': '',
             'import': '',

@@ -105,7 +105,7 @@ FIELDS = [
     {
         'name':       'id',
         'model_type': str,
-        'default': '',
+        'default': None,
         'csv': {
             'export': 'require',
             'import': 'require',
@@ -137,7 +137,7 @@ FIELDS = [
     {
         'name':       'record_created',
         'model_type': datetime,
-        'default':    '',
+        'default': datetime.now(),
         'csv': {
             'export': '',
             'import': 'ignore',
@@ -167,7 +167,7 @@ FIELDS = [
     {
         'name':       'record_lastmod',
         'model_type': datetime,
-        'default':    '',
+        'default': datetime.now(),
         'csv': {
             'export': '',
             'import': 'ignore',
@@ -935,7 +935,7 @@ FIELDS = [
     {
         'name':       'files',
         'model_type': str,
-        'default':    '',
+        'default':    [],
         'csv': {
             'export': 'ignore',
             'import': 'ignore',
