@@ -170,7 +170,7 @@ FIELDS = [
         'default': datetime.now(),
         'csv': {
             'export': '',
-            'import': 'ignore',
+            'import': '',
         },
         'form_type':  'DateTimeField',
         'form': {

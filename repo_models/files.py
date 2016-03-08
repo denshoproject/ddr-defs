@@ -32,7 +32,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': '',
-            'import': '',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -54,8 +54,8 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'ignore',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -77,8 +77,8 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'ignore',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -100,8 +100,8 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'ignore',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -123,8 +123,8 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'ignore',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -147,7 +147,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': '',
-            'import': '',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -168,8 +168,8 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'ignore',
+            'import': 'ignore',
         },
         # no form_type
         # no form
@@ -402,7 +402,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': '',
+            'export': 'ignore',
             'import': '',
         },
         'form_type':  'CharField',
