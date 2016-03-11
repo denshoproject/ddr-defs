@@ -1324,8 +1324,6 @@ def _validate_vocab_list(field, valid_values, data):
             raw_is_valid = _choice_is_valid(field, valid_values, code)
             int_is_valid = _choice_is_valid(field, valid_values, int(code))
             if not (raw_is_valid or int_is_valid):
-                print('code %s' % code)
-                print(valid_values[field])
                 return False
     return True
 
