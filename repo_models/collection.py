@@ -140,6 +140,7 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': int,
+        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -172,6 +173,7 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': int,
+        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -297,6 +299,7 @@ FIELDS = [
         'name':       'creators',
         'group':      'overview',
         'model_type': str,
+        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -359,6 +362,7 @@ FIELDS = [
         'name':       'language',
         'group':      'overview',
         'model_type': str,
+        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -390,6 +394,7 @@ FIELDS = [
         'name':       'contributor',
         'group':      'overview',
         'model_type': str,
+        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -634,6 +639,7 @@ FIELDS = [
         'group':      '',
         'inheritable':True,
         'model_type': str,
+        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',

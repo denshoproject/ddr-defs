@@ -189,6 +189,7 @@ FIELDS = [
         'name':       'public',
         'group':      '',
         'model_type': int,
+        'vocab':      True,
         'default':    PERMISSIONS_CHOICES_DEFAULT,
         'csv': {
             'export': '',
@@ -220,6 +221,7 @@ FIELDS = [
         'name':       'rights',
         'group':      '',
         'model_type': str,
+        'vocab':      True,
         'default':    RIGHTS_CHOICES_DEFAULT,
         'csv': {
             'export': '',
