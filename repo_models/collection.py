@@ -299,7 +299,6 @@ FIELDS = [
         'name':       'creators',
         'group':      'overview',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -394,7 +393,6 @@ FIELDS = [
         'name':       'contributor',
         'group':      'overview',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',

@@ -355,7 +355,6 @@ FIELDS = [
     {
         'name':       'location',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -386,7 +385,6 @@ FIELDS = [
     {
         'name':       'creators',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -539,7 +537,6 @@ FIELDS = [
     {
         'name':       'contributor',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -630,7 +627,6 @@ FIELDS = [
     {
         'name':       'digitize_organization',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
@@ -814,7 +810,6 @@ FIELDS = [
     {
         'name':       'persons',
         'model_type': str,
-        'vocab':      True,
         'default':    '',
         'csv': {
             'export': '',
