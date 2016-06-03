@@ -42,12 +42,16 @@ LANGUAGE_CHOICES = [['',''],
                     ['tgl','Tagalog'],]
 
 FIELDS = [
+    
     {
         'name':       'id',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  ['/ead/archdesc/did/unitid',],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Collection ID',
@@ -57,14 +61,27 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
+        'xpath':      "",
+        'xpath_dup':  ['/ead/archdesc/did/unitid',],
     },
+    
     {
         'name':       'record_created',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': datetime,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'DateTimeField',
         'form': {
             'label':      'Record Created',
@@ -73,14 +90,29 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'record_lastmod',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': datetime,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'DateTimeField',
         'form': {
             'label':      'Record Modified',
@@ -89,15 +121,31 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'status',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Production Status',
@@ -107,15 +155,30 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'public',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Privacy Level',
@@ -125,15 +188,29 @@ FIELDS = [
             'initial':    PERMISSIONS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     # overview ---------------------------------------------------------
     {
         'name':       'title',
         'group':      'overview',
-        'xpath':      '/ead/eadheader/filedesc/titlestmt/titleproper',
-        'xpath_dup':  ['/ead/archdesc/did/unittitle',],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Title',
@@ -143,14 +220,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      '/ead/eadheader/filedesc/titlestmt/titleproper',
+        'xpath_dup':  ['/ead/archdesc/did/unittitle',],
     },
+    
     {
         'name':       'unitdateinclusive',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/unitdate[@type='inclusive']",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Inclusive Dates',
@@ -160,14 +251,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/archdesc/did/unitdate[@type='inclusive']",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'unitdatebulk',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/unitdate[@type='bulk']",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Bulk Dates',
@@ -177,14 +282,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/archdesc/did/unitdate[@type='bulk']",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'creators',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/origination",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Creator',
@@ -194,14 +313,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/ead/archdesc/did/origination",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'extent',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/physdesc/extent",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Physical Description',
@@ -211,14 +344,29 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/archdesc/did/physdesc/extent",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'language',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/langmaterial/language/@langcode",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'MultipleChoiceField',
         'form': {
             'label':      'Language',
@@ -228,14 +376,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/ead/archdesc/did/langmaterial/language/@langcode",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'contributor',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/repository",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Contributing Institution',
@@ -245,14 +407,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/archdesc/did/repository",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'description',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/abstract",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Abstract',
@@ -261,14 +437,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/archdesc/did/abstract",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'notes',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/note",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Notes',
@@ -277,14 +467,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "/ead/archdesc/did/note",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'physloc',
         'group':      'overview',
-        'xpath':      "/ead/archdesc/did/physloc",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Physical Location',
@@ -294,15 +498,29 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/archdesc/did/physloc",
+        'xpath_dup':  [],
     },
+    
     # administative ----------------------------------------------------
     {
         'name':       'acqinfo',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/acqinfo",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Acquisition Information',
@@ -311,14 +529,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "/ead/descgrp/acqinfo",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'custodhist',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/custodhist",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Custodial History',
@@ -327,14 +559,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "/ead/descgrp/custodhist",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'accruals',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/accruals",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Accruals',
@@ -343,14 +589,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "/ead/descgrp/accruals",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'processinfo',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/processinfo",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Processing Information',
@@ -359,15 +619,30 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "/ead/descgrp/processinfo",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'rights',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Rights',
@@ -377,14 +652,28 @@ FIELDS = [
             'initial':    RIGHTS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "rights"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'accessrestrict',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/accessrestrict",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Restrictions on Access',
@@ -393,14 +682,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/descgrp/accessrestrict",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'userrestrict',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/userrestrict",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Restrictions on Use',
@@ -409,14 +712,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/descgrp/userrestrict",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'prefercite',
         'group':      'administative',
-        'xpath':      "/ead/descgrp/prefercite",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Preferred Citation',
@@ -426,15 +743,29 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/descgrp/prefercite",
+        'xpath_dup':  [],
     },
+    
     # bioghist ---------------------------------------------------------
     {
         'name':       'bioghist',
         'group':      'bioghist',
-        'xpath':      "/ead/bioghist",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Biography and History',
@@ -443,15 +774,29 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/bioghist",
+        'xpath_dup':  [],
     },
+    
     # scopecontent -----------------------------------------------------
     {
         'name':       'scopecontent',
         'group':      'scopecontent',
-        'xpath':      "/ead/scopecontent",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Scope and Content',
@@ -460,15 +805,29 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/scopecontent",
+        'xpath_dup':  [],
     },
+    
     # related ----------------------------------------------------------
     {
         'name':       'relatedmaterial',
         'group':      'related',
-        'xpath':      "/ead/relatedmaterial",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Related Materials',
@@ -477,14 +836,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/relatedmaterial",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'separatedmaterial',
         'group':      'related',
-        'xpath':      "/ead/separatedmaterial",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Separated Materials',
@@ -493,7 +866,17 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/ead/separatedmaterial",
+        'xpath_dup':  [],
     },
 
 ]

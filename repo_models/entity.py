@@ -2,10 +2,11 @@ from datetime import datetime, date
 import json
 import logging
 logger = logging.getLogger(__name__)
+import re
 
 #from lxml import etree
 
-import tematres
+from DDR.converters import csv
 
 
 
@@ -100,14 +101,15 @@ REQUIRED_FIELDS_EXCEPTIONS = ['record_created', 'record_lastmod', 'files',]
 
 
 FIELDS = [
+    
     {
         'name':       'id',
-        'xpath':      "/mets:mets/@OBJID",
-        'xpath_dup':  [
-            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:identifier",
-            #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
-            ],
         'model_type': str,
+        'default': None,
+        'csv': {
+            'export': 'require',
+            'import': 'require',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Object ID',
@@ -117,13 +119,29 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/@OBJID",
+        'xpath_dup':  [
+            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:identifier",
+            #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
+            ],
     },
+    
     {
         'name':       'record_created',
-        'xpath':      "/mets:mets/mets:metsHdr@CREATEDATE",
-        'xpath_dup':  [],
         'model_type': datetime,
+        'default': datetime.now(),
+        'csv': {
+            'export': '',
+            'import': 'ignore',
+        },
         'form_type':  'DateTimeField',
         'form': {
             'label':      'Record Created',
@@ -132,13 +150,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
+        'xpath':      "/mets:mets/mets:metsHdr@CREATEDATE",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'record_lastmod',
-        'xpath':      "/mets:mets/mets:metsHdr@LASTMODDATE",
-        'xpath_dup':  [],
         'model_type': datetime,
+        'default': datetime.now(),
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'DateTimeField',
         'form': {
             'label':      'Record Modified',
@@ -147,15 +180,31 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "date",
+                'index': "not_analyzed",
+                'store': "yes",
+                'format': "yyyy-MM-dd'T'HH:mm:ss"
+            },
+            'display': "datetime"
+        },
+        'xpath':      "/mets:mets/mets:metsHdr@LASTMODDATE",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'status',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Production Status',
@@ -165,15 +214,30 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'public',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': int,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Privacy Level',
@@ -183,15 +247,27 @@ FIELDS = [
             'initial':    PERMISSIONS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'title',
-        'xpath':      "/mets:mets/@LABEL",
-        'xpath_dup':  [
-            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:title",
-            ],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Title',
@@ -201,13 +277,29 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/@LABEL",
+        'xpath_dup':  [
+            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:title",
+            ],
     },
+    
     {
         'name':       'description',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:abstract",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Description',
@@ -217,13 +309,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:abstract",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'creation',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateCreated",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Date (Created)',
@@ -233,13 +339,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateCreated",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'location',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:place/mods:placeTerm[@type='text']",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Location',
@@ -249,13 +369,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:place/mods:placeTerm[@type='text']",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'creators',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Creator',
@@ -265,13 +399,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'language',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:language/mods:languageTerm",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'MultipleChoiceField',
         'form': {
             'label':      'Language',
@@ -281,13 +429,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:language/mods:languageTerm",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'genre',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:genre",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Object Genre',
@@ -297,13 +460,28 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:genre",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'format',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:typeOfResource",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Object Format',
@@ -313,13 +491,27 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:typeOfResource",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'extent',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:physicalDescription/mods:extent",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Physical Description',
@@ -329,13 +521,27 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:physicalDescription/mods:extent",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'contributor',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:physicalLocation",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Contributing Institution',
@@ -345,13 +551,27 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:physicalLocation",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'alternate_id',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:holdingExternal/mods:institutionIdentifier/mods:value",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Alternate ID',
@@ -361,13 +581,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:location/mods:holdingExternal/mods:institutionIdentifier/mods:value",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'digitize_person',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Digitizer',
@@ -377,13 +611,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
-    },
-    {
-        'name':       'digitize_organization',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
         'xpath':      '',
         'xpath_dup':  [],
+    },
+    
+    {
+        'name':       'digitize_organization',
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Digitizing Institution',
@@ -393,13 +641,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
-    },
-    {
-        'name':       'digitize_date',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
         'xpath':      '',
         'xpath_dup':  [],
+    },
+    
+    {
+        'name':       'digitize_date',
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Digitize Date',
@@ -408,14 +670,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
+    
     # technical
     {
         'name':       'credit',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Preferred Citation',
@@ -425,15 +701,30 @@ FIELDS = [
             'initial':    '',
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'rights',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'inheritable':True,
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Rights',
@@ -443,13 +734,27 @@ FIELDS = [
             'initial':    RIGHTS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
-    }, 
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "rights"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+    
     {
         'name':       'rights_statement',
-        'xpath':      '',
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Restrictions on Reproduction and Use',
@@ -458,14 +763,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "analyzed"
+            },
+            'display': "string"
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'topics',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Topic',
@@ -474,13 +793,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'persons',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Person/Organization',
@@ -489,13 +823,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'facility',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Facility',
@@ -504,13 +853,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "facet"
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'parent',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier[@type='local']",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Parent Object',
@@ -520,13 +883,42 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'href': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'label': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'uid': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    }
+                }
+            },
+            'display': ""
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier[@type='local']",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'notes',
-        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Notes',
@@ -535,21 +927,74 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': False,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "no"
+            },
+            'display': ""
+        },
+        'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'files',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    [],
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'path_rel': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'public': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'md5': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'sha1': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'sha256': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    }
+                }
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
 ]
 
 # List of FIELDS to be excluded when exporting and updating.
-FIELDS_CSV_EXCLUDED = ['files']
+FIELDS_CSV_EXCLUDED = [
+    'record_created',
+    'record_lastmod',
+    'files',
+]
 
 
 
@@ -811,18 +1256,14 @@ def formpost_creators(data):
 # credit
 
 def formpost_topics(data):
-    a = []
-    form_urls = [t.strip() for t in data.split(';')]
-    a = tematres.get_terms(form_urls)
+    a = [t.strip() for t in data.split(';')]
     return a
 
 def formpost_persons(data):
     return [n.strip() for n in data.split(';')]
 
 def formpost_facility(data):
-    a = []
-    form_urls = [t.strip() for t in data.split(';')]
-    a = tematres.get_terms(form_urls)
+    a = [t.strip() for t in data.split(';')]
     return a
 
 # notes
@@ -844,26 +1285,51 @@ def _formpost_basic(data):
 # These functions examine data in a CSV field and return True if valid.
 #
 
-def choice_is_valid(field, valid_values, value):
+def _choice_is_valid(field, valid_values, value):
     if value in valid_values[field]:
 	return True
     return False
 
-def csvvalidate_status( data ): return choice_is_valid('status', data[0], data[1])
-def csvvalidate_public( data ): return choice_is_valid('public', data[0], data[1])
-def csvvalidate_rights( data ): return choice_is_valid('rights', data[0], data[1])
-def csvvalidate_language( data ):
-    # language can be 'eng', 'eng;jpn', 'eng:English', 'jpn:Japanese'
-    for x in data[1].strip().split(';'):
-        if ':' in x:
-            code = x.strip().split(':')[0]
+def _validate_labelled_kvlist(field, data):
+    """Validate list of keyvalve pairs in which we only care about the keys.
+    """
+    valid_values = data[0]
+    data = data[1]
+    for datum in data:
+        if ':' in datum:
+            code = datum.strip().split(':')[0]
         else:
-            code = x.strip()
-        if not choice_is_valid('language', data[0], data[1]) and 'language' not in invalid:
+            code = datum.strip()
+        if not _choice_is_valid('language', valid_values, datum):
             return False
     return True
-def csvvalidate_genre( data ): return choice_is_valid('genre', data[0], data[1])
-def csvvalidate_format( data ): return choice_is_valid('format', data[0], data[1])
+
+def _validate_vocab_list(field, valid_values, data):
+    """Validate list of keyvalve pairs in which we only care about the keys.
+    
+    Matches terms from the topics and facility controlled vocabs:
+        Activism and involvement: Politics [235]
+        Arts and literature: Literary arts: Fiction: Adult [242]
+    """
+    pattern = '\[([0-9]+)\]'
+    for datum in data:
+        m = re.search(pattern, datum)
+        if m:
+            code = m.group(1)
+            raw_is_valid = _choice_is_valid(field, valid_values, code)
+            int_is_valid = _choice_is_valid(field, valid_values, int(code))
+            if not (raw_is_valid or int_is_valid):
+                return False
+    return True
+
+def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
+def csvvalidate_public( data ): return _choice_is_valid('public', data[0], data[1])
+def csvvalidate_rights( data ): return _choice_is_valid('rights', data[0], data[1])
+def csvvalidate_language( data ): return _validate_labelled_kvlist('language', data)
+def csvvalidate_genre( data ): return _choice_is_valid('genre', data[0], data[1])
+def csvvalidate_format( data ): return _choice_is_valid('format', data[0], data[1])
+def csvvalidate_topics( data ): return _validate_vocab_list('topics', data[0], data[1])
+def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0], data[1])
 
 # csvload_* --- import-from-csv functions ----------------------------
 #
@@ -871,20 +1337,11 @@ def csvvalidate_format( data ): return choice_is_valid('format', data[0], data[1
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvload_language( data ):
-    """language can be 'eng', 'eng;jpn', 'eng:English', 'jpn:Japanese'
-    """
-    y = []
-    for x in data.strip().split(';'):
-        if ':' in x:
-            y.append(x.strip().split(':')[0])
-        else:
-            y.append(x.strip())
-    return y
-def csvload_topics( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvload_persons( data ): return [x.strip() for x in data.strip().split(';') if x]
-def csvload_facility( data ): return [x.strip() for x in data.strip().split(';') if x]
+def csvload_creators( text ): return csv.load_rolepeople(text)
+def csvload_language( text ): return csv.load_labelledlist(text)
+def csvload_topics( text ): return csv.load_list(text)
+def csvload_persons( text ): return csv.load_list(text)
+def csvload_facility( text ): return csv.load_list(text)
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -892,24 +1349,13 @@ def csvload_facility( data ): return [x.strip() for x in data.strip().split(';')
 # and format it for export in a CSV field.
 #
 
-def csvdump_record_created( data ): return data.strftime(DATETIME_FORMAT)
-def csvdump_record_lastmod( data ): return data.strftime(DATETIME_FORMAT)
-def csvdump_creators( data ):
-    items = []
-    for d in data:
-        # strings are already in format or close enough
-        if isinstance(d, str):
-            items.append(d)
-        elif isinstance(d, dict):
-            items.append('%s:%s' % (d['namepart'],d['role']))
-    return ' ; '.join(items)
-def csvdump_language( data ):
-    """only export the language codes ('eng,jpn')
-    """
-    return ','.join(data)
-def csvdump_topics( data ): return '; '.join(data)
-def csvdump_persons( data ): return '; '.join(data)
-def csvdump_facility( data ): return '; '.join(data)
+def csvdump_record_created(data): return csv.dump_datetime(data, DATETIME_FORMAT)
+def csvdump_record_lastmod(data): return csv.dump_datetime(data, DATETIME_FORMAT)
+def csvdump_creators(data): return csv.dump_rolepeople(data)
+def csvdump_language(data): return csv.dump_labelledlist(data)
+def csvdump_topics(data): return csv.dump_list(data)
+def csvdump_persons(data): return csv.dump_list(data)
+def csvdump_facility(data): return csv.dump_list(data)
 
 
 

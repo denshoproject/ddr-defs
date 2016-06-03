@@ -25,75 +25,176 @@ REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_
 
 
 FIELDS = [
+    
     {
         'name':       'role',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': '',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'sha1',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'sha256',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'md5',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'size',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "filesize"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'basename_orig',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': '',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'access_rel',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
         # no form_type
         # no form
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'public',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': int,
+        'vocab':      True,
+        'default':    PERMISSIONS_CHOICES_DEFAULT,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Privacy Level',
@@ -103,14 +204,29 @@ FIELDS = [
             'initial':    PERMISSIONS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'rights',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'vocab':      True,
+        'default':    RIGHTS_CHOICES_DEFAULT,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Rights',
@@ -120,15 +236,28 @@ FIELDS = [
             'initial':    RIGHTS_CHOICES_DEFAULT,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "rights"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
 
     {
         'name':       'sort',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': int,
+        'default':    1,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'IntegerField',
         'form': {
             'label':      'Sort',
@@ -137,14 +266,28 @@ FIELDS = [
             'initial':    1,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'thumb',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': int,
+        'default':    -1,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'IntegerField',
         'form': {
             'label':      'Thumbnail',
@@ -153,14 +296,27 @@ FIELDS = [
             'initial':    -1,
             'required':   True,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'label',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Label',
@@ -170,14 +326,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'digitize_person',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'digitize_person',
@@ -187,13 +356,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
-    },
-    {
-        'name':       'tech_notes',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
         'xpath':      "",
         'xpath_dup':  [],
+    },
+    
+    {
+        'name':       'tech_notes',
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Technical Notes',
@@ -202,14 +385,28 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "no"
+            },
+            'display': "string"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+    
     {
         'name':       'xmp',
         'group':      '',
-        'xpath':      "",
-        'xpath_dup':  [],
         'model_type': str,
+        'default':    None,
+        'csv': {
+            'export': 'ignore',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'XMP Metadata',
@@ -218,13 +415,27 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
-    },
-    {
-        'name':       'links',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "no",
+                'index': "no"
+            },
+            'display': "string_collapsed"
+        },
         'xpath':      "",
         'xpath_dup':  [],
+    },
+    
+    {
+        'name':       'links',
         'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
         'form_type':  'CharField',
         'form': {
             'label':      'Associated Files',
@@ -234,8 +445,18 @@ FIELDS = [
             'initial':    '',
             'required':   False,
         },
-        'default':    '',
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
     },
+
 ]
 
 # Subset of FILE_FIELDS that are used when creating a new File.
@@ -292,3 +513,122 @@ def display_links( data ):
 # These functions take data from the corresponding form field and turn it
 # into Python objects that are inserted into the Collection.
 #
+
+
+
+# csvvalidate_* --------------------------------------------------------
+#
+# These functions examine data in a CSV field and return True if valid.
+#
+
+def _choice_is_valid(field, valid_values, value):
+    if value in valid_values[field]:
+	return True
+    return False
+
+def _validate_labelled_kvlist(field, data):
+    """Validate list of keyvalve pairs in which we only care about the keys.
+    """
+    valid_values = data[0]
+    data = data[1]
+    for datum in data:
+        if ':' in datum:
+            code = datum.strip().split(':')[0]
+        else:
+            code = datum.strip()
+        if not _choice_is_valid('language', valid_values, datum):
+            return False
+    return True
+
+def _validate_vocab_list(field, valid_values, data):
+    """Validate list of keyvalve pairs in which we only care about the keys.
+    
+    Matches terms from the topics and facility controlled vocabs:
+        Activism and involvement: Politics [235]
+        Arts and literature: Literary arts: Fiction: Adult [242]
+    """
+    pattern = '\[([0-9]+)\]'
+    for datum in data:
+        m = re.search(pattern, datum)
+        if m:
+            code = m.group(1)
+            raw_is_valid = _choice_is_valid(field, valid_values, code)
+            int_is_valid = _choice_is_valid(field, valid_values, int(code))
+            if not (raw_is_valid or int_is_valid):
+                return False
+    return True
+
+#role
+#sha1
+#sha256
+#md5
+#size
+#basename_orig
+#access_rel
+#public
+#rights
+#sort
+#thumb
+#label
+#digitize_person
+#tech_notes
+#xmp
+#links
+
+#def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
+#def csvvalidate_language( data ): return _validate_labelled_kvlist('language', data)
+#def csvvalidate_topics( data ): return _validate_vocab_list('topics', data[0], data[1])
+
+# csvload_* --- import-from-csv functions ----------------------------
+#
+# These functions take data from a CSV field and convert it to Python
+# data for the corresponding Entity field.
+#
+
+#def csvload_role(text):
+#def csvload_sha1(text):
+#def csvload_sha256(text):
+#def csvload_md5(text):
+#def csvload_size(text):
+#def csvload_basename_orig(text):
+#def csvload_access_rel(text):
+#def csvload_public(text):
+#def csvload_rights(text):
+#def csvload_sort(text):
+#def csvload_thumb(text):
+#def csvload_label(text):
+#def csvload_digitize_person(text):
+#def csvload_tech_notes(text):
+#def csvload_xmp(text):
+#def csvload_links(text):
+
+#def csvload_creators( text ): return csv.load_rolepeople(text)
+#def csvload_language( text ): return csv.load_labelledlist(text)
+#def csvload_topics( text ): return csv.load_list(text)
+
+# csvdump_* --- export-to-csv functions ------------------------------
+#
+# These functions take Python data from the corresponding Entity field
+# and format it for export in a CSV field.
+#
+
+#def csvdump_role(data):
+#def csvdump_sha1(data):
+#def csvdump_sha256(data):
+#def csvdump_md5(data):
+#def csvdump_size(data):
+#def csvdump_basename_orig(data):
+#def csvdump_access_rel(data):
+#def csvdump_public(data):
+#def csvdump_rights(data):
+#def csvdump_sort(data):
+#def csvdump_thumb(data):
+#def csvdump_label(data):
+#def csvdump_digitize_person(data):
+#def csvdump_tech_notes(data):
+#def csvdump_xmp(data):
+#def csvdump_links(data):
+
+#def csvdump_creators(data): return csv.dump_rolepeople(data)
+#def csvdump_language(data): return csv.dump_labelledlist(data)
+#def csvdump_topics(data): return csv.dump_list(data)
