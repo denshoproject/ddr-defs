@@ -14,14 +14,24 @@ IDENTIFIERS = [
         'children': ['organization'],
         'children_all': ['organization'],
         'templates': {
-            'id': '{repo}',
+            'id': [
+                '{repo}',
+            ],
             'path': {
-                'rel': '',
-                'abs': '{basepath}/{repo}',
+                'rel': [
+                    '',
+                ],
+                'abs': [
+                    '{basepath}/{repo}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}',
-                'public': '/{repo}',
+                'editor': [
+                    '/ui/{repo}',
+                ],
+                'public': [
+                    '/{repo}',
+                ],
             },
         },
         'patterns': {
@@ -60,14 +70,24 @@ IDENTIFIERS = [
         'children': ['collection'],
         'children_all': ['collection'],
         'templates': {
-            'id': '{repo}-{org}',
+            'id': [
+                '{repo}-{org}',
+            ],
             'path': {
-                'rel': '',
-                'abs': '{basepath}/{repo}-{org}',
+                'rel': [
+                    '',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}',
-                'public': '/{repo}/{org}',
+                'editor': [
+                    '/ui/{repo}-{org}',
+                ],
+                'public': [
+                    '/{repo}/{org}',
+                ],
             },
         },
         'patterns': {
@@ -102,14 +122,24 @@ IDENTIFIERS = [
         'children': ['entity'],
         'children_all': ['entity'],
         'templates': {
-            'id': '{repo}-{org}-{cid}',
+            'id': [
+                '{repo}-{org}-{cid}',
+            ],
             'path': {
-                'rel': '',
-                'abs': '{basepath}/{repo}-{org}-{cid}',
+                'rel': [
+                    '',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}',
-                'public': '/{repo}/{org}/{cid}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}',
+                ],
             },
         },
         'patterns': {
@@ -152,14 +182,24 @@ IDENTIFIERS = [
         'children': ['file'],
         'children_all': ['file-role'],
         'templates': {
-            'id': '{repo}-{org}-{cid}-{eid}',
+            'id': [
+                '{repo}-{org}-{cid}-{eid}',
+            ],
             'path': {
-                'rel': 'files/{repo}-{org}-{cid}-{eid}',
-                'abs': '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}',
+                'rel': [
+                    'files/{repo}-{org}-{cid}-{eid}',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}-{eid}',
-                'public': '/{repo}/{org}/{cid}/{eid}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}',
+                ],
             },
         },
         'patterns': {
@@ -201,14 +241,20 @@ IDENTIFIERS = [
         'children': ['file'],
         'children_all': ['file'],
         'templates': {
-            'id': '{repo}-{org}-{cid}-{eid}-{role}',
+            'id': [
+                '{repo}-{org}-{cid}-{eid}-{role}',
+            ],
             'path': {
                 'rel': None,
                 'abs': None,
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}-{eid}-{role}',
-                'public': '/{repo}/{org}/{cid}/{eid}/{role}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}-{role}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}/{role}',
+                ],
             },
         },
         'patterns': {
@@ -240,14 +286,24 @@ IDENTIFIERS = [
         'children': [],
         'children_all': [],
         'templates': {
-            'id': '{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+            'id': [
+                '{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+            ],
             'path': {
-                'rel': 'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
-                'abs': '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                'rel': [
+                    'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
-                'public': '/{repo}/{org}/{cid}/{eid}/{role}/{sha1}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}/{role}/{sha1}',
+                ],
             },
         },
         'patterns': {
