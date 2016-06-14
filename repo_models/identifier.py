@@ -227,6 +227,67 @@ IDENTIFIERS = [
     
     # ------------------------------------------------------------------
     {
+        'model': 'segment',
+        'class': 'DDR.models.Entity',
+        'component': {
+            'name': 'sid',
+            'type': int,
+            'valid': [],
+        },
+        'parents': ['entity'],
+        'parents_all': ['entity'],
+        'children': ['file'],
+        'children_all': ['file-role'],
+        'templates': {
+            'id': [
+                '{repo}-{org}-{cid}-{eid}-{sid}',
+            ],
+            'path': {
+                'rel': [
+                    'files/{repo}-{org}-{cid}-{eid}-{sid}',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}',
+                ],
+            },
+            'url': {
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}-{sid}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}/{sid}',
+                ],
+            },
+        },
+        'patterns': {
+            'id': [
+                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+            ],
+            'path': [
+                # ---------------------/collection-------/-----/entity-----------/-----/segment
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)',
+                # ------/entity-----------/-----/segment
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+            ],
+            'url': [
+                # editor
+                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+                # public
+                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<sid>[\d]+)$',
+            ],
+        },
+        'files': {
+            'changelog': 'changelog',
+            'control': 'control',
+            'files': 'files',
+            'json': 'entity.json',
+            'lock': 'lock',
+            'mets': 'mets.xml',
+        },
+    },
+    
+    # ------------------------------------------------------------------
+    {
         'model': 'file-role',
         'class': 'DDR.models.Stub',
         'component': {
