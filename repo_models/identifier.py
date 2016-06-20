@@ -248,7 +248,7 @@ IDENTIFIERS = [
             ],
             'path': {
                 'rel': [
-                    'files/{repo}-{org}-{cid}-{eid}-{sid}',
+                    'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}',
                 ],
                 'abs': [
                     '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}',
@@ -269,7 +269,7 @@ IDENTIFIERS = [
             ],
             'path': [
                 # ---------------------/collection-------/-----/entity-----------/-----/segment
-                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
                 # ------/entity-----------/-----/segment
                 r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
             ],
