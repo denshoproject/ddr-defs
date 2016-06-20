@@ -4,6 +4,7 @@ IDENTIFIERS = [
     {
         'model': 'repository',
         'class': 'DDR.models.Stub',
+        'level': -2,
         'component': {
             'name': 'repo',
             'type': str,
@@ -57,6 +58,7 @@ IDENTIFIERS = [
     {
         'model': 'organization',
         'class': 'DDR.models.Stub',
+        'level': -1,
         'component': {
             'name': 'org',
             'type': str,
@@ -112,6 +114,7 @@ IDENTIFIERS = [
     {
         'model': 'collection',
         'class': 'DDR.models.Collection',
+        'level': 0,
         'component': {
             'name': 'cid',
             'type': int,
@@ -172,6 +175,7 @@ IDENTIFIERS = [
     {
         'model': 'entity',
         'class': 'DDR.models.Entity',
+        'level': 1,
         'component': {
             'name': 'eid',
             'type': int,
@@ -233,6 +237,7 @@ IDENTIFIERS = [
     {
         'model': 'segment',
         'class': 'DDR.models.Entity',
+        'level': 2,
         'component': {
             'name': 'sid',
             'type': int,
@@ -294,6 +299,7 @@ IDENTIFIERS = [
     {
         'model': 'file-role',
         'class': 'DDR.models.Stub',
+        'level': 3,
         'component': {
             'name': 'role',
             'type': str,
