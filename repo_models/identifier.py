@@ -311,8 +311,8 @@ IDENTIFIERS = [
                 '{repo}-{org}-{cid}-{eid}-{role}',
             ],
             'path': {
-                'rel': None,
-                'abs': None,
+                'rel': [],
+                'abs': [],
             },
             'url': {
                 'editor': [
