@@ -179,8 +179,8 @@ IDENTIFIERS = [
         },
         'parents': ['collection'],
         'parents_all': ['collection'],
-        'children': ['file'],
-        'children_all': ['file-role'],
+        'children': ['segment', 'file'],
+        'children_all': ['segment', 'file-role'],
         'templates': {
             'id': [
                 '{repo}-{org}-{cid}-{eid}',
@@ -302,7 +302,7 @@ IDENTIFIERS = [
             ],
         },
         'parents': [],
-        'parents_all': ['entity'],
+        'parents_all': ['segment', 'entity'],
         'children': ['file'],
         'children_all': ['file'],
         'templates': {
@@ -349,12 +349,13 @@ IDENTIFIERS = [
     {
         'model': 'file',
         'class': 'DDR.models.File',
+        'level': 4,
         'component': {
             'name': 'sha1',
             'type': str,
             'valid': [],
         },
-        'parents': ['entity'],
+        'parents': ['segment', 'entity'],
         'parents_all': ['file-role'],
         'children': [],
         'children_all': [],
