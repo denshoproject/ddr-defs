@@ -3,6 +3,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'repository',
+        'module': '',
         'class': 'DDR.models.Stub',
         'level': -2,
         'component': {
@@ -57,6 +58,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'organization',
+        'module': '',
         'class': 'DDR.models.Stub',
         'level': -1,
         'component': {
@@ -113,6 +115,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'collection',
+        'module': 'repo_models.collection',
         'class': 'DDR.models.Collection',
         'level': 0,
         'component': {
@@ -174,6 +177,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'entity',
+        'module': 'repo_models.entity',
         'class': 'DDR.models.Entity',
         'level': 1,
         'component': {
@@ -236,6 +240,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'segment',
+        'module': 'repo_models.segment',
         'class': 'DDR.models.Entity',
         'level': 2,
         'component': {
@@ -298,6 +303,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'file-role',
+        'module': '',
         'class': 'DDR.models.Stub',
         'level': 3,
         'component': {
@@ -354,6 +360,7 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'file',
+        'module': 'repo_models.files',
         'class': 'DDR.models.File',
         'level': 4,
         'component': {
