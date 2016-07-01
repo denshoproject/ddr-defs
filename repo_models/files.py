@@ -57,6 +57,36 @@ FIELDS = [
             #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
             ],
     },
+
+    {
+        'name':       'external',
+        'group':      '',
+        'model_type': int,
+        'default':    0,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'IntegerField',
+        'form': {
+            'label':      'External',
+            'help_text':  '',
+            'widget':     '',
+            'initial':    1,
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
     
     {
         'name':       'role',
