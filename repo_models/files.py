@@ -27,6 +27,38 @@ REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_
 FIELDS = [
     
     {
+        'name':       'id',
+        'model_type': str,
+        'default': None,
+        'csv': {
+            'export': 'require',
+            'import': 'require',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Object ID',
+            'help_text':  '',
+            'max_length': 255,
+            'widget':     'HiddenInput',
+            'initial':    '',
+            'required':   True,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/@OBJID",
+        'xpath_dup':  [
+            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:identifier",
+            #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
+            ],
+    },
+    
+    {
         'name':       'role',
         'model_type': str,
         'default':    None,
