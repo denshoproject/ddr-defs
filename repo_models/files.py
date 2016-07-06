@@ -94,7 +94,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': '',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -117,7 +117,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -140,7 +140,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -163,7 +163,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -186,7 +186,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -209,7 +209,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': '',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
