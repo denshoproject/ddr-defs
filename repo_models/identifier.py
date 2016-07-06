@@ -310,7 +310,11 @@ IDENTIFIERS = [
             'name': 'role',
             'type': str,
             'valid': [
-                'master', 'mezzanine',
+                'master',
+                'mezzanine',
+                #'transcript',
+                #'preservation',
+                #'administrative',
             ],
         },
         'parents': [],
