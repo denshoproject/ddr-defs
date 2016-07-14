@@ -71,8 +71,8 @@ FIELDS = [
         'form': {
             'label':      'External',
             'help_text':  '',
-            'widget':     '',
-            'initial':    1,
+            'widget':     'HiddenInput',
+            'initial':    0,
             'required':   False,
         },
         'elasticsearch': {
