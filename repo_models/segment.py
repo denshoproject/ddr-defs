@@ -1,10 +1,11 @@
 from datetime import datetime, date
 
 
-
 PERMISSIONS_CHOICES = [['1','Public'],
                        ['0','Private'],]
 PERMISSIONS_CHOICES_DEFAULT = 1
+
+REQUIRED_FIELDS_EXCEPTIONS = []
 
 
 FIELDS = [
