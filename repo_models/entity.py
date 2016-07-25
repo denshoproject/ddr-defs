@@ -987,6 +987,55 @@ FIELDS = [
         'xpath':      "",
         'xpath_dup':  [],
     },
+    
+    {
+        'name':       'file_groups',
+        'model_type': str,
+        'default':    [],
+        'csv': {
+            'export': 'ignore',
+            'import': 'ignore',
+        },
+        # no form_type
+        # no form
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'path_rel': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'public': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'md5': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'sha1': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'sha256': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    }
+                }
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+
 ]
 
 # List of FIELDS to be excluded when exporting and updating.
