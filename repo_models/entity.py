@@ -259,7 +259,37 @@ FIELDS = [
         'xpath':      "",
         'xpath_dup':  [],
     },
-    
+
+    {
+        'name':       'sort',
+        'group':      '',
+        'model_type': int,
+        'default':    1,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'IntegerField',
+        'form': {
+            'label':      'Sort',
+            'help_text':  'Order of this object in relation to others for this object (ordered low to high).',
+            'widget':     '',
+            'initial':    1,
+            'required':   True,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+
     {
         'name':       'title',
         'model_type': str,
@@ -448,8 +478,8 @@ FIELDS = [
         'vocab':      True,
         'default':    '',
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'require',
+            'import': 'require',
         },
         'form_type':  'ChoiceField',
         'form': {

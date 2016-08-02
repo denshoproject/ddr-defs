@@ -167,6 +167,36 @@ FIELDS = [
         'xpath':      "",
         'xpath_dup':  [],
     },
+
+    {
+        'name':       'sort',
+        'group':      '',
+        'model_type': int,
+        'default':    1,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'IntegerField',
+        'form': {
+            'label':      'Sort',
+            'help_text':  'Order of this object in relation to others for this object (ordered low to high).',
+            'widget':     '',
+            'initial':    1,
+            'required':   True,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
     
     {
         'name':       'title',
@@ -285,54 +315,6 @@ FIELDS = [
             'display': ""
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
-        'xpath_dup':  [],
-    },
-    
-    {
-        'name':       'files',
-        'model_type': str,
-        'default':    [],
-        'csv': {
-            'export': 'ignore',
-            'import': 'ignore',
-        },
-        # no form_type
-        # no form
-        'elasticsearch': {
-            'public': True,
-            'properties': {
-                'type': "object",
-                'properties': {
-                    'path_rel': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
-                    'public': {
-                        'type': "integer",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
-                    'md5': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
-                    'sha1': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
-                    'sha256': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    }
-                }
-            },
-            'display': ""
-        },
-        'xpath':      "",
         'xpath_dup':  [],
     },
 ]
