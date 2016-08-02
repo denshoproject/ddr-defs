@@ -478,8 +478,8 @@ FIELDS = [
         'vocab':      True,
         'default':    '',
         'csv': {
-            'export': '',
-            'import': '',
+            'export': 'require',
+            'import': 'require',
         },
         'form_type':  'ChoiceField',
         'form': {
