@@ -878,6 +878,35 @@ FIELDS = [
         'xpath':      "/ead/separatedmaterial",
         'xpath_dup':  [],
     },
+    
+    {
+        'name':       'signature_id',
+        'group':      '',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Signature',
+            'help_text':  "DDR ID of the file to use as this object's thumbnail.",
+            'max_length': 255,
+            'widget':     '',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+    },
 
 ]
 
