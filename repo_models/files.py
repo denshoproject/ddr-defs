@@ -1,6 +1,8 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from DDR.converters import display, forms, csv
+
 
 MODEL = 'file'
 
@@ -491,6 +493,45 @@ FIELDS = [
     },
     
     {
+        'name':       'external_urls',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'External URLs',
+            'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
+            'widget':     'Textarea',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'label': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'url': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            },
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
+    },
+
+    {
         'name':       'links',
         'model_type': str,
         'default':    '',
@@ -557,6 +598,12 @@ def display_thumb( data ):
 def display_xmp( data ):
     return ''
 
+def display_external_urls( data ):
+    return display.render_simple(
+        '<a href="{url}" target="iarchive">{label}</a>',
+        data
+    )
+
 def display_links( data ):
     return ''
 
@@ -568,6 +615,13 @@ def display_links( data ):
 # and format it so that it can be used in an HTML form.
 #
 
+def formprep_external_urls(data):
+    """
+    NOTE: URLs contain colons, so only split on *first* colon within each LABEL:URL.
+    """
+    return forms.prep_listofdicts(
+        data, ['label', 'url']
+    )
 
 
 # formpost_* --- Form post-processing functions ------------------------
@@ -575,6 +629,11 @@ def display_links( data ):
 # These functions take data from the corresponding form field and turn it
 # into Python objects that are inserted into the Collection.
 #
+
+def formpost_external_urls(data):
+    return forms.post_listofdicts(
+        data, keys=['label', 'url'], separators=[';', ':'],
+    )
 
 
 
@@ -635,6 +694,7 @@ def _validate_vocab_list(field, valid_values, data):
 #digitize_person
 #tech_notes
 #xmp
+#external_urls
 #links
 
 #def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
@@ -662,11 +722,8 @@ def _validate_vocab_list(field, valid_values, data):
 #def csvload_digitize_person(text):
 #def csvload_tech_notes(text):
 #def csvload_xmp(text):
+def csvload_external_urls(text): return csv.load_listofdicts(text)
 #def csvload_links(text):
-
-#def csvload_creators( text ): return csv.load_rolepeople(text)
-#def csvload_language( text ): return csv.load_labelledlist(text)
-#def csvload_topics( text ): return csv.load_list(text)
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -689,6 +746,7 @@ def _validate_vocab_list(field, valid_values, data):
 #def csvdump_digitize_person(data):
 #def csvdump_tech_notes(data):
 #def csvdump_xmp(data):
+def csvdump_external_urls(data): return csv.dump_listofdicts(data)
 #def csvdump_links(data):
 
 #def csvdump_creators(data): return csv.dump_rolepeople(data)
