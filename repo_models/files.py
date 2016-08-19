@@ -598,11 +598,14 @@ def display_thumb( data ):
 def display_xmp( data ):
     return ''
 
-def display_external_urls( data ):
-    return display.render_simple(
-        '<a href="{url}" target="iarchive">{label}</a>',
-        data
-    )
+TEMPLATE_EXTERNAL_URLS = """
+{% for line in data %}
+<a href="{{ line.url }}" target="iarchive">{{ line.label }}</a>
+{% endfor %}
+"""
+
+def display_external_urls(data):
+    return display.render(TEMPLATE_EXTERNAL_URLS, data)
 
 def display_links( data ):
     return ''
