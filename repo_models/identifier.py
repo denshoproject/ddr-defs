@@ -390,7 +390,7 @@ IDENTIFIERS = [
                 ],
                 'abs': [
                     # ---------/collection--------/-----/entity------------------/-----/segment-----------------------/-----/file
-                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{sid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}/files/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
                     # ---------/collection--------/-----/entity------------------/-----/file
                     '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
                 ],
