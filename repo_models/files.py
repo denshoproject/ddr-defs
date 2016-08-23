@@ -250,6 +250,36 @@ FIELDS = [
     },
     
     {
+        'name':       'mimetype',
+        'group':      '',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Mimetype',
+            'help_text':  'Media type. Leave field blank to reset based on original filename.',
+            'max_length': 255,
+            'widget':     '',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes"
+            },
+            'display': "string"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+
+    {
         'name':       'public',
         'group':      '',
         'model_type': int,
