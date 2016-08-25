@@ -895,7 +895,85 @@ FIELDS = [
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
         'xpath_dup':  [],
     },
-    
+
+    {
+        'name':       'chronology',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Chronology',
+            'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
+            'widget':     'Textarea',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            },
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
+    },
+
+    {
+        'name':       'geography',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Geography',
+            'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
+            'widget':     'Textarea',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            },
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
+    },
+
     {
         'name':       'parent',
         'model_type': str,
@@ -1096,6 +1174,8 @@ def display_persons( data ):
 def display_facility( data ):
     return _display_multiline_dict('<a href="{url}">{label}</a>', data)
 
+# chronology
+# geography
 # parent
 # notes
 # files
@@ -1204,6 +1284,8 @@ def formprep_facility(data):
         a.append(x)
     return ';\n'.join(a)
 
+# chronology
+# geography
 # notes
 
 # The following are utility functions used by formprep_* functions.
@@ -1278,6 +1360,8 @@ def formpost_facility(data):
     a = [t.strip() for t in data.split(';')]
     return a
 
+# chronology
+# geography
 # notes
 
 # The following are utility functions used by formpost_* functions.
@@ -1342,6 +1426,8 @@ def csvvalidate_genre( data ): return _choice_is_valid('genre', data[0], data[1]
 def csvvalidate_format( data ): return _choice_is_valid('format', data[0], data[1])
 def csvvalidate_topics( data ): return _validate_vocab_list('topics', data[0], data[1])
 def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0], data[1])
+# chronology
+# geography
 
 # csvload_* --- import-from-csv functions ----------------------------
 #
@@ -1354,6 +1440,8 @@ def csvload_language( text ): return csv.load_labelledlist(text)
 def csvload_topics( text ): return csv.load_list(text)
 def csvload_persons( text ): return csv.load_list(text)
 def csvload_facility( text ): return csv.load_list(text)
+def csvload_chronology( text ): return csv.load_listofdicts(text)
+def csvload_geography( text ): return csv.load_listofdicts(text)
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -1368,7 +1456,8 @@ def csvdump_language(data): return csv.dump_labelledlist(data)
 def csvdump_topics(data): return csv.dump_list(data)
 def csvdump_persons(data): return csv.dump_list(data)
 def csvdump_facility(data): return csv.dump_list(data)
-
+def csvdump_chronology(data): return csv.dump_listofdicts(data)
+def csvdump_geography(data): return csv.dump_listofdicts(data)
 
 
 # mets_* --- METS XML export functions ---------------------------------
@@ -1488,6 +1577,8 @@ def mets_persons(tree, namespaces, field, value):
     return tree
 
 # facility
+# chronology
+# geography
 # notes
 # files
 
