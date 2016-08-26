@@ -6,7 +6,7 @@ import re
 
 #from lxml import etree
 
-from DDR.converters import csv
+from DDR.converters import csv, display, formats
 
 
 
@@ -826,11 +826,20 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes",
-                'index': "not_analyzed"
+                'type': "object",
+                'properties': {
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
@@ -886,11 +895,20 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes",
-                'index': "not_analyzed"
+                'type': "object",
+                'properties': {
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
         'xpath_dup':  [],
@@ -1163,7 +1181,7 @@ def display_format( data ):
 # credit
 
 def display_topics( data ):
-    return _display_multiline_dict('<a href="{url}">{label}</a>', data)
+    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
 
 def display_persons( data ):
     d = []
@@ -1172,7 +1190,7 @@ def display_persons( data ):
     return _display_multiline_dict('<a href="{person}">{person}</a>', d)
 
 def display_facility( data ):
-    return _display_multiline_dict('<a href="{url}">{label}</a>', data)
+    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
 
 # chronology
 # geography
@@ -1260,29 +1278,13 @@ def formprep_creators(data):
 # credit
 
 def formprep_topics(data):
-    """Present as semicolon-separated list"""
-    a = []
-    for t in data:
-        if type(t) == type({}):
-            x = t['url']
-        else:
-            x = t
-        a.append(x)
-    return ';\n'.join(a)
+    return formats.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_persons(data):
     return ';\n'.join(data)
 
 def formprep_facility(data):
-    """Present as semicolon-separated list"""
-    a = []
-    for t in data:
-        if type(t) == type({}):
-            x = t['url']
-        else:
-            x = t
-        a.append(x)
-    return ';\n'.join(a)
+    return formats.listofdicts_to_textnolabels(data, ['term','id'])
 
 # chronology
 # geography
@@ -1349,16 +1351,14 @@ def formpost_creators(data):
 # digitize_date
 # credit
 
-def formpost_topics(data):
-    a = [t.strip() for t in data.split(';')]
-    return a
+def formpost_topics(text):
+    return formats.text_to_dicts(text, ['term', 'id'])
 
 def formpost_persons(data):
     return [n.strip() for n in data.split(';')]
 
-def formpost_facility(data):
-    a = [t.strip() for t in data.split(';')]
-    return a
+def formpost_facility(text):
+    return formats.text_to_dicts(text, ['term', 'id'])
 
 # chronology
 # geography
@@ -1437,9 +1437,9 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 
 def csvload_creators( text ): return csv.load_rolepeople(text)
 def csvload_language( text ): return csv.load_labelledlist(text)
-def csvload_topics( text ): return csv.load_list(text)
+def csvload_topics( text ): return csv.load_listofdicts(text)
 def csvload_persons( text ): return csv.load_list(text)
-def csvload_facility( text ): return csv.load_list(text)
+def csvload_facility( text ): return csv.load_listofdicts(text)
 def csvload_chronology( text ): return csv.load_listofdicts(text)
 def csvload_geography( text ): return csv.load_listofdicts(text)
 
