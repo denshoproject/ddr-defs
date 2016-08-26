@@ -1207,8 +1207,12 @@ def display_persons( data ):
 def display_facility( data ):
     return _display_multiline_dict('<a href="{id}">{term}</a>', data)
 
-# chronology
-# geography
+def display_chronology( data ):
+    return _display_multiline_dict('{term}', data)
+
+def display_geography( data ):
+    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
+
 # parent
 # notes
 # files
@@ -1301,8 +1305,12 @@ def formprep_persons(data):
 def formprep_facility(data):
     return formats.listofdicts_to_textnolabels(data, ['term','id'])
 
-# chronology
-# geography
+def formprep_chronology(data):
+    return formats.listofdicts_to_text(data)
+
+def formprep_geography(data):
+    return formats.listofdicts_to_text(data)
+
 # notes
 
 # The following are utility functions used by formprep_* functions.
@@ -1375,8 +1383,12 @@ def formpost_persons(data):
 def formpost_facility(text):
     return formats.text_to_dicts(text, ['term', 'id'])
 
-# chronology
-# geography
+def formpost_chronology(text):
+    return formats.text_to_dicts(text, ['term', 'startdate', 'enddate'])
+
+def formpost_geography(text):
+    return formats.text_to_dicts(text, ['term', 'id'])
+
 # notes
 
 # The following are utility functions used by formpost_* functions.
