@@ -941,7 +941,12 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
+                    'startdate': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'enddate': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
@@ -981,6 +986,16 @@ FIELDS = [
                         'index': "not_analyzed"
                     },
                     'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'geo_lat': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'geo_lng': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
