@@ -424,18 +424,28 @@ FIELDS = [
         'form': {
             'label':      'Creator',
             'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name: Creator Role" (e.g., Adams, Ansel:photographer). For organizations use the following format: "Organization Name: Creator Role" (e.g., Associated Press:publisher). Multiple creators are allowed, but must be separated using a semi-colon.',
-            'max_length': 255,
-            'widget':     '',
+            'max_length': 4000,
+            'widget':     'Textarea',
             'initial':    '',
             'required':   False,
         },
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes"
+                'type': "object",
+                'properties': {
+                    'namepart': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'role': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
         'xpath_dup':  [],
@@ -1250,41 +1260,7 @@ def formprep_parent(data):     return _formprep_basic(data)
 # location
 
 def formprep_creators(data):
-    """Takes list of names and formats into "NAME:ROLE;\nNAME:ROLE"
-    
-    >>> data0 = ['Watanabe, Joe']
-    >>> formprep_creators(data0)
-    'Watanabe, Joe:author'
-    >>> data1 = ['Masuda, Kikuye:author']
-    >>> formprep_creators(data1)
-    'Masuda, Kikuye:author'
-    >>> data2 = [{'namepart':'Boyle, Rob:concept,editor', 'role':'author'}, {'namepart':'Cross, Brian:concept,editor', 'role':'author'}]
-    >>> formprep_creators(data2)
-    'Boyle, Rob:concept,editor;\nCross, Brian:concept,editor'
-    """
-    names = []
-    # split string into list
-    if isinstance(data, basestring) and (';' in data):
-        data = data.split(';')
-    # prep list of names (we hope that's what it is)
-    if isinstance(data, list):
-        for n in data:
-            if isinstance(n, dict):
-                # data1: dict with namepart and role in separate fields
-                if ':' in n['namepart']: # often role was put in name field
-                    names.append(n['namepart'])
-                else:
-                    names.append( ':'.join([ n['namepart'], n['role'] ]) )
-            elif isinstance(n, basestring):
-                # data2
-                if ':' in n:
-                    names.append(n)
-                else:
-                    names.append('%s:author' % n)
-            else:
-                assert False
-    data = ';\n'.join(names)
-    return data
+    return formats.listofdicts_to_textnolabels(data, ['namepart', 'role'])
 
 # genre
 # format
@@ -1341,28 +1317,8 @@ def formpost_parent(data):     return _formpost_basic(data)
 # creation
 # location
 
-def formpost_creators(data):
-    """Splits up data into separate names, each with namepart and role.
-    
-    >>> data0 = "Watanabe, Joe"
-    >>> formpost_creators(data0)
-    [{'namepart': 'Watanabe, Joe', 'role': 'author'}]
-    >>> data1 = "Masuda, Kikuye:author"
-    >>> formpost_creators(data1)
-    [{'namepart': 'Masuda, Kikuye', 'role': 'author'}]
-    >>> data2 = "Boyle, Rob:concept,editor; Cross, Brian:concept,editor"
-    >>> formpost_creators(data2)
-    [{'namepart': 'Boyle, Rob', 'role': 'concept,editor'}, {'namepart': 'Cross, Brian', 'role': 'concept,editor'}]
-    """
-    a = []
-    for n in data.split(';'):
-        if ':' in n:
-            name,role = n.strip().split(':')
-        else:
-            name = n.strip(); role = 'author'
-        b = {'namepart': name.strip(), 'role': role.strip(),}
-        a.append(b)
-    return a
+def formpost_creators(text):
+    return formats.text_to_dicts(text, ['namepart', 'role'])
 
 # genre
 # format
@@ -1462,7 +1418,7 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return csv.load_rolepeople(text)
+def csvload_creators( text ): return csv.load_listofdicts(text)
 def csvload_language( text ): return csv.load_labelledlist(text)
 def csvload_topics( text ): return csv.load_listofdicts(text)
 def csvload_persons( text ): return csv.load_list(text)
@@ -1478,7 +1434,7 @@ def csvload_geography( text ): return csv.load_listofdicts(text)
 
 def csvdump_record_created(data): return csv.dump_datetime(data, DATETIME_FORMAT)
 def csvdump_record_lastmod(data): return csv.dump_datetime(data, DATETIME_FORMAT)
-def csvdump_creators(data): return csv.dump_rolepeople(data)
+def csvdump_creators(data): return csv.dump_listofdicts(data)
 def csvdump_language(data): return csv.dump_labelledlist(data)
 def csvdump_topics(data): return csv.dump_list(data)
 def csvdump_persons(data): return csv.dump_list(data)
