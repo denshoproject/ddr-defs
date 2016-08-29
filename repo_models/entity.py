@@ -828,12 +828,12 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
-                    'term': {
+                    'id': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
+                    'term': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
@@ -897,12 +897,12 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
-                    'term': {
+                    'id': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
+                    'term': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
@@ -936,17 +936,17 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
-                    'term': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
                     'startdate': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'enddate': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'term': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
@@ -980,11 +980,6 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
-                    'term': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
                     'id': {
                         'type': "string",
                         'store': "no",
@@ -996,6 +991,11 @@ FIELDS = [
                         'index': "not_analyzed"
                     },
                     'geo_lng': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'term': {
                         'type': "string",
                         'store': "no",
                         'index': "not_analyzed"
@@ -1306,10 +1306,10 @@ def formprep_facility(data):
     return formats.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_chronology(data):
-    return formats.listofdicts_to_text(data)
+    return formats.listofdicts_to_text(data, ['startdate', 'enddate', 'term'])
 
 def formprep_geography(data):
-    return formats.listofdicts_to_text(data)
+    return formats.listofdicts_to_text(data, ['id', 'geo_lat', 'geo_lng', 'term'])
 
 # notes
 
@@ -1384,10 +1384,10 @@ def formpost_facility(text):
     return formats.text_to_dicts(text, ['term', 'id'])
 
 def formpost_chronology(text):
-    return formats.text_to_dicts(text, ['term', 'startdate', 'enddate'])
+    return formats.text_to_dicts(text, ['startdate', 'enddate', 'term'])
 
 def formpost_geography(text):
-    return formats.text_to_dicts(text, ['term', 'id'])
+    return formats.text_to_dicts(text, ['id', 'geo_lat', 'geo_lng', 'term'])
 
 # notes
 
