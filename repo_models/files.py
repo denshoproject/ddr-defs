@@ -1,7 +1,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
-from DDR.converters import display, forms, csv
+from DDR.converters import display, formats, forms, csv
 
 
 MODEL = 'file'
@@ -649,12 +649,7 @@ def display_links( data ):
 #
 
 def formprep_external_urls(data):
-    """
-    NOTE: URLs contain colons, so only split on *first* colon within each LABEL:URL.
-    """
-    return forms.prep_listofdicts(
-        data, ['label', 'url']
-    )
+    return formats.listofdicts_to_text(data, ['label', 'url'])
 
 
 # formpost_* --- Form post-processing functions ------------------------
@@ -663,10 +658,8 @@ def formprep_external_urls(data):
 # into Python objects that are inserted into the Collection.
 #
 
-def formpost_external_urls(data):
-    return forms.post_listofdicts(
-        data, keys=['label', 'url'], separators=[';', ':'],
-    )
+def formpost_external_urls(text):
+    return formats.text_to_dicts(text, ['label', 'url'])
 
 
 
@@ -755,7 +748,10 @@ def _validate_vocab_list(field, valid_values, data):
 #def csvload_digitize_person(text):
 #def csvload_tech_notes(text):
 #def csvload_xmp(text):
-def csvload_external_urls(text): return csv.load_listofdicts(text)
+
+def csvload_external_urls(text):
+    return formats.text_to_dicts(text, ['label', 'url'])
+
 #def csvload_links(text):
 
 # csvdump_* --- export-to-csv functions ------------------------------
@@ -779,7 +775,10 @@ def csvload_external_urls(text): return csv.load_listofdicts(text)
 #def csvdump_digitize_person(data):
 #def csvdump_tech_notes(data):
 #def csvdump_xmp(data):
-def csvdump_external_urls(data): return csv.dump_listofdicts(data)
+
+def csvdump_external_urls(data):
+    return formats.listofdicts_to_text(data, ['label', 'url'])
+
 #def csvdump_links(data):
 
 #def csvdump_creators(data): return csv.dump_rolepeople(data)
