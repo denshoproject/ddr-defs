@@ -1,7 +1,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
-from DDR.converters import display, formats, forms, csv
+from DDR import converters
 
 
 MODEL = 'file'
@@ -635,7 +635,7 @@ TEMPLATE_EXTERNAL_URLS = """
 """
 
 def display_external_urls(data):
-    return display.render(TEMPLATE_EXTERNAL_URLS, data)
+    return converters.render(TEMPLATE_EXTERNAL_URLS, data)
 
 def display_links( data ):
     return ''
@@ -649,7 +649,7 @@ def display_links( data ):
 #
 
 def formprep_external_urls(data):
-    return formats.listofdicts_to_text(data, ['label', 'url'])
+    return converters.listofdicts_to_text(data, ['label', 'url'])
 
 
 # formpost_* --- Form post-processing functions ------------------------
@@ -659,7 +659,7 @@ def formprep_external_urls(data):
 #
 
 def formpost_external_urls(text):
-    return formats.text_to_dicts(text, ['label', 'url'])
+    return converters.text_to_dicts(text, ['label', 'url'])
 
 
 
@@ -750,7 +750,7 @@ def _validate_vocab_list(field, valid_values, data):
 #def csvload_xmp(text):
 
 def csvload_external_urls(text):
-    return formats.text_to_dicts(text, ['label', 'url'])
+    return converters.text_to_dicts(text, ['label', 'url'])
 
 #def csvload_links(text):
 
@@ -777,7 +777,7 @@ def csvload_external_urls(text):
 #def csvdump_xmp(data):
 
 def csvdump_external_urls(data):
-    return formats.listofdicts_to_text(data, ['label', 'url'])
+    return converters.listofdicts_to_text(data, ['label', 'url'])
 
 #def csvdump_links(data):
 

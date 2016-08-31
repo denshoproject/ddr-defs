@@ -6,8 +6,7 @@ import re
 
 #from lxml import etree
 
-from DDR.converters import csv, display, forms, formats
-
+from DDR import converters
 
 
 MODEL = 'segment'
@@ -1260,7 +1259,7 @@ def formprep_parent(data):     return _formprep_basic(data)
 # location
 
 def formprep_creators(data):
-    return formats.listofdicts_to_textnolabels(data, ['namepart', 'role'])
+    return converters.listofdicts_to_textnolabels(data, ['namepart', 'role'])
 
 # genre
 # format
@@ -1273,19 +1272,19 @@ def formprep_creators(data):
 # credit
 
 def formprep_topics(data):
-    return formats.listofdicts_to_textnolabels(data, ['term','id'])
+    return converters.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_persons(data):
     return ';\n'.join(data)
 
 def formprep_facility(data):
-    return formats.listofdicts_to_textnolabels(data, ['term','id'])
+    return converters.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_chronology(data):
-    return formats.listofdicts_to_text(data, ['startdate', 'enddate', 'term'])
+    return converters.listofdicts_to_text(data, ['startdate', 'enddate', 'term'])
 
 def formprep_geography(data):
-    return formats.listofdicts_to_text(data, ['id', 'geo_lat', 'geo_lng', 'term'])
+    return converters.listofdicts_to_text(data, ['id', 'geo_lat', 'geo_lng', 'term'])
 
 # notes
 
@@ -1318,7 +1317,7 @@ def formpost_parent(data):     return _formpost_basic(data)
 # location
 
 def formpost_creators(text):
-    return formats.text_to_dicts(text, ['namepart', 'role'])
+    return converters.text_to_dicts(text, ['namepart', 'role'])
 
 # genre
 # format
@@ -1331,19 +1330,19 @@ def formpost_creators(text):
 # credit
 
 def formpost_topics(text):
-    return formats.text_to_dicts(text, ['term', 'id'])
+    return converters.text_to_dicts(text, ['term', 'id'])
 
 def formpost_persons(data):
     return [n.strip() for n in data.split(';')]
 
 def formpost_facility(text):
-    return formats.text_to_dicts(text, ['term', 'id'])
+    return converters.text_to_dicts(text, ['term', 'id'])
 
 def formpost_chronology(text):
-    return formats.text_to_dicts(text, ['startdate', 'enddate', 'term'])
+    return converters.text_to_dicts(text, ['startdate', 'enddate', 'term'])
 
 def formpost_geography(text):
-    return formats.text_to_dicts(text, ['id', 'geo_lat', 'geo_lng', 'term'])
+    return converters.text_to_dicts(text, ['id', 'geo_lat', 'geo_lng', 'term'])
 
 # notes
 
@@ -1418,13 +1417,13 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return csv.load_listofdicts(text)
-def csvload_language( text ): return csv.load_labelledlist(text)
-def csvload_topics( text ): return csv.load_listofdicts(text)
-def csvload_persons( text ): return csv.load_list(text)
-def csvload_facility( text ): return csv.load_listofdicts(text)
-def csvload_chronology( text ): return csv.load_listofdicts(text)
-def csvload_geography( text ): return csv.load_listofdicts(text)
+def csvload_creators( text ): return converters.text_to_listofdicts(text)
+def csvload_language( text ): return converters.text_to_labelledlist(text)
+def csvload_topics( text ): return converters.text_to_listofdicts(text)
+def csvload_persons( text ): return converters.text_to_list(text)
+def csvload_facility( text ): return converters.text_to_listofdicts(text)
+def csvload_chronology( text ): return converters.text_to_listofdicts(text)
+def csvload_geography( text ): return converters.text_to_listofdicts(text)
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -1432,15 +1431,15 @@ def csvload_geography( text ): return csv.load_listofdicts(text)
 # and format it for export in a CSV field.
 #
 
-def csvdump_record_created(data): return csv.dump_datetime(data, DATETIME_FORMAT)
-def csvdump_record_lastmod(data): return csv.dump_datetime(data, DATETIME_FORMAT)
-def csvdump_creators(data): return csv.dump_listofdicts(data)
-def csvdump_language(data): return csv.dump_labelledlist(data)
-def csvdump_topics(data): return csv.dump_list(data)
-def csvdump_persons(data): return csv.dump_list(data)
-def csvdump_facility(data): return csv.dump_list(data)
-def csvdump_chronology(data): return csv.dump_listofdicts(data)
-def csvdump_geography(data): return csv.dump_listofdicts(data)
+def csvdump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def csvdump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def csvdump_creators(data): return converters.listofdicts_to_text(data)
+def csvdump_language(data): return converters.labelledlist_to_text(data)
+def csvdump_topics(data): return converters.list_to_text(data)
+def csvdump_persons(data): return converters.list_to_text(data)
+def csvdump_facility(data): return converters.list_to_text(data)
+def csvdump_chronology(data): return converters.listofdicts_to_text(data)
+def csvdump_geography(data): return converters.listofdicts_to_text(data)
 
 
 # mets_* --- METS XML export functions ---------------------------------
