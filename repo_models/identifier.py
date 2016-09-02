@@ -172,6 +172,7 @@ IDENTIFIERS = [
             'json': 'collection.json',
             'lock': 'lock',
         },
+        'filename_regex': 'collection.json',
     },
     
     # ------------------------------------------------------------------
@@ -235,6 +236,7 @@ IDENTIFIERS = [
             'lock': 'lock',
             'mets': 'mets.xml',
         },
+        'filename_regex': 'entity.json',
     },
     
     # ------------------------------------------------------------------
@@ -298,6 +300,7 @@ IDENTIFIERS = [
             'lock': 'lock',
             'mets': 'mets.xml',
         },
+        'filename_regex': 'entity.json',
     },
     
     # ------------------------------------------------------------------
@@ -444,6 +447,6 @@ IDENTIFIERS = [
             'access': '{id}-a.jpg',
             'json': '{id}.json',
         },
+        'filename_regex': '-([\d]+)-([\w]+)-([\w\d]+).json',
     },
-    
 ]
