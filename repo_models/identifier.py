@@ -315,9 +315,10 @@ IDENTIFIERS = [
             'valid': [
                 'master',
                 'mezzanine',
-                #'transcript',
-                #'preservation',
-                #'administrative',
+                'transcript',
+                'gloss',
+                'preservation',
+                'administrative',
             ],
         },
         'parents': [],
