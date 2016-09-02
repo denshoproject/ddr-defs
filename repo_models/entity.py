@@ -6,8 +6,7 @@ import re
 
 #from lxml import etree
 
-from DDR.converters import csv
-
+from DDR import converters
 
 
 MODEL = 'entity'
@@ -424,18 +423,28 @@ FIELDS = [
         'form': {
             'label':      'Creator',
             'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name: Creator Role" (e.g., Adams, Ansel:photographer). For organizations use the following format: "Organization Name: Creator Role" (e.g., Associated Press:publisher). Multiple creators are allowed, but must be separated using a semi-colon.',
-            'max_length': 255,
-            'widget':     '',
+            'max_length': 4000,
+            'widget':     'Textarea',
             'initial':    '',
             'required':   False,
         },
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes"
+                'type': "object",
+                'properties': {
+                    'namepart': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'role': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
         'xpath_dup':  [],
@@ -826,11 +835,20 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes",
-                'index': "not_analyzed"
+                'type': "object",
+                'properties': {
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
@@ -886,16 +904,118 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes",
-                'index': "not_analyzed"
+                'type': "object",
+                'properties': {
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
         'xpath_dup':  [],
     },
-    
+
+    {
+        'name':       'chronology',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Chronology',
+            'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
+            'widget':     'Textarea',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'startdate': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'enddate': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            },
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
+    },
+
+    {
+        'name':       'geography',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Geography',
+            'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
+            'widget':     'Textarea',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'id': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'geo_lat': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'geo_lng': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'term': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            },
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
+    },
+
     {
         'name':       'parent',
         'model_type': str,
@@ -1085,7 +1205,7 @@ def display_format( data ):
 # credit
 
 def display_topics( data ):
-    return _display_multiline_dict('<a href="{url}">{label}</a>', data)
+    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
 
 def display_persons( data ):
     d = []
@@ -1094,7 +1214,13 @@ def display_persons( data ):
     return _display_multiline_dict('<a href="{person}">{person}</a>', d)
 
 def display_facility( data ):
-    return _display_multiline_dict('<a href="{url}">{label}</a>', data)
+    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
+
+def display_chronology( data ):
+    return _display_multiline_dict('{term}', data)
+
+def display_geography( data ):
+    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
 
 # parent
 # notes
@@ -1133,41 +1259,7 @@ def formprep_parent(data):     return _formprep_basic(data)
 # location
 
 def formprep_creators(data):
-    """Takes list of names and formats into "NAME:ROLE;\nNAME:ROLE"
-    
-    >>> data0 = ['Watanabe, Joe']
-    >>> formprep_creators(data0)
-    'Watanabe, Joe:author'
-    >>> data1 = ['Masuda, Kikuye:author']
-    >>> formprep_creators(data1)
-    'Masuda, Kikuye:author'
-    >>> data2 = [{'namepart':'Boyle, Rob:concept,editor', 'role':'author'}, {'namepart':'Cross, Brian:concept,editor', 'role':'author'}]
-    >>> formprep_creators(data2)
-    'Boyle, Rob:concept,editor;\nCross, Brian:concept,editor'
-    """
-    names = []
-    # split string into list
-    if isinstance(data, basestring) and (';' in data):
-        data = data.split(';')
-    # prep list of names (we hope that's what it is)
-    if isinstance(data, list):
-        for n in data:
-            if isinstance(n, dict):
-                # data1: dict with namepart and role in separate fields
-                if ':' in n['namepart']: # often role was put in name field
-                    names.append(n['namepart'])
-                else:
-                    names.append( ':'.join([ n['namepart'], n['role'] ]) )
-            elif isinstance(n, basestring):
-                # data2
-                if ':' in n:
-                    names.append(n)
-                else:
-                    names.append('%s:author' % n)
-            else:
-                assert False
-    data = ';\n'.join(names)
-    return data
+    return converters.listofdicts_to_textnolabels(data, ['namepart', 'role'])
 
 # genre
 # format
@@ -1180,29 +1272,19 @@ def formprep_creators(data):
 # credit
 
 def formprep_topics(data):
-    """Present as semicolon-separated list"""
-    a = []
-    for t in data:
-        if type(t) == type({}):
-            x = t['url']
-        else:
-            x = t
-        a.append(x)
-    return ';\n'.join(a)
+    return converters.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_persons(data):
     return ';\n'.join(data)
 
 def formprep_facility(data):
-    """Present as semicolon-separated list"""
-    a = []
-    for t in data:
-        if type(t) == type({}):
-            x = t['url']
-        else:
-            x = t
-        a.append(x)
-    return ';\n'.join(a)
+    return converters.listofdicts_to_textnolabels(data, ['term','id'])
+
+def formprep_chronology(data):
+    return converters.listofdicts_to_text(data, ['startdate', 'enddate', 'term'])
+
+def formprep_geography(data):
+    return converters.listofdicts_to_text(data, ['id', 'geo_lat', 'geo_lng', 'term'])
 
 # notes
 
@@ -1234,28 +1316,8 @@ def formpost_parent(data):     return _formpost_basic(data)
 # creation
 # location
 
-def formpost_creators(data):
-    """Splits up data into separate names, each with namepart and role.
-    
-    >>> data0 = "Watanabe, Joe"
-    >>> formpost_creators(data0)
-    [{'namepart': 'Watanabe, Joe', 'role': 'author'}]
-    >>> data1 = "Masuda, Kikuye:author"
-    >>> formpost_creators(data1)
-    [{'namepart': 'Masuda, Kikuye', 'role': 'author'}]
-    >>> data2 = "Boyle, Rob:concept,editor; Cross, Brian:concept,editor"
-    >>> formpost_creators(data2)
-    [{'namepart': 'Boyle, Rob', 'role': 'concept,editor'}, {'namepart': 'Cross, Brian', 'role': 'concept,editor'}]
-    """
-    a = []
-    for n in data.split(';'):
-        if ':' in n:
-            name,role = n.strip().split(':')
-        else:
-            name = n.strip(); role = 'author'
-        b = {'namepart': name.strip(), 'role': role.strip(),}
-        a.append(b)
-    return a
+def formpost_creators(text):
+    return converters.text_to_dicts(text, ['namepart', 'role'])
 
 # genre
 # format
@@ -1267,16 +1329,20 @@ def formpost_creators(data):
 # digitize_date
 # credit
 
-def formpost_topics(data):
-    a = [t.strip() for t in data.split(';')]
-    return a
+def formpost_topics(text):
+    return converters.text_to_dicts(text, ['term', 'id'])
 
 def formpost_persons(data):
     return [n.strip() for n in data.split(';')]
 
-def formpost_facility(data):
-    a = [t.strip() for t in data.split(';')]
-    return a
+def formpost_facility(text):
+    return converters.text_to_dicts(text, ['term', 'id'])
+
+def formpost_chronology(text):
+    return converters.text_to_dicts(text, ['startdate', 'enddate', 'term'])
+
+def formpost_geography(text):
+    return converters.text_to_dicts(text, ['id', 'geo_lat', 'geo_lng', 'term'])
 
 # notes
 
@@ -1342,6 +1408,8 @@ def csvvalidate_genre( data ): return _choice_is_valid('genre', data[0], data[1]
 def csvvalidate_format( data ): return _choice_is_valid('format', data[0], data[1])
 def csvvalidate_topics( data ): return _validate_vocab_list('topics', data[0], data[1])
 def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0], data[1])
+# chronology
+# geography
 
 # csvload_* --- import-from-csv functions ----------------------------
 #
@@ -1349,11 +1417,13 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return csv.load_rolepeople(text)
-def csvload_language( text ): return csv.load_labelledlist(text)
-def csvload_topics( text ): return csv.load_list(text)
-def csvload_persons( text ): return csv.load_list(text)
-def csvload_facility( text ): return csv.load_list(text)
+def csvload_creators( text ): return converters.text_to_listofdicts(text)
+def csvload_language( text ): return converters.text_to_labelledlist(text)
+def csvload_topics( text ): return converters.text_to_listofdicts(text)
+def csvload_persons( text ): return converters.text_to_list(text)
+def csvload_facility( text ): return converters.text_to_listofdicts(text)
+def csvload_chronology( text ): return converters.text_to_listofdicts(text)
+def csvload_geography( text ): return converters.text_to_listofdicts(text)
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -1361,14 +1431,15 @@ def csvload_facility( text ): return csv.load_list(text)
 # and format it for export in a CSV field.
 #
 
-def csvdump_record_created(data): return csv.dump_datetime(data, DATETIME_FORMAT)
-def csvdump_record_lastmod(data): return csv.dump_datetime(data, DATETIME_FORMAT)
-def csvdump_creators(data): return csv.dump_rolepeople(data)
-def csvdump_language(data): return csv.dump_labelledlist(data)
-def csvdump_topics(data): return csv.dump_list(data)
-def csvdump_persons(data): return csv.dump_list(data)
-def csvdump_facility(data): return csv.dump_list(data)
-
+def csvdump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def csvdump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def csvdump_creators(data): return converters.listofdicts_to_text(data)
+def csvdump_language(data): return converters.labelledlist_to_text(data)
+def csvdump_topics(data): return converters.list_to_text(data)
+def csvdump_persons(data): return converters.list_to_text(data)
+def csvdump_facility(data): return converters.list_to_text(data)
+def csvdump_chronology(data): return converters.listofdicts_to_text(data)
+def csvdump_geography(data): return converters.listofdicts_to_text(data)
 
 
 # mets_* --- METS XML export functions ---------------------------------
@@ -1488,6 +1559,8 @@ def mets_persons(tree, namespaces, field, value):
     return tree
 
 # facility
+# chronology
+# geography
 # notes
 # files
 

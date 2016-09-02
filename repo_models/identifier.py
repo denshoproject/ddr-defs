@@ -172,6 +172,7 @@ IDENTIFIERS = [
             'json': 'collection.json',
             'lock': 'lock',
         },
+        'filename_regex': 'collection.json',
     },
     
     # ------------------------------------------------------------------
@@ -235,6 +236,7 @@ IDENTIFIERS = [
             'lock': 'lock',
             'mets': 'mets.xml',
         },
+        'filename_regex': 'entity.json',
     },
     
     # ------------------------------------------------------------------
@@ -298,6 +300,7 @@ IDENTIFIERS = [
             'lock': 'lock',
             'mets': 'mets.xml',
         },
+        'filename_regex': 'entity.json',
     },
     
     # ------------------------------------------------------------------
@@ -312,9 +315,10 @@ IDENTIFIERS = [
             'valid': [
                 'master',
                 'mezzanine',
-                #'transcript',
-                #'preservation',
-                #'administrative',
+                'transcript',
+                'gloss',
+                'preservation',
+                'administrative',
             ],
         },
         'parents': [],
@@ -390,7 +394,7 @@ IDENTIFIERS = [
                 ],
                 'abs': [
                     # ---------/collection--------/-----/entity------------------/-----/segment-----------------------/-----/file
-                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{sid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}/files/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
                     # ---------/collection--------/-----/entity------------------/-----/file
                     '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
                 ],
@@ -444,6 +448,6 @@ IDENTIFIERS = [
             'access': '{id}-a.jpg',
             'json': '{id}.json',
         },
+        'filename_regex': '-([\d]+)-([\w]+)-([\w\d]+).json',
     },
-    
 ]
