@@ -601,6 +601,20 @@ FIELDS_CSV_EXCLUDED = ['role','size','access_rel','sha1','sha256','md5','xmp']
 
 
 
+# jsonload_* --- load-from-json functions ----------------------------
+#
+# These functions take raw JSON and convert it to a Python data type.
+#
+
+
+
+# jsondump_* --- export-to-json functions ------------------------------
+#
+# These functions take Python data and format it for JSON.
+#
+
+
+
 # display_* --- Display functions --------------------------------------
 #
 # These functions take Python data from the corresponding Collection field
