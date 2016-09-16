@@ -1,5 +1,41 @@
 {
     "documents": [
+
+        {
+            "repository": {
+                "_source": {"enabled": true},
+                "date_detection":0,
+                "properties": {
+                    
+                    "repo": {"type": "string"},
+                    
+                    "id": {"type": "string"},
+                    "url": {"type": "string"},
+                    "title": {"type": "string"},
+                    "description": {"type": "string" }
+                    
+                }
+            }
+        },
+
+        {
+            "organization": {
+                "_source": {"enabled": true},
+                "date_detection":0,
+                "properties": {
+                    
+                    "repo": {"type": "string"},
+                    "org": {"type": "string"},
+                    
+                    "id": {"type": "string"},
+                    "url": {"type": "string"},
+                    "title": {"type": "string"},
+                    "description": {"type": "string" }
+                    
+                }
+            }
+        },
+
         {
             "collection": {
                 "_source": {"enabled": true},
