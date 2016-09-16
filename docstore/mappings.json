@@ -40,7 +40,24 @@
             "collection": {
                 "_source": {"enabled": true},
                 "date_detection":0,
-                "properties": {}
+                "properties": {
+                    
+                    "repo": {"type": "string"},
+                    "org": {"type": "string"},
+                    "cid": {"type": "long"},
+
+                    "parent_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    },
+                    "collection_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    }
+                    
+                }
             }
         },
         {
@@ -48,7 +65,23 @@
                 "_source": {"enabled": true},
                 "date_detection":0,
                 "properties": {
-                    "digitize_date": { "type": "string" }
+                    
+                    "repo": {"type": "string"},
+                    "org": {"type": "string"},
+                    "cid": {"type": "long"},
+                    "eid": {"type": "long"},
+                    
+                    "parent_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    },
+                    "collection_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    }
+                    
                 }
             }
         },
@@ -57,7 +90,26 @@
             "segment": {
                 "_source": {"enabled": true},
                 "date_detection":0,
-                "properties": {}
+                "properties": {
+                    
+                    "repo": {"type": "string"},
+                    "org": {"type": "string"},
+                    "cid": {"type": "long"},
+                    "eid": {"type": "long"},
+                    "sid": {"type": "long"},
+                    
+                    "parent_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    },
+                    "collection_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    }
+                    
+                }
             }
         },
 
@@ -65,9 +117,31 @@
             "file": {
                 "_source": {"enabled": true},
                 "date_detection":0,
-                "properties": {}
+                "properties": {
+                    
+                    "repo": {"type": "string"},
+                    "org": {"type": "string"},
+                    "cid": {"type": "long"},
+                    "eid": {"type": "long"},
+                    "sid": {"type": "long"},
+                    "role": {"type": "string"},
+                    "sha1": {"type": "string"},
+                    
+                    "parent_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    },
+                    "collection_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    }
+                    
+                }
             }
         },
+
         {
             "facet": {
                 "properties": {
