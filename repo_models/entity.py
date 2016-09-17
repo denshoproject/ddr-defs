@@ -1122,7 +1122,24 @@ FIELDS_CSV_EXCLUDED = [
 
 def jsonload_record_created(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
-
+def jsonload_creators(data):
+    # filter out empty records
+    data = [item for item in data if item]
+    data = [item for item in data if item.get('role') and item.get('namepart')]
+    return data
+def jsonload_topics(data):
+    # filter out empty topics
+    data = [item for item in data if item]
+    return data
+def jsonload_persons(data):
+    # filter out empty records
+    data = [item for item in data if item]
+    data = [item for item in data if item.get('role') and item.get('namepart')]
+    return data
+def jsonload_facility(data):
+    # filter out empty topics
+    data = [item for item in data if item]
+    return data
 
 
 # jsondump_* --- export-to-json functions ------------------------------
