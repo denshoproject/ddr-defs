@@ -1036,26 +1036,11 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "object",
-                'properties': {
-                    'href': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
-                    'label': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    },
-                    'uid': {
-                        'type': "string",
-                        'store': "no",
-                        'index': "not_analyzed"
-                    }
-                }
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
             },
-            'display': ""
+            'display': "string"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:relatedItem/mods:identifier[@type='local']",
         'xpath_dup':  [],
