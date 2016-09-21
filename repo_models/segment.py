@@ -1120,6 +1120,19 @@ FIELDS_CSV_EXCLUDED = [
 # These functions take raw JSON and convert it to a Python data type.
 #
 
+def _update_legacy_terms(data, fieldnames=[]):
+    """update list of legacy bracketid to listofdicts
+    
+    @param data: dict or str
+    @param fieldnames: list
+    @returns: dict
+    """
+    if isinstance(data, dict):
+        return data
+    elif isinstance(data, basestring):
+        return converters.text_to_dict(data, fieldnames)
+    raise Exception('ERROR: data is not dict or str: "%s"' % data)
+
 def jsonload_record_created(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
 def jsonload_creators(data):
@@ -1130,11 +1143,17 @@ def jsonload_creators(data):
 def jsonload_topics(data):
     # filter out empty topics
     data = [item for item in data if item]
-    return data
+    return [
+        _update_legacy_terms(item, ['term','id'])
+        for item in data
+    ]
 def jsonload_facility(data):
     # filter out empty topics
     data = [item for item in data if item]
-    return data
+    return [
+        _update_legacy_terms(item, ['term','id'])
+        for item in data
+    ]
 
 
 
