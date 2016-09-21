@@ -1145,6 +1145,7 @@ def jsonload_topics(data):
         _update_legacy_terms(item, ['term','id'])
         for item in converters.strip_list(data)
     ]
+def jsonload_persons(data): return converters.strip_list(data)
 def jsonload_facility(data):
     return [
         _update_legacy_terms(item, ['term','id'])
