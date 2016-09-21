@@ -1136,16 +1136,14 @@ def _update_legacy_terms(data, fieldnames=[]):
 def jsonload_record_created(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
 def jsonload_creators(data):
-    # filter out empty records
-    data = [item for item in data if item]
-    data = [item for item in data if item.get('role') and item.get('namepart')]
-    return data
+    return [
+        item for item in converters.strip_list(data)
+        if item.get('role') and item.get('namepart')
+    ]
 def jsonload_topics(data):
-    # filter out empty topics
-    data = [item for item in data if item]
     return [
         _update_legacy_terms(item, ['term','id'])
-        for item in data
+        for item in converters.strip_list(data)
     ]
 def jsonload_persons(data):
     # filter out empty records
@@ -1153,11 +1151,9 @@ def jsonload_persons(data):
     data = [item for item in data if item.get('role') and item.get('namepart')]
     return data
 def jsonload_facility(data):
-    # filter out empty topics
-    data = [item for item in data if item]
     return [
         _update_legacy_terms(item, ['term','id'])
-        for item in data
+        for item in converters.strip_list(data)
     ]
 
 
