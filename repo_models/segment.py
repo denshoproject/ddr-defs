@@ -445,6 +445,7 @@ FIELDS = [
                     },
                 }
             },
+            'display': "string"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
         'xpath_dup':  [],
@@ -849,6 +850,7 @@ FIELDS = [
                     },
                 }
             },
+            'display': "string"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:topic/@xlink:href",
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject",
@@ -918,6 +920,7 @@ FIELDS = [
                     },
                 }
             },
+            'display': "string"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject/mods:geographic",
         'xpath_dup':  [],
@@ -962,6 +965,7 @@ FIELDS = [
                     },
                 }
             },
+            'display': "string"
         },
         'xpath':      '',
         'xpath_dup':  [],
@@ -1011,6 +1015,7 @@ FIELDS = [
                     },
                 }
             },
+            'display': "string"
         },
         'xpath':      '',
         'xpath_dup':  [],

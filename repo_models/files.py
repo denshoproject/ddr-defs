@@ -556,6 +556,7 @@ FIELDS = [
                     },
                 }
             },
+            'display': "string"
         },
         'xpath':      '',
         'xpath_dup':  [],
