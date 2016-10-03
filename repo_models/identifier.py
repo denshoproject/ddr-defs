@@ -317,8 +317,8 @@ IDENTIFIERS = [
             'name': 'role',
             'type': str,
             'valid': [
-                'master',
                 'mezzanine',
+                'master',
                 'transcript',
                 'gloss',
                 'preservation',
