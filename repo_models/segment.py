@@ -1207,7 +1207,7 @@ def display_rights( data ):
 # location
 
 def display_creators( data ):
-    return _display_multiline_dict('<a href="{namepart}">{role}: {namepart}</a>', data)
+    return _display_multiline_dict('<a href="{{ namepart }}">{{ role }}: {{ namepart }}</a>', data)
 
 def display_language( data ):
     labels = []
@@ -1239,22 +1239,22 @@ def display_format( data ):
 # credit
 
 def display_topics( data ):
-    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
+    return _display_multiline_dict('<a href="{{ id }}">{{ term }}</a>', data)
 
 def display_persons( data ):
     d = []
     for line in data:
         d.append({'person': line.strip()})
-    return _display_multiline_dict('<a href="{person}">{person}</a>', d)
+    return _display_multiline_dict('<a href="{{ person }}">{{ person }}</a>', d)
 
 def display_facility( data ):
-    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
+    return _display_multiline_dict('<a href="{{ id }}">{{ term }}</a>', data)
 
 def display_chronology( data ):
-    return _display_multiline_dict('{term}', data)
+    return _display_multiline_dict('{{ term }}', data)
 
 def display_geography( data ):
-    return _display_multiline_dict('<a href="{id}">{term}</a>', data)
+    return _display_multiline_dict('<a href="{{ id }}">{{ term }}</a>', data)
 
 # parent
 # notes
@@ -1266,7 +1266,7 @@ def _display_multiline_dict( template, data ):
     t = []
     for x in data:
         if type(x) == type({}):
-            t.append(template.format(**x))
+            t.append(converters.render(template, data))
         else:
             t.append(x)
     return '\n'.join(t)
