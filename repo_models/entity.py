@@ -12,11 +12,11 @@ from DDR import converters
 MODEL = 'entity'
 
 DATE_FORMAT            = '%Y-%m-%d'
-TIME_FORMAT            = '%H:%M:%S'
-DATETIME_FORMAT        = '%Y-%m-%dT%H:%M:%S'
+TIME_FORMAT            = '%H:%M:%S%z'
+DATETIME_FORMAT        = '%Y-%m-%dT%H:%M:%S%z'
 PRETTY_DATE_FORMAT     = '%d %B %Y'
-PRETTY_TIME_FORMAT     = '%I:%M %p'
-PRETTY_DATETIME_FORMAT = '%d %B %Y, %I:%M %p'
+PRETTY_TIME_FORMAT     = '%I:%M %p (%Z)'
+PRETTY_DATETIME_FORMAT = '%d %B %Y, %I:%M %p (%Z)'
 
 STATUS_CHOICES = [['inprocess', 'In Progress'],
                   ['completed', 'Completed'],]
