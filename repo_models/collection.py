@@ -922,8 +922,8 @@ FIELDS_CSV_EXCLUDED = []
 # These functions take raw JSON and convert it to a Python data type.
 #
 
-def jsonload_record_created(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
-def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
+def jsonload_record_created(text): return converters.text_to_datetime(text)
+def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 
 
 
@@ -932,8 +932,8 @@ def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATE
 # These functions take Python data and format it for JSON.
 #
 
-def jsondump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
-def jsondump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def jsondump_record_created(data): return converters.datetime_to_text(data)
+def jsondump_record_lastmod(data): return converters.datetime_to_text(data)
 
 
 

@@ -1138,8 +1138,8 @@ def _update_legacy_terms(data, fieldnames=[]):
         return converters.text_to_dict(data, fieldnames)
     raise Exception('ERROR: data is not dict or str: "%s"' % data)
 
-def jsonload_record_created(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
-def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
+def jsonload_record_created(text): return converters.text_to_datetime(text)
+def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 def jsonload_creators(data):
     return [
         item for item in converters.strip_list(data)
@@ -1164,8 +1164,8 @@ def jsonload_facility(data):
 # These functions take Python data and format it for JSON.
 #
 
-def jsondump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
-def jsondump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def jsondump_record_created(data): return converters.datetime_to_text(data)
+def jsondump_record_lastmod(data): return converters.datetime_to_text(data)
 
 
 
@@ -1470,8 +1470,8 @@ def csvload_geography( text ): return converters.text_to_listofdicts(text)
 # and format it for export in a CSV field.
 #
 
-def csvdump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
-def csvdump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def csvdump_record_created(data): return converters.datetime_to_text(data)
+def csvdump_record_lastmod(data): return converters.datetime_to_text(data)
 def csvdump_creators(data): return converters.listofdicts_to_text(data)
 def csvdump_language(data): return converters.labelledlist_to_text(data)
 def csvdump_topics(data): return converters.list_to_text(data)
