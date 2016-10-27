@@ -6,13 +6,6 @@ from DDR import converters
 
 MODEL = 'file'
 
-DATE_FORMAT            = '%Y-%m-%d'
-TIME_FORMAT            = '%H:%M:%S%z'
-DATETIME_FORMAT        = '%Y-%m-%dT%H:%M:%S%z'
-PRETTY_DATE_FORMAT     = '%d %B %Y'
-PRETTY_TIME_FORMAT     = '%I:%M %p (%Z)'
-PRETTY_DATETIME_FORMAT = '%d %B %Y, %I:%M %p (%Z)'
-
 PERMISSIONS_CHOICES = [['1','Public'],
                        ['0','Private'],]
 PERMISSIONS_CHOICES_DEFAULT = 1
