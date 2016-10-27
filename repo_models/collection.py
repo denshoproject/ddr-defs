@@ -946,15 +946,14 @@ def jsondump_record_lastmod(data): return converters.datetime_to_text(data)
 
 # id
 
-def display_record_created( data ):
-    if type(data) == type(datetime.now()):
-        data = data.strftime(PRETTY_DATETIME_FORMAT)
-    return data
-
-def display_record_lastmod( data ):
-    if type(data) == type(datetime.now()):
-        data = data.strftime(PRETTY_DATETIME_FORMAT)
-    return data
+def display_record_created(data):
+    return converters.datetime_to_text(
+        data, PRETTY_DATETIME_FORMAT
+    )
+def display_record_lastmod(data):
+    return converters.datetime_to_text(
+        data, PRETTY_DATETIME_FORMAT
+    )
 
 def display_status( data ):
     for c in STATUS_CHOICES:
