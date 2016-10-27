@@ -948,11 +948,11 @@ def jsondump_record_lastmod(data): return converters.datetime_to_text(data)
 
 def display_record_created(data):
     return converters.datetime_to_text(
-        data, PRETTY_DATETIME_FORMAT
+        data, converters.config.PRETTY_DATETIME_FORMAT
     )
 def display_record_lastmod(data):
     return converters.datetime_to_text(
-        data, PRETTY_DATETIME_FORMAT
+        data, converters.config.PRETTY_DATETIME_FORMAT
     )
 
 def display_status( data ):
