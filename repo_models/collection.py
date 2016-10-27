@@ -1132,10 +1132,10 @@ def ead_id(tree, namespaces, field, value):
     return tree
 
 def ead_record_created(tree, namespaces, field, value):
-    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_created", value.strftime(DATETIME_FORMAT))
+    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_created", converters.datetime_to_text(value))
 
 def ead_record_lastmod(tree, namespaces, field, value):
-    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_lastmod", value.strftime(DATETIME_FORMAT))
+    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_lastmod", converters.datetime_to_text(value))
 
 # public
 # rights

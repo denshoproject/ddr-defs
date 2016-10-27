@@ -1497,12 +1497,12 @@ def mets_id(tree, namespaces, field, value):
 
 def mets_record_created(tree, namespaces, field, value):
     if type(value) == type(datetime.now()):
-        value = value.strftime(DATETIME_FORMAT)
+        value = converters.datetime_to_text(value)
     return _set_attr(tree, namespaces, '/mets:mets/mets:metsHdr', 'CREATEDATE', value)
 
 def mets_record_lastmod(tree, namespaces, field, value):
     try:
-        value = value.strftime(DATETIME_FORMAT)
+        value = converters.datetime_to_text(value)
     except:
         pass
     return _set_attr(tree, namespaces, '/mets:mets/mets:metsHdr', 'LASTMODDATE', value)
