@@ -148,7 +148,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': "yyyy-MM-dd'T'HH:mm:ss"
+                'format': converters.config.ELASTICSEARCH_DATETIME_FORMAT
             },
             'display': "datetime"
         },
@@ -178,7 +178,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': "yyyy-MM-dd'T'HH:mm:ss"
+                'format': converters.config.ELASTICSEARCH_DATETIME_FORMAT
             },
             'display': "datetime"
         },
