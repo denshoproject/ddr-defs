@@ -148,7 +148,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': converters.config.ELASTICSEARCH_DATETIME_FORMAT
+                'format': converters.config.ELASTICSEARCH_DATETIME_MAPPING
             },
             'display': "datetime"
         },
@@ -178,7 +178,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': converters.config.ELASTICSEARCH_DATETIME_FORMAT
+                'format': converters.config.ELASTICSEARCH_DATETIME_MAPPING
             },
             'display': "datetime"
         },
