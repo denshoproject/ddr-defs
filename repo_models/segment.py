@@ -11,13 +11,6 @@ from DDR import converters
 
 MODEL = 'segment'
 
-DATE_FORMAT            = '%Y-%m-%d'
-TIME_FORMAT            = '%H:%M:%S'
-DATETIME_FORMAT        = '%Y-%m-%dT%H:%M:%S'
-PRETTY_DATE_FORMAT     = '%d %B %Y'
-PRETTY_TIME_FORMAT     = '%I:%M %p'
-PRETTY_DATETIME_FORMAT = '%d %B %Y, %I:%M %p'
-
 STATUS_CHOICES = [['inprocess', 'In Progress'],
                   ['completed', 'Completed'],]
 
@@ -155,7 +148,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': "yyyy-MM-dd'T'HH:mm:ss"
+                'format': converters.config.ELASTICSEARCH_DATETIME_MAPPING
             },
             'display': "datetime"
         },
@@ -185,7 +178,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': "yyyy-MM-dd'T'HH:mm:ss"
+                'format': converters.config.ELASTICSEARCH_DATETIME_MAPPING
             },
             'display': "datetime"
         },
@@ -1138,8 +1131,8 @@ def _update_legacy_terms(data, fieldnames=[]):
         return converters.text_to_dict(data, fieldnames)
     raise Exception('ERROR: data is not dict or str: "%s"' % data)
 
-def jsonload_record_created(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
-def jsonload_record_lastmod(text): return converters.text_to_datetime(text, DATETIME_FORMAT)
+def jsonload_record_created(text): return converters.text_to_datetime(text)
+def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 def jsonload_creators(data):
     return [
         item for item in converters.strip_list(data)
@@ -1164,8 +1157,8 @@ def jsonload_facility(data):
 # These functions take Python data and format it for JSON.
 #
 
-def jsondump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
-def jsondump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def jsondump_record_created(data): return converters.datetime_to_text(data)
+def jsondump_record_lastmod(data): return converters.datetime_to_text(data)
 
 
 
@@ -1177,15 +1170,14 @@ def jsondump_record_lastmod(data): return converters.datetime_to_text(data, DATE
 
 # id
 
-def display_record_created( data ):
-    if type(data) == type(datetime.now()):
-        data = data.strftime(PRETTY_DATETIME_FORMAT)
-    return data
-
-def display_record_lastmod( data ):
-    if type(data) == type(datetime.now()):
-        data = data.strftime(PRETTY_DATETIME_FORMAT)
-    return data
+def display_record_created(data):
+    return converters.datetime_to_text(
+        data, converters.config.PRETTY_DATETIME_FORMAT
+    )
+def display_record_lastmod(data):
+    return converters.datetime_to_text(
+        data, converters.config.PRETTY_DATETIME_FORMAT
+    )
 
 def display_status( data ):
     for c in STATUS_CHOICES:
@@ -1470,8 +1462,8 @@ def csvload_geography( text ): return converters.text_to_listofdicts(text)
 # and format it for export in a CSV field.
 #
 
-def csvdump_record_created(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
-def csvdump_record_lastmod(data): return converters.datetime_to_text(data, DATETIME_FORMAT)
+def csvdump_record_created(data): return converters.datetime_to_text(data)
+def csvdump_record_lastmod(data): return converters.datetime_to_text(data)
 def csvdump_creators(data): return converters.listofdicts_to_text(data)
 def csvdump_language(data): return converters.labelledlist_to_text(data)
 def csvdump_topics(data): return converters.list_to_text(data)
@@ -1499,12 +1491,12 @@ def mets_id(tree, namespaces, field, value):
 
 def mets_record_created(tree, namespaces, field, value):
     if type(value) == type(datetime.now()):
-        value = value.strftime(DATETIME_FORMAT)
+        value = converters.datetime_to_text(value)
     return _set_attr(tree, namespaces, '/mets:mets/mets:metsHdr', 'CREATEDATE', value)
 
 def mets_record_lastmod(tree, namespaces, field, value):
     try:
-        value = value.strftime(DATETIME_FORMAT)
+        value = converters.datetime_to_text(value)
     except:
         pass
     return _set_attr(tree, namespaces, '/mets:mets/mets:metsHdr', 'LASTMODDATE', value)
