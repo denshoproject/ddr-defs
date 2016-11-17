@@ -1027,8 +1027,17 @@ def _render_multiline_dict( template, data ):
 #
 
 # id
-# record_created
-# record_lastmod
+
+def formprep_record_created(data):
+    if not data:
+        data = datetime.now(converters.config.TZ)
+    return data
+
+def formprep_record_lastmod(data):
+    if not data:
+        data = datetime.now(converters.config.TZ)
+    return data
+
 # public
 # rights
 # title
