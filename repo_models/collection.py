@@ -1200,6 +1200,8 @@ def _getval(tree, namespaces, xpath):
     return val
 
 def _set_attr(tree, namespaces, xpath, attr, value):
+    if value == None:
+        value = ''
     tags = tree.xpath(xpath, namespaces=namespaces)
     if tags:
         tag = tags[0]
