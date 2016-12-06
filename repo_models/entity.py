@@ -1133,11 +1133,7 @@ def _update_legacy_terms(data, fieldnames=[]):
 
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
-def jsonload_creators(data):
-    return [
-        item for item in converters.strip_list(data)
-        if item.get('role') and item.get('namepart')
-    ]
+def jsonload_creators(text): return converters.text_to_rolepeople(text)
 def jsonload_topics(data):
     return [
         _update_legacy_terms(item, ['term','id'])
