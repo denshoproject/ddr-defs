@@ -1494,16 +1494,16 @@ def mets_id(tree, namespaces, field, value):
     return tree
 
 def mets_record_created(tree, namespaces, field, value):
-    if type(value) == type(datetime.now()):
-        value = converters.datetime_to_text(value)
-    return _set_attr(tree, namespaces, '/mets:mets/mets:metsHdr', 'CREATEDATE', value)
+    dt = converters.datetime_to_text(value)
+    if not dt:
+        dt = ''
+    return _set_attr(tree, namespaces, "/mets:mets/mets:metsHdr", "CREATEDATE", dt)
 
 def mets_record_lastmod(tree, namespaces, field, value):
-    try:
-        value = converters.datetime_to_text(value)
-    except:
-        pass
-    return _set_attr(tree, namespaces, '/mets:mets/mets:metsHdr', 'LASTMODDATE', value)
+    dt = converters.datetime_to_text(value)
+    if not dt:
+        dt = ''
+    return _set_attr(tree, namespaces, "/mets:mets/mets:metsHdr", "LASTMODDATE", dt)
 
 # public
 # rights
