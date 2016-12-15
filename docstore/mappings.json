@@ -8,7 +8,13 @@
                 "date_detection":0,
                 "properties": {
                     
-                    "repo": {"type": "string"},
+                    "repo": {"type": "string", "index": "not_analyzed"},
+                    "org": {"type": "string", "index": "not_analyzed"},
+                    "cid": {"type": "long"},
+                    "eid": {"type": "long"},
+                    "sid": {"type": "long"},
+                    "role": {"type": "string", "index": "not_analyzed"},
+                    "sha1": {"type": "string", "index": "not_analyzed"},
                     
                     "id": {"type": "string"},
                     "url": {"type": "string"},
@@ -25,8 +31,13 @@
                 "date_detection":0,
                 "properties": {
                     
-                    "repo": {"type": "string"},
-                    "org": {"type": "string"},
+                    "repo": {"type": "string", "index": "not_analyzed"},
+                    "org": {"type": "string", "index": "not_analyzed"},
+                    "cid": {"type": "long"},
+                    "eid": {"type": "long"},
+                    "sid": {"type": "long"},
+                    "role": {"type": "string", "index": "not_analyzed"},
+                    "sha1": {"type": "string", "index": "not_analyzed"},
                     
                     "id": {"type": "string"},
                     "url": {"type": "string"},
@@ -43,9 +54,13 @@
                 "date_detection":0,
                 "properties": {
                     
-                    "repo": {"type": "string"},
-                    "org": {"type": "string"},
+                    "repo": {"type": "string", "index": "not_analyzed"},
+                    "org": {"type": "string", "index": "not_analyzed"},
                     "cid": {"type": "long"},
+                    "eid": {"type": "long"},
+                    "sid": {"type": "long"},
+                    "role": {"type": "string", "index": "not_analyzed"},
+                    "sha1": {"type": "string", "index": "not_analyzed"},
 
                     "parent_id": {
                         "type": "string",
@@ -68,10 +83,13 @@
                 "date_detection":0,
                 "properties": {
                     
-                    "repo": {"type": "string"},
-                    "org": {"type": "string"},
+                    "repo": {"type": "string", "index": "not_analyzed"},
+                    "org": {"type": "string", "index": "not_analyzed"},
                     "cid": {"type": "long"},
                     "eid": {"type": "long"},
+                    "sid": {"type": "long"},
+                    "role": {"type": "string", "index": "not_analyzed"},
+                    "sha1": {"type": "string", "index": "not_analyzed"},
                     
                     "parent_id": {
                         "type": "string",
@@ -94,11 +112,13 @@
                 "date_detection":0,
                 "properties": {
                     
-                    "repo": {"type": "string"},
-                    "org": {"type": "string"},
+                    "repo": {"type": "string", "index": "not_analyzed"},
+                    "org": {"type": "string", "index": "not_analyzed"},
                     "cid": {"type": "long"},
                     "eid": {"type": "long"},
                     "sid": {"type": "long"},
+                    "role": {"type": "string", "index": "not_analyzed"},
+                    "sha1": {"type": "string", "index": "not_analyzed"},
                     
                     "parent_id": {
                         "type": "string",
@@ -121,13 +141,13 @@
                 "date_detection":0,
                 "properties": {
                     
-                    "repo": {"type": "string"},
-                    "org": {"type": "string"},
+                    "repo": {"type": "string", "index": "not_analyzed"},
+                    "org": {"type": "string", "index": "not_analyzed"},
                     "cid": {"type": "long"},
                     "eid": {"type": "long"},
                     "sid": {"type": "long"},
-                    "role": {"type": "string"},
-                    "sha1": {"type": "string"},
+                    "role": {"type": "string", "index": "not_analyzed"},
+                    "sha1": {"type": "string", "index": "not_analyzed"},
                     
                     "parent_id": {
                         "type": "string",
