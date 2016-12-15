@@ -115,7 +115,8 @@ FIELDS = [
             'public': True,
             'properties': {
                 'type': "string",
-                'store': "yes"
+                'store': "yes",
+                'index': 'not_analyzed',
             },
             'display': "string"
         },

@@ -16,8 +16,8 @@
                     "role": {"type": "string", "index": "not_analyzed"},
                     "sha1": {"type": "string", "index": "not_analyzed"},
                     
-                    "id": {"type": "string"},
-                    "url": {"type": "string"},
+                    "id": {"type": "string", "index": "not_analyzed"},
+                    "url": {"type": "string", "index": "not_analyzed"},
                     "title": {"type": "string"},
                     "description": {"type": "string" }
                     
@@ -39,8 +39,8 @@
                     "role": {"type": "string", "index": "not_analyzed"},
                     "sha1": {"type": "string", "index": "not_analyzed"},
                     
-                    "id": {"type": "string"},
-                    "url": {"type": "string"},
+                    "id": {"type": "string", "index": "not_analyzed"},
+                    "url": {"type": "string", "index": "not_analyzed"},
                     "title": {"type": "string"},
                     "description": {"type": "string" }
                     
