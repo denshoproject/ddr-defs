@@ -649,6 +649,12 @@ def display_links( data ):
     return ''
 
 
+# index_* --- format for Elasticsearch functions -----------------------
+#
+# These functions take Python data and format it for JSON.
+#
+
+
 
 # formprep_* --- Form pre-processing functions.--------------------------
 #

@@ -1264,6 +1264,21 @@ def _display_multiline_dict( template, data ):
     return '\n'.join(t)
 
 
+# index_* --- format for Elasticsearch functions -----------------------
+#
+# These functions take Python data and format it for JSON.
+#
+
+def index_record_created(data):
+    return converters.datetime_to_text(
+        data, converters.config.ELASTICSEARCH_DATETIME_FORMAT
+    )
+def index_record_lastmod(data):
+    return converters.datetime_to_text(
+        data, converters.config.ELASTICSEARCH_DATETIME_FORMAT
+    )
+
+
 
 # formprep_* --- Form pre-processing functions.--------------------------
 #
