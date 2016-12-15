@@ -51,8 +51,8 @@ IDENTIFIERS = [
             'name': 'org',
             'type': str,
             'valid': [
-                'densho', 'hmwf', 'jamsj', 'janm', 'jcch', 'njpa', 'one', 'pc',
-                'dev', 'test', 'testing',
+                'densho', 'hmwf', 'jamsj', 'janm', 'jcch', 'manz', 'njpa',
+                'one', 'pc', 'dev', 'test', 'testing',
             ],
         },
         'parent': None,
