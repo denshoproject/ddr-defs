@@ -1211,22 +1211,22 @@ def display_format( data ):
 # credit
 
 def display_topics( data ):
-    return _display_multiline_dict('<a href="{{ id }}">{{ term }}</a>', data)
+    return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
 
 def display_persons( data ):
     d = []
     for line in data:
         d.append({'person': line.strip()})
-    return _display_multiline_dict('<a href="{{ person }}">{{ person }}</a>', d)
+    return _display_multiline_dict('<a href="{{ data.person }}">{{ data.person }}</a>', d)
 
 def display_facility( data ):
-    return _display_multiline_dict('<a href="{{ id }}">{{ term }}</a>', data)
+    return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
 
 def display_chronology( data ):
-    return _display_multiline_dict('{{ term }}', data)
+    return _display_multiline_dict('{{ data.term }}', data)
 
 def display_geography( data ):
-    return _display_multiline_dict('<a href="{{ id }}">{{ term }}</a>', data)
+    return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
 
 # parent
 # notes
@@ -1236,11 +1236,11 @@ def display_geography( data ):
 
 def _display_multiline_dict( template, data ):
     t = []
-    for x in data:
-        if type(x) == type({}):
-            t.append(converters.render(template, data))
+    for d in data:
+        if type(d) == type({}):
+            t.append(converters.render(template, d))
         else:
-            t.append(x)
+            t.append(d)
     return '\n'.join(t)
 
 
