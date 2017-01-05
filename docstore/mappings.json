@@ -18,8 +18,8 @@
                     
                     "id": {"type": "string", "index": "not_analyzed"},
                     "url": {"type": "string", "index": "not_analyzed"},
-                    "title": {"type": "string"},
-                    "description": {"type": "string" }
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"}
                     
                 }
             }
@@ -41,8 +41,8 @@
                     
                     "id": {"type": "string", "index": "not_analyzed"},
                     "url": {"type": "string", "index": "not_analyzed"},
-                    "title": {"type": "string"},
-                    "description": {"type": "string" }
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"}
                     
                 }
             }
@@ -169,7 +169,7 @@
                 "_source": {"enabled": true},
                 "date_detection":0,
                 "properties": {
-                    "id": {"type": "string"},
+                    "id": {"type": "string", "index": "not_analyzed"},
                     "nr_id": {"type": "string"},
                     "created": {
                         "type": "date",
@@ -206,7 +206,7 @@
                     "nationality": {"type": "string"},
                     "religion": {"type": "string"},
                     "birth_location": {"type": "string"},
-                    "notes": {"type": "string"},
+                    "notes": {"type": "string", "index": "no", "copy_to": "notes_private"},
                     "nickname": {"type": "string"},
                     "image_url": {"type": "string"}
                 }
@@ -216,12 +216,12 @@
         {
             "facet": {
                 "properties": {
-                    "id": {"type": "string"},
-                    "title": {"type": "string" },
-                    "description": {"type": "string"},
+                    "id": {"type": "string", "index": "not_analyzed"},
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"},
                     "terms": {
                         "properties": {
-                            "id": {"type": "string"},
+                            "id": {"type": "string", "index": "not_analyzed"},
                             "parent_id": {"type": "string"},
                             "created": {
                                 "type": "date",
@@ -232,9 +232,9 @@
                                 "format": "dateOptionalTime"
                             },
                             "type": {"type": "string"},
-                            "title": {"type": "string"},
+                            "title": {"type": "string", "store": "yes", "index": "analyzed"},
                             "title_display": {"type": "string"},
-                            "description": {"type": "string"},
+                            "description": {"type": "string", "store": "yes", "index": "analyzed"},
                             "elinks": {
                                 "properties": {
                                     "label": {

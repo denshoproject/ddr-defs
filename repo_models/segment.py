@@ -115,7 +115,6 @@ FIELDS = [
             'public': True,
             'properties': {
                 'type': "string",
-                'store': "yes",
                 'index': 'not_analyzed',
             },
             'display': "string"
@@ -438,8 +437,7 @@ FIELDS = [
                         'index': "not_analyzed"
                     },
                 }
-            },
-            'display': "string"
+            }
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:name/mods:namePart",
         'xpath_dup':  [],
@@ -1092,12 +1090,6 @@ FIELDS = [
         },
         'elasticsearch': {
             'public': False,
-            'properties': {
-                'type': "string",
-                'store': "no",
-                'index': "no"
-            },
-            'display': ""
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:note/",
         'xpath_dup':  [],

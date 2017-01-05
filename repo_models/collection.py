@@ -60,7 +60,6 @@ FIELDS = [
             'public': True,
             'properties': {
                 'type': "string",
-                'store': "yes",
                 'index': 'not_analyzed',
             },
             'display': "string"
@@ -221,7 +220,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "yes",
-                'index': "not_analyzed"
+                'index': "analyzed"
             },
             'display': "string"
         },
@@ -468,7 +467,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "no",
-                'index': "analyzed"
+                'index': "no"
             },
             'display': ""
         },
