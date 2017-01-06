@@ -980,7 +980,7 @@ def display_rights( data ):
 # title
 
 def display_creators( data ):
-    return _display_multiline_dict('<a href="{{ namepart }}">{{ role }}: {{ namepart }}</a>', data)
+    return _display_multiline_dict('<a href="{{ data.namepart }}">{{ data.role }}: {{ data.namepart }}</a>', data)
 
 # extent
 

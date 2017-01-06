@@ -1172,7 +1172,7 @@ def display_rights( data ):
 # location
 
 def display_creators( data ):
-    return _display_multiline_dict('<a href="{{ namepart }}">{{ role }}: {{ namepart }}</a>', data)
+    return _display_multiline_dict('<a href="{{ data.namepart }}">{{ data.role }}: {{ data.namepart }}</a>', data)
 
 def display_language( data ):
     labels = []
