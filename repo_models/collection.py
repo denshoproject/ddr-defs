@@ -1064,7 +1064,7 @@ def formprep_record_lastmod(data):
 # title
 
 def formprep_creators(data):
-    return converters.listofdicts_to_textnolabels(data, ['namepart', 'role'])
+    return converters.rolepeople_to_text(data)
 
 # extent
 # language
@@ -1113,7 +1113,7 @@ def _formprep_basic(data):
 # unitdate_bulk
 
 def formpost_creators(text):
-    return converters.text_to_dicts(text, ['namepart', 'role'])
+    return converters.text_to_rolepeople(text)
 
 # extent
 # language

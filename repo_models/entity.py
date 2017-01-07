@@ -1281,7 +1281,7 @@ def formprep_parent(data):     return _formprep_basic(data)
 # location
 
 def formprep_creators(data):
-    return converters.listofdicts_to_textnolabels(data, ['namepart', 'role'])
+    return converters.rolepeople_to_text(data)
 
 # genre
 # format
@@ -1339,7 +1339,7 @@ def formpost_parent(data):     return _formpost_basic(data)
 # location
 
 def formpost_creators(text):
-    return converters.text_to_dicts(text, ['namepart', 'role'])
+    return converters.text_to_rolepeople(text)
 
 # genre
 # format
