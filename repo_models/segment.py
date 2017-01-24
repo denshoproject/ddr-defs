@@ -431,6 +431,11 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
+                    'id': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
                     'role': {
                         'type': "string",
                         'store': "no",
@@ -1171,8 +1176,15 @@ def display_rights( data ):
 # creation
 # location
 
+
+DISPLAY_CREATORS = '{% if data.id %}' \
+                   + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
+                   + '{% else %}' \
+                   + '{{ data.role }}: {{ data.namepart }}' \
+                   + '{% endif %}'
+
 def display_creators( data ):
-    return _display_multiline_dict('<a href="{{ data.namepart }}">{{ data.role }}: {{ data.namepart }}</a>', data)
+    return _display_multiline_dict(DISPLAY_CREATORS, data)
 
 def display_language( data ):
     labels = []

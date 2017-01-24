@@ -431,6 +431,11 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
+                    'id': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
                     'role': {
                         'type': "string",
                         'store': "no",
@@ -1170,8 +1175,14 @@ def display_rights( data ):
 # creation
 # location
 
+DISPLAY_CREATORS = '{% if data.id %}' \
+                   + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
+                   + '{% else %}' \
+                   + '{{ data.role }}: {{ data.namepart }}' \
+                   + '{% endif %}'
+
 def display_creators( data ):
-    return _display_multiline_dict('<a href="{{ data.namepart }}">{{ data.role }}: {{ data.namepart }}</a>', data)
+    return _display_multiline_dict(DISPLAY_CREATORS, data)
 
 def display_language( data ):
     labels = []
@@ -1439,7 +1450,7 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return converters.text_to_listofdicts(text)
+def csvload_creators( text ): return converters.text_to_rolepeople(text)
 def csvload_language( text ): return converters.text_to_labelledlist(text)
 def csvload_topics( text ): return converters.text_to_listofdicts(text)
 def csvload_persons( text ): return converters.text_to_list(text)
@@ -1455,7 +1466,7 @@ def csvload_geography( text ): return converters.text_to_listofdicts(text)
 
 def csvdump_record_created(data): return converters.datetime_to_text(data)
 def csvdump_record_lastmod(data): return converters.datetime_to_text(data)
-def csvdump_creators(data): return converters.listofdicts_to_text(data)
+def csvdump_creators(data): return converters.rolepeople_to_text(data)
 def csvdump_language(data): return converters.labelledlist_to_text(data)
 def csvdump_topics(data): return converters.list_to_text(data)
 def csvdump_persons(data): return converters.list_to_text(data)
