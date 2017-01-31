@@ -188,8 +188,8 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "integer",
-                'store': "yes",
+                'type': "string",
+                'store': "no",
                 'index': "not_analyzed"
             },
             'display': "filesize"
