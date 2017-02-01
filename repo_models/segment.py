@@ -1468,7 +1468,7 @@ def csvload_geography( text ): return converters.text_to_listofdicts(text)
 
 def csvdump_record_created(data): return converters.datetime_to_text(data)
 def csvdump_record_lastmod(data): return converters.datetime_to_text(data)
-def csvdump_creators(data): return converters.listofdicts_to_text(data)
+def csvdump_creators(data): return converters.rolepeople_to_text(data)
 def csvdump_language(data): return converters.labelledlist_to_text(data)
 def csvdump_topics(data): return converters.list_to_text(data)
 def csvdump_persons(data): return converters.list_to_text(data)
