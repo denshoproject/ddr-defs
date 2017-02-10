@@ -177,7 +177,7 @@ FIELDS = [
     
     {
         'name':       'size',
-        'model_type': str,
+        'model_type': int,
         'default':    None,
         'csv': {
             'export': 'ignore',
@@ -188,8 +188,8 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "no",
+                'type': "integer",
+                'store': "yes",
                 'index': "not_analyzed"
             },
             'display': "filesize"
