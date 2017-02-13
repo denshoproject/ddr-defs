@@ -42,7 +42,6 @@ FIELDS = [
             'public': True,
             'properties': {
                 'type': "string",
-                'store': "yes",
                 'index': 'not_analyzed',
             },
             'display': "string"
@@ -178,7 +177,7 @@ FIELDS = [
     
     {
         'name':       'size',
-        'model_type': str,
+        'model_type': int,
         'default':    None,
         'csv': {
             'export': 'ignore',
@@ -450,7 +449,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "yes",
-                'index': "not_analyzed"
+                'index': "analyzed"
             },
             'display': "string"
         },

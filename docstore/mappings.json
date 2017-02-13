@@ -18,8 +18,8 @@
                     
                     "id": {"type": "string", "index": "not_analyzed"},
                     "url": {"type": "string", "index": "not_analyzed"},
-                    "title": {"type": "string"},
-                    "description": {"type": "string" }
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"}
                     
                 }
             }
@@ -41,8 +41,8 @@
                     
                     "id": {"type": "string", "index": "not_analyzed"},
                     "url": {"type": "string", "index": "not_analyzed"},
-                    "title": {"type": "string"},
-                    "description": {"type": "string" }
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"}
                     
                 }
             }
@@ -165,12 +165,63 @@
         },
 
         {
+            "facet": {
+                "properties": {
+                    "id": {"type": "string", "index": "not_analyzed"},
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"}
+                }
+            }
+        },
+
+        {
+            "facetterm": {
+                "properties": {
+                    "id": {"type": "string", "index": "not_analyzed"},
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "_title": {"type": "string", "store": "no", "index": "analyzed"},
+                    "facet": {"type": "string"},
+                    "path": {"type": "string"},
+                    "parent_id": {
+                        "type": "string",
+                        "store": true,
+                        "index": "not_analyzed"
+                    },
+                    "ancestors": {"type": "long"},
+                    "siblings": {"type": "long"},
+                    "children": {"type": "long"},
+                    "type": {"type": "string"},
+                    "weight": {"type": "long"},
+                    "elinks": {
+                        "properties": {
+                            "label": {"type": "string"},
+                            "url": {"type": "string"}
+                        }
+                    },
+                    "encyc_urls": {"type": "string"},
+                    "location_geopoint": {
+                        "properties": {
+                            "geopoint": {
+                                "properties": {
+                                    "lat": {"type": "double"},
+                                    "lng": {"type": "double"}
+                                }
+                            },
+                            "label": {"type": "string"}
+                        }
+                    }
+                }
+            }
+        },
+
+        {
             "narrator": {
                 "_source": {"enabled": true},
                 "date_detection":0,
                 "properties": {
-                    "id": {"type": "string"},
-                    "nr_id": {"type": "string"},
+                    "id": {"type": "string", "index": "not_analyzed"},
+                    "nr_id": {"type": "string", "index": "not_analyzed"},
                     "created": {
                         "type": "date",
                         "index": "not_analyzed",
@@ -198,66 +249,27 @@
                     "last_name": {"type": "string"},
                     "first_name": {"type": "string"},
                     "middle_name": {"type": "string"},
-                    "display_name": {"type": "string"},
-                    "bio": {"type": "string"},
+                    "display_name": {
+                        "type": "string",
+                        "index": "no",
+                        "copy_to": "title"
+                    },
+                    "title": {"type": "string", "store": "yes", "index": "analyzed"},
+                    "bio": {
+                        "type": "string",
+                        "index": "no",
+                        "copy_to": "description"
+                    },
+                    "description": {"type": "string", "store": "yes", "index": "analyzed"},
                     "gender": {"type": "string"},
                     "generation": {"type": "string"},
                     "ethnicity": {"type": "string"},
                     "nationality": {"type": "string"},
                     "religion": {"type": "string"},
                     "birth_location": {"type": "string"},
-                    "notes": {"type": "string"},
+                    "notes": {"type": "string", "index": "no", "copy_to": "notes_private"},
                     "nickname": {"type": "string"},
                     "image_url": {"type": "string"}
-                }
-            }
-        },
-
-        {
-            "facet": {
-                "properties": {
-                    "id": {"type": "string"},
-                    "title": {"type": "string" },
-                    "description": {"type": "string"},
-                    "terms": {
-                        "properties": {
-                            "id": {"type": "string"},
-                            "parent_id": {"type": "string"},
-                            "created": {
-                                "type": "date",
-                                "format": "dateOptionalTime"
-                            },
-                            "modified": {
-                                "type": "date",
-                                "format": "dateOptionalTime"
-                            },
-                            "type": {"type": "string"},
-                            "title": {"type": "string"},
-                            "title_display": {"type": "string"},
-                            "description": {"type": "string"},
-                            "elinks": {
-                                "properties": {
-                                    "label": {
-                                        "type": "string"
-                                    },
-                                    "url": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "location": {
-                                "properties": {
-                                    "geopoint": {
-                                        "properties": {"lat": {"type": "double"}, "lng": {"type": "double"} }
-                                    },
-                                    "label": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "weight": {"type": "string"}
-                        }
-                    }
                 }
             }
         }

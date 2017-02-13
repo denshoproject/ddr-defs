@@ -60,7 +60,6 @@ FIELDS = [
             'public': True,
             'properties': {
                 'type': "string",
-                'store': "yes",
                 'index': 'not_analyzed',
             },
             'display': "string"
@@ -221,7 +220,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "yes",
-                'index': "not_analyzed"
+                'index': "analyzed"
             },
             'display': "string"
         },
@@ -312,11 +311,26 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes",
-                'index': "not_analyzed"
+                'type': "object",
+                'properties': {
+                    "namepart": {
+                        "type": "string",
+                        "store": "no",
+                        "index": "not_analyzed"
+                    },
+                    'id': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    "role": {
+                        "type": "string",
+                        "store": "no",
+                        "index": "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
+            'display': "string"
         },
         'xpath':      "/ead/archdesc/did/origination",
         'xpath_dup':  [],
@@ -468,7 +482,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "no",
-                'index': "analyzed"
+                'index': "no"
             },
             'display': ""
         },
@@ -918,6 +932,7 @@ FIELDS_CSV_EXCLUDED = []
 
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
+def jsonload_creators(text): return converters.text_to_rolepeople(text)
 
 
 
@@ -969,13 +984,14 @@ def display_rights( data ):
 
 # title
 
+DISPLAY_CREATORS = '{% if data.id %}' \
+                   + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
+                   + '{% else %}' \
+                   + '{{ data.role }}: {{ data.namepart }}' \
+                   + '{% endif %}'
+
 def display_creators( data ):
-    lines = []
-    if type(data) != type([]):
-        data = data.split(';')
-    for l in data:
-        lines.append({'person': l.strip()})
-    return _render_multiline_dict('<a href="{person}">{person}</a>', lines)
+    return _display_multiline_dict(DISPLAY_CREATORS, data)
 
 # extent
 
@@ -1010,13 +1026,13 @@ def display_language( data ):
 
 # The following are utility functions used by display_* functions.
 
-def _render_multiline_dict( template, data ):
+def _display_multiline_dict( template, data ):
     t = []
-    for x in data:
-        if type(x) == type({}):
-            t.append(template.format(**x))
+    for d in data:
+        if type(d) == type({}):
+            t.append(converters.render(template, d))
         else:
-            t.append(x)
+            t.append(d)
     return '\n'.join(t)
 
 
@@ -1057,7 +1073,10 @@ def formprep_record_lastmod(data):
 # public
 # rights
 # title
-# creators
+
+def formprep_creators(data):
+    return converters.rolepeople_to_text(data)
+
 # extent
 # language
 # organization
@@ -1103,7 +1122,10 @@ def _formprep_basic(data):
 # title
 # unitdate_inclusive
 # unitdate_bulk
-# creators
+
+def formpost_creators(text):
+    return converters.text_to_rolepeople(text)
+
 # extent
 # language
 # organization
