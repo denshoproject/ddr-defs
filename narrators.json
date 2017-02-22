@@ -2784,7 +2784,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "129", 
@@ -2991,7 +2991,7 @@
             "birth_location": "Bellingham, Washington", 
             "notes": "", 
             "image_url": "orobert.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "138", 
@@ -4509,7 +4509,7 @@
             "birth_location": "Greenville, South Carolina", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "204", 
@@ -4532,7 +4532,7 @@
             "birth_location": "Miller, South Dakota", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "205", 
@@ -5061,7 +5061,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "228", 
@@ -5084,7 +5084,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "229", 
@@ -5107,7 +5107,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "230", 
@@ -5130,7 +5130,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "231", 
@@ -5167,7 +5167,7 @@
             "middle_name": "", 
             "nickname": "", 
             "display_name": "Henry Fukuhara", 
-            "bio": "This interview was conducted with Henry Fukuhara, a Nisei from Los Angeles, California, and his wife, Fujiko Fukuhara. They were married and had a child in the Manzanar concentration camp, California. After leaving camp, resettled in New York and established a greenhouse business.", 
+            "bio": "Nisei male. Born April 25, 1913, in Los Angeles, California. Grew up in California prior to World War II. Removed to Manzanar concentration camp, California, during the war. Left Manzanar in 1943 and lived in various locations, eventually settling in New York and California. Mr. Fukuhara was a prominent artist. He passed away in 2010.", 
             "gender": "M", 
             "generation": "Nisei", 
             "ethnicity": "Japanese", 
@@ -5360,7 +5360,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "241", 
@@ -5659,7 +5659,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "254", 
@@ -5981,7 +5981,7 @@
             "birth_location": "Hawaii", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "271", 
@@ -6004,7 +6004,7 @@
             "birth_location": "Los Angeles, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "272", 
@@ -6027,7 +6027,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "273", 
@@ -6050,7 +6050,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "274", 
@@ -6073,7 +6073,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "275", 
@@ -6096,7 +6096,7 @@
             "birth_location": "Los Angeles, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "276", 
@@ -6119,7 +6119,7 @@
             "birth_location": "Los Angeles, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "277", 
@@ -8442,7 +8442,7 @@
             "birth_location": "San Francisco, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "378", 
@@ -8948,7 +8948,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "400", 
@@ -12651,7 +12651,7 @@
             "birth_location": "Oakland, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "562", 
@@ -13847,7 +13847,7 @@
             "birth_location": "Gardena, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "614", 
@@ -13870,7 +13870,7 @@
             "birth_location": "Inglewood, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "615", 
@@ -14238,7 +14238,7 @@
             "birth_location": "San Diego, California", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "631", 
@@ -15595,7 +15595,7 @@
             "birth_location": "Portland, Oregon", 
             "notes": "", 
             "image_url": "omatsuno.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "690", 
@@ -18010,7 +18010,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "797", 
@@ -19252,7 +19252,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "854", 
@@ -19436,7 +19436,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "pmarilyn.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "862", 
@@ -19482,7 +19482,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "864", 
@@ -19574,7 +19574,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "ldeborah.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "869", 
@@ -19597,7 +19597,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "trita.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "870", 
@@ -19620,7 +19620,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "hwalter.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "871", 
@@ -19643,7 +19643,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "kkaren.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "872", 
@@ -19666,7 +19666,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "kkaren_2.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "873", 
@@ -19689,7 +19689,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "rbob.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "874", 
@@ -19712,7 +19712,7 @@
             "birth_location": "Wuhan, Hubei Province, China", 
             "notes": "", 
             "image_url": "tchang-lin.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "875", 
@@ -19735,7 +19735,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "mmari.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "876", 
@@ -19758,7 +19758,7 @@
             "birth_location": "Montecito, California", 
             "notes": "", 
             "image_url": "cfrank.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "877", 
@@ -19781,7 +19781,7 @@
             "birth_location": "Honolulu, Hawaii", 
             "notes": "", 
             "image_url": "tronald.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "878", 
@@ -19804,7 +19804,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "fjohn_2.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "879", 
@@ -19827,7 +19827,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "edorothy.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "880", 
@@ -19850,7 +19850,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "probert.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "881", 
@@ -19873,7 +19873,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "brose.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "882", 
@@ -19896,7 +19896,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "peva.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "883", 
@@ -19919,7 +19919,7 @@
             "birth_location": "", 
             "notes": "", 
             "image_url": "jmartha.jpg",
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "884", 
@@ -19942,7 +19942,7 @@
             "birth_location": "Izumozaki, Niigata, Japan", 
             "notes": "", 
             "image_url": "", 
-            "has_published": "1"
+            "has_published": "0"
         }, 
         {
             "id": "885", 
