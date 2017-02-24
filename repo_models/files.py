@@ -188,7 +188,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "integer",
+                'type': "long",
                 'store': "yes",
                 'index': "not_analyzed"
             },
