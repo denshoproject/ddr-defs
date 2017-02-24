@@ -177,7 +177,7 @@ FIELDS = [
     
     {
         'name':       'size',
-        'model_type': int,
+        'model_type': long,
         'default':    None,
         'csv': {
             'export': 'ignore',
