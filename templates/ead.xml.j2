@@ -1,0 +1,96 @@
+<ead>
+
+  <eadheader
+      audience="internal"
+      countryencoding="iso3166-1"
+      dateencoding="iso8601"
+      langencoding="iso639-2b"
+      relatedencoding="DC"
+      repositoryencoding="iso15511"
+      scriptencoding="iso15924"
+      >
+    <eadid
+      countrycode=""
+      identifier="{{ object.id }}"
+      created="{{ object.record_created }}"
+      lastmod="{{ object.record_lastmod }}"
+      mainagencycode=""
+      >
+      {{ object.id }}
+    </eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper encodinganalog="Title">
+          {{ object.title }}
+        </titleproper>
+        <subtitle></subtitle>
+        <author encodinganalog="Creator"></author>
+      </titlestmt>
+      <publicationstmt>
+        <publisher encodinganalog="Publisher"></publisher>
+        <date encodinganalog="Date" normal=""></date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <creation>
+        <date normal=""></date>
+      </creation>
+      <langusage>
+        <language encodinganalog="Language" langcode=""></language>
+      </langusage>
+    </profiledesc>
+  </eadheader>
+
+  <archdesc level="collection" relatedencoding="MARC21" type="inventory">
+    <did>
+      <head></head>
+      <repository encodinganalog="852$a" label="Repository: "></repository>
+      <origination label="Creator: ">
+        <persname encodinganalog="100"></persname>
+      </origination>
+      <unittitle encodinganalog="245$a" label="Title: "></unittitle>
+      <unitdate encodinganalog="245$f" label="Span Dates" normal="" type="inclusive"></unitdate>
+      <unitdate encodinganalog="245$g" label="Bulk Dates" normal="" type="bulk"></unitdate>
+      <physdesc encodinganalog="300$a" label="Quantity: ">
+        <extent></extent>
+      </physdesc>
+      <physloc></physloc>
+      <abstract encodinganalog="520$a" label="Abstract: "></abstract>
+      <note></note>
+      <unitid countrycode="" encodinganalog="099" label="Identification: " repositorycode=""></unitid>
+      <langmaterial encodinganalog="546" label="Language: ">
+        <language langcode=""></language>
+      </langmaterial>
+    </did>
+  </archdesc>
+
+  <descgrp type="admininfo">
+    <head>Administrative Information</head>
+    <acqinfo></acqinfo>
+    <custodhist></custodhist>
+    <accruals></accruals>
+    <processinfo></processinfo>
+    <accessrestrict></accessrestrict>
+    <userrestrict></userrestrict>
+    <prefercite></prefercite>
+  </descgrp>
+
+  <bioghist></bioghist>
+
+  <scopecontent></scopecontent>
+
+  <relatedmaterial></relatedmaterial>
+
+  <separatedmaterial></separatedmaterial>
+
+  <controlaccess></controlaccess>
+
+  <accessrestrict></accessrestrict>
+
+  <userestrict></userestrict>
+
+  <dsc type="combined">
+    <head>Inventory</head>
+  </dsc>
+
+</ead>
