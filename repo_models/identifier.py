@@ -9,6 +9,11 @@ IDENTIFIERS = [
         'component': {
             'name': 'repo',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'Repository Keyword',
+                'max_length': 10,
+            },
             'valid': ['ddr'],
         },
         'parents': [],
@@ -64,6 +69,11 @@ IDENTIFIERS = [
         'component': {
             'name': 'org',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'Organization Keyword',
+                'max_length': 32,
+            },
             'valid': [
                 'densho', 'hmwf', 'jamsj', 'janm', 'jcch', 'manz', 'njpa',
                 'one', 'pc', 'dev', 'test', 'testing',
@@ -121,6 +131,10 @@ IDENTIFIERS = [
         'component': {
             'name': 'cid',
             'type': int,
+            'form': {
+                'type': 'IntegerField',
+                'label': 'Collection ID',
+            },
             'valid': [],
         },
         'parents': [],
@@ -184,6 +198,10 @@ IDENTIFIERS = [
         'component': {
             'name': 'eid',
             'type': int,
+            'form': {
+                'type': 'IntegerField',
+                'label': 'Object ID',
+            },
             'valid': [],
         },
         'parents': ['collection'],
@@ -250,6 +268,10 @@ IDENTIFIERS = [
         'component': {
             'name': 'sid',
             'type': int,
+            'form': {
+                'type': 'IntegerField',
+                'label': 'Segment ID',
+            },
             'valid': [],
         },
         'parents': ['entity'],
@@ -316,6 +338,11 @@ IDENTIFIERS = [
         'component': {
             'name': 'role',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'Role',
+                'max_length': 32,
+            },
             'valid': [
                 'mezzanine',
                 'master',
@@ -378,6 +405,11 @@ IDENTIFIERS = [
         'component': {
             'name': 'sha1',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'SHA1',
+                'max_length': 10,
+            },
             'valid': [],
         },
         'parents': ['segment', 'entity'],
