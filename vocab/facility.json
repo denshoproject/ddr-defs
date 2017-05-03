@@ -9,7 +9,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Topaz (Central Utah)",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 39.3521777,
                     "lng": -112.57717
@@ -29,7 +29,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Poston (Colorado River)",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.1500162,
                     "lng": -114.2891177
@@ -49,7 +49,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Gila River",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 32.2212596,
                     "lng": -109.1865412
@@ -69,7 +69,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Granada (Amache)",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 38.05692,
                     "lng": -102.3234389
@@ -89,7 +89,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Heart Mountain",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 44.52634219999999,
                     "lng": -109.0565308
@@ -109,7 +109,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Jerome",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 35.4263645,
                     "lng": -91.4556901
@@ -129,7 +129,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Manzanar",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 36.7285184,
                     "lng": -118.1462987
@@ -149,7 +149,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Minidoka",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 42.6782431,
                     "lng": -114.2500316
@@ -169,7 +169,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Rohwer",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 33.6255234,
                     "lng": -91.3945566
@@ -189,7 +189,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Tule Lake",
             "type": "Concentration Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 41.8882132,
                     "lng": -121.3722116
@@ -209,7 +209,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Puyallup (Camp Harmony)",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 47.1853785,
                     "lng": -122.2928974
@@ -229,7 +229,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Portland",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 45.5234515,
                     "lng": -122.6762071
@@ -249,7 +249,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Marysville",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 39.1457253,
                     "lng": -121.5913547
@@ -269,7 +269,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Sacramento (Walerga)",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 38.5815719,
                     "lng": -121.4943996
@@ -289,7 +289,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Tanforan",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.6304904,
                     "lng": -122.4110835
@@ -309,7 +309,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Stockton",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.9577016,
                     "lng": -121.2907796
@@ -329,7 +329,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Turlock",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.4946568,
                     "lng": -120.8465941
@@ -349,7 +349,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Salinas",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 36.6777372,
                     "lng": -121.6555013
@@ -369,7 +369,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Merced",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.3021632,
                     "lng": -120.4829677
@@ -389,7 +389,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Pinedale",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 36.8411529,
                     "lng": -119.7961611
@@ -409,7 +409,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fresno",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 36.7468422,
                     "lng": -119.7725868
@@ -429,7 +429,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Tulare",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 36.2077288,
                     "lng": -119.3473379
@@ -449,7 +449,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Santa Anita",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.1397292,
                     "lng": -118.0353449
@@ -469,7 +469,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Pomona",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.0552267,
                     "lng": -117.7523048
@@ -489,7 +489,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Mayer",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.3978054,
                     "lng": -112.2362734
@@ -509,7 +509,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Santa Fe",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 35.6869752,
                     "lng": -105.937799
@@ -529,7 +529,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Lincoln (Bismarck)",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 46.8083268,
                     "lng": -100.7837392
@@ -549,7 +549,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Crystal City",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 28.6774795,
                     "lng": -99.8281104
@@ -569,7 +569,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Missoula",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 46.8605189,
                     "lng": -114.019501
@@ -589,7 +589,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Moab",
             "type": "Citizen Isolation Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 39.3209801,
                     "lng": -111.0937311
@@ -609,7 +609,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Leupp",
             "type": "Citizen Isolation Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 35.2980659,
                     "lng": -111.0062528
@@ -629,7 +629,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "McNeil Island Penitentiary",
             "type": "U.S. Federal Prison",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 47.2133614,
                     "lng": -122.6815078
@@ -649,7 +649,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Lordsburg",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 32.3503605,
                     "lng": -108.7086649
@@ -669,7 +669,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Stanton",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 33.495914,
                     "lng": -105.5230362
@@ -689,7 +689,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Catalina Federal Honor Camp",
             "type": "U.S. Federal Prison",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 32.4303529,
                     "lng": -110.7053702
@@ -709,7 +709,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Cow Creek",
             "type": "Additional Facility",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 40.9177102,
                     "lng": -123.4980211
@@ -729,7 +729,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Kenedy",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 28.8191468,
                     "lng": -97.8486123
@@ -749,7 +749,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Antelope Springs",
             "type": "Additional Facility",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.7808064,
                     "lng": -113.4285714
@@ -769,7 +769,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Sill",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.70455949999999,
                     "lng": -98.5090089
@@ -789,7 +789,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Stringtown",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.46676,
                     "lng": -96.05332519999999
@@ -809,7 +809,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Sand Island",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 21.3064413,
                     "lng": -157.8778435
@@ -829,7 +829,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Leavenworth Federal Penitentiary",
             "type": "U.S. Federal Prison",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 39.3111112,
                     "lng": -94.9224637
@@ -849,7 +849,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Camp McCoy",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 44.012716,
                     "lng": -90.68835519999999
@@ -869,7 +869,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Ellis Island",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 40.6994721,
                     "lng": -74.03955959999999
@@ -889,7 +889,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Tulelake",
             "type": "Additional Facility",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 41.9559884,
                     "lng": -121.4774916
@@ -909,7 +909,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Camp Forrest",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 35.3620235,
                     "lng": -86.20943419999999
@@ -929,7 +929,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Seagoville",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 32.6395776,
                     "lng": -96.53832279999999
@@ -949,7 +949,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Sharp Park",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.6322976,
                     "lng": -122.4863492
@@ -969,7 +969,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Owens Valley",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 36.7285184,
                     "lng": -118.1462987
@@ -989,7 +989,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Parker Dam",
             "type": "Temporary Assembly Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.1500162,
                     "lng": -114.2891177
@@ -1009,7 +1009,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Kooskia",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 46.1448942,
                     "lng": -115.9779188
@@ -1029,7 +1029,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Old Raton Ranch",
             "type": "Department of Justice Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 33.4920276,
                     "lng": -105.3838716
@@ -1049,7 +1049,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Camp Blanding",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 29.9441298,
                     "lng": -82.1098275
@@ -1069,7 +1069,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Camp Livingston",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 31.3112936,
                     "lng": -92.4451371
@@ -1089,7 +1089,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Florence",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 33.0314508,
                     "lng": -111.3873431
@@ -1109,7 +1109,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Bliss",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 31.8072113,
                     "lng": -106.4336693
@@ -1129,7 +1129,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Howard",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 39.2073308,
                     "lng": -76.44496029999999
@@ -1149,7 +1149,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Lewis",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 47.1144444,
                     "lng": -122.5647222
@@ -1169,7 +1169,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort McDowell",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.8627046,
                     "lng": -122.4227496
@@ -1189,7 +1189,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Meade",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 39.1135041,
                     "lng": -76.72686030000001
@@ -1209,7 +1209,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Richardson",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 61.25444,
                     "lng": -149.68833
@@ -1229,7 +1229,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Fort Sam Houston",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 29.4766354,
                     "lng": -98.43076
@@ -1249,7 +1249,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Griffith Park",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.1808392,
                     "lng": -118.3089661
@@ -1269,7 +1269,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Honouliuli",
             "type": "U.S. Army Internment Camp",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 21.3677778,
                     "lng": -158.0361111
@@ -1289,7 +1289,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "East Boston",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 42.37021370000001,
                     "lng": -71.0388601
@@ -1309,7 +1309,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "San Francisco",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 37.7749295,
                     "lng": -122.4194155
@@ -1329,7 +1329,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "San Pedro",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 33.7360619,
                     "lng": -118.2922461
@@ -1349,7 +1349,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Seattle",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 47.6062095,
                     "lng": -122.3320708
@@ -1369,7 +1369,7 @@
             "modified": "2014-02-19T10:58:27-0800",
             "title": "Tuna Canyon",
             "type": "Immigration Detention Center",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 34.2596475,
                     "lng": -118.3082747
@@ -1389,7 +1389,7 @@
             "modified": "2014-10-21T15:30:27-0800",
             "title": "Nyssa, Oregon (detention facility)",
             "type": "Additional Facility",
-            "location": {
+            "location_geopoint": {
                 "geopoint": {
                     "lat": 43.8819705,
                     "lng": -116.9979309

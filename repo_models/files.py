@@ -1,15 +1,10 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from DDR import converters
+
 
 MODEL = 'file'
-
-DATE_FORMAT            = '%Y-%m-%d'
-TIME_FORMAT            = '%H:%M:%S'
-DATETIME_FORMAT        = '%Y-%m-%dT%H:%M:%S'
-PRETTY_DATE_FORMAT     = '%d %B %Y'
-PRETTY_TIME_FORMAT     = '%I:%M %p'
-PRETTY_DATETIME_FORMAT = '%d %B %Y, %I:%M %p'
 
 PERMISSIONS_CHOICES = [['1','Public'],
                        ['0','Private'],]
@@ -27,12 +22,74 @@ REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_
 FIELDS = [
     
     {
+        'name':       'id',
+        'model_type': str,
+        'default': None,
+        'csv': {
+            'export': 'require',
+            'import': 'require',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Object ID',
+            'help_text':  '',
+            'max_length': 255,
+            'widget':     'HiddenInput',
+            'initial':    '',
+            'required':   True,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'index': 'not_analyzed',
+            },
+            'display': "string"
+        },
+        'xpath':      "/mets:mets/@OBJID",
+        'xpath_dup':  [
+            "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:identifier",
+            #"/mets:mets/mets:amdSec/mets:digiProvMD[@ID='PROV1']/mets:mdWrap/mets:xmlData/premis:premis/premis:object/premis:objectIdentifierValue",
+            ],
+    },
+
+    {
+        'name':       'external',
+        'group':      '',
+        'model_type': int,
+        'default':    0,
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'IntegerField',
+        'form': {
+            'label':      'External',
+            'help_text':  '',
+            'widget':     'HiddenInput',
+            'initial':    0,
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "integer",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': ""
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+    
+    {
         'name':       'role',
         'model_type': str,
         'default':    None,
         'csv': {
             'export': '',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -55,7 +112,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -78,7 +135,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -101,7 +158,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -120,18 +177,18 @@ FIELDS = [
     
     {
         'name':       'size',
-        'model_type': str,
+        'model_type': long,
         'default':    None,
         'csv': {
             'export': 'ignore',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "integer",
+                'type': "long",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -147,7 +204,7 @@ FIELDS = [
         'default':    None,
         'csv': {
             'export': '',
-            'import': 'ignore',
+            'import': '',
         },
         # no form_type
         # no form
@@ -185,6 +242,37 @@ FIELDS = [
         'xpath_dup':  [],
     },
     
+    {
+        'name':       'mimetype',
+        'group':      '',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Mimetype',
+            'help_text':  'Media type. Leave field blank to reset based on original filename.',
+            'max_length': 255,
+            'widget':     '',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': 'not_analyzed',
+            },
+            'display': "string"
+        },
+        'xpath':      "",
+        'xpath_dup':  [],
+    },
+
     {
         'name':       'public',
         'group':      '',
@@ -361,7 +449,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "yes",
-                'index': "not_analyzed"
+                'index': "analyzed"
             },
             'display': "string"
         },
@@ -429,6 +517,46 @@ FIELDS = [
     },
     
     {
+        'name':       'external_urls',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'External URLs',
+            'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
+            'widget':     'Textarea',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "object",
+                'properties': {
+                    'label': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'url': {
+                        'type': "string",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            },
+            'display': "string"
+        },
+        'xpath':      '',
+        'xpath_dup':  [],
+    },
+
+    {
         'name':       'links',
         'model_type': str,
         'default':    '',
@@ -468,6 +596,20 @@ FIELDS_CSV_EXCLUDED = ['role','size','access_rel','sha1','sha256','md5','xmp']
 
 
 
+# jsonload_* --- load-from-json functions ----------------------------
+#
+# These functions take raw JSON and convert it to a Python data type.
+#
+
+
+
+# jsondump_* --- export-to-json functions ------------------------------
+#
+# These functions take Python data and format it for JSON.
+#
+
+
+
 # display_* --- Display functions --------------------------------------
 #
 # These functions take Python data from the corresponding Collection field
@@ -495,8 +637,23 @@ def display_thumb( data ):
 def display_xmp( data ):
     return ''
 
+TEMPLATE_EXTERNAL_URLS = """
+{% for line in data %}
+<a href="{{ line.url }}" target="iarchive">{{ line.label }}</a>
+{% endfor %}
+"""
+
+def display_external_urls(data):
+    return converters.render(TEMPLATE_EXTERNAL_URLS, data)
+
 def display_links( data ):
     return ''
+
+
+# index_* --- format for Elasticsearch functions -----------------------
+#
+# These functions take Python data and format it for JSON.
+#
 
 
 
@@ -506,6 +663,8 @@ def display_links( data ):
 # and format it so that it can be used in an HTML form.
 #
 
+def formprep_external_urls(data):
+    return converters.listofdicts_to_text(data, ['label', 'url'])
 
 
 # formpost_* --- Form post-processing functions ------------------------
@@ -513,6 +672,9 @@ def display_links( data ):
 # These functions take data from the corresponding form field and turn it
 # into Python objects that are inserted into the Collection.
 #
+
+def formpost_external_urls(text):
+    return converters.text_to_dicts(text, ['label', 'url'])
 
 
 
@@ -573,6 +735,7 @@ def _validate_vocab_list(field, valid_values, data):
 #digitize_person
 #tech_notes
 #xmp
+#external_urls
 #links
 
 #def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
@@ -600,11 +763,11 @@ def _validate_vocab_list(field, valid_values, data):
 #def csvload_digitize_person(text):
 #def csvload_tech_notes(text):
 #def csvload_xmp(text):
-#def csvload_links(text):
 
-#def csvload_creators( text ): return csv.load_rolepeople(text)
-#def csvload_language( text ): return csv.load_labelledlist(text)
-#def csvload_topics( text ): return csv.load_list(text)
+def csvload_external_urls(text):
+    return converters.text_to_dicts(text, ['label', 'url'])
+
+#def csvload_links(text):
 
 # csvdump_* --- export-to-csv functions ------------------------------
 #
@@ -627,6 +790,10 @@ def _validate_vocab_list(field, valid_values, data):
 #def csvdump_digitize_person(data):
 #def csvdump_tech_notes(data):
 #def csvdump_xmp(data):
+
+def csvdump_external_urls(data):
+    return converters.listofdicts_to_text(data, ['label', 'url'])
+
 #def csvdump_links(data):
 
 #def csvdump_creators(data): return csv.dump_rolepeople(data)

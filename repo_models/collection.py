@@ -5,16 +5,11 @@ logger = logging.getLogger(__name__)
 
 from lxml import etree
 
+from DDR import converters
+
 
 
 MODEL = 'collection'
-
-DATE_FORMAT            = '%Y-%m-%d'
-TIME_FORMAT            = '%H:%M:%S'
-DATETIME_FORMAT        = '%Y-%m-%dT%H:%M:%S'
-PRETTY_DATE_FORMAT     = '%d %B %Y'
-PRETTY_TIME_FORMAT     = '%I:%M %p'
-PRETTY_DATETIME_FORMAT = '%d %B %Y, %I:%M %p'
 
 STATUS_CHOICES = [['inprocess', 'In Progress'],
                   ['completed', 'Completed'],]
@@ -65,7 +60,7 @@ FIELDS = [
             'public': True,
             'properties': {
                 'type': "string",
-                'store': "yes"
+                'index': 'not_analyzed',
             },
             'display': "string"
         },
@@ -96,7 +91,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': "yyyy-MM-dd'T'HH:mm:ss"
+                'format': converters.config.ELASTICSEARCH_DATETIME_MAPPING
             },
             'display': "datetime"
         },
@@ -127,7 +122,7 @@ FIELDS = [
                 'type': "date",
                 'index': "not_analyzed",
                 'store': "yes",
-                'format': "yyyy-MM-dd'T'HH:mm:ss"
+                'format': converters.config.ELASTICSEARCH_DATETIME_MAPPING
             },
             'display': "datetime"
         },
@@ -225,7 +220,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "yes",
-                'index': "not_analyzed"
+                'index': "analyzed"
             },
             'display': "string"
         },
@@ -316,11 +311,26 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
-                'store': "yes",
-                'index': "not_analyzed"
+                'type': "object",
+                'properties': {
+                    "namepart": {
+                        "type": "string",
+                        "store": "no",
+                        "index": "not_analyzed"
+                    },
+                    'id': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    "role": {
+                        "type": "string",
+                        "store": "no",
+                        "index": "not_analyzed"
+                    },
+                }
             },
-            'display': "facet"
+            'display': "string"
         },
         'xpath':      "/ead/archdesc/did/origination",
         'xpath_dup':  [],
@@ -472,7 +482,7 @@ FIELDS = [
             'properties': {
                 'type': "string",
                 'store': "no",
-                'index': "analyzed"
+                'index': "no"
             },
             'display': ""
         },
@@ -878,11 +888,61 @@ FIELDS = [
         'xpath':      "/ead/separatedmaterial",
         'xpath_dup':  [],
     },
+    
+    {
+        'name':       'signature_id',
+        'group':      '',
+        'model_type': str,
+        'default':    '',
+        'csv': {
+            'export': '',
+            'import': '',
+        },
+        'form_type':  'CharField',
+        'form': {
+            'label':      'Signature',
+            'help_text':  "DDR ID of the file to use as this object's thumbnail.",
+            'max_length': 255,
+            'widget':     '',
+            'initial':    '',
+            'required':   False,
+        },
+        'elasticsearch': {
+            'public': True,
+            'properties': {
+                'type': "string",
+                'store': "yes",
+                'index': "not_analyzed"
+            },
+            'display': "string"
+        },
+    },
 
 ]
 
 # List of FIELDS to be excluded when exporting and updating.
 FIELDS_CSV_EXCLUDED = []
+
+
+
+# jsonload_* --- load-from-json functions ----------------------------
+#
+# These functions take raw JSON and convert it to a Python data type.
+#
+
+def jsonload_record_created(text): return converters.text_to_datetime(text)
+def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
+def jsonload_creators(text): return converters.text_to_rolepeople(text)
+
+
+
+# jsondump_* --- export-to-json functions ------------------------------
+#
+# These functions take Python data and format it for JSON.
+#
+
+def jsondump_record_created(data): return converters.datetime_to_text(data)
+def jsondump_record_lastmod(data): return converters.datetime_to_text(data)
 
 
 
@@ -895,15 +955,14 @@ FIELDS_CSV_EXCLUDED = []
 
 # id
 
-def display_record_created( data ):
-    if type(data) == type(datetime.now()):
-        data = data.strftime(PRETTY_DATETIME_FORMAT)
-    return data
-
-def display_record_lastmod( data ):
-    if type(data) == type(datetime.now()):
-        data = data.strftime(PRETTY_DATETIME_FORMAT)
-    return data
+def display_record_created(data):
+    return converters.datetime_to_text(
+        data, converters.config.PRETTY_DATETIME_FORMAT
+    )
+def display_record_lastmod(data):
+    return converters.datetime_to_text(
+        data, converters.config.PRETTY_DATETIME_FORMAT
+    )
 
 def display_status( data ):
     for c in STATUS_CHOICES:
@@ -925,13 +984,14 @@ def display_rights( data ):
 
 # title
 
+DISPLAY_CREATORS = '{% if data.id %}' \
+                   + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
+                   + '{% else %}' \
+                   + '{{ data.role }}: {{ data.namepart }}' \
+                   + '{% endif %}'
+
 def display_creators( data ):
-    lines = []
-    if type(data) != type([]):
-        data = data.split(';')
-    for l in data:
-        lines.append({'person': l.strip()})
-    return _render_multiline_dict('<a href="{person}">{person}</a>', lines)
+    return _display_multiline_dict(DISPLAY_CREATORS, data)
 
 # extent
 
@@ -966,14 +1026,29 @@ def display_language( data ):
 
 # The following are utility functions used by display_* functions.
 
-def _render_multiline_dict( template, data ):
+def _display_multiline_dict( template, data ):
     t = []
-    for x in data:
-        if type(x) == type({}):
-            t.append(template.format(**x))
+    for d in data:
+        if type(d) == type({}):
+            t.append(converters.render(template, d))
         else:
-            t.append(x)
+            t.append(d)
     return '\n'.join(t)
+
+
+# index_* --- format for Elasticsearch functions -----------------------
+#
+# These functions take Python data and format it for JSON.
+#
+
+def index_record_created(data):
+    return converters.datetime_to_text(
+        data, converters.config.ELASTICSEARCH_DATETIME_FORMAT
+    )
+def index_record_lastmod(data):
+    return converters.datetime_to_text(
+        data, converters.config.ELASTICSEARCH_DATETIME_FORMAT
+    )
 
 
 
@@ -984,12 +1059,24 @@ def _render_multiline_dict( template, data ):
 #
 
 # id
-# record_created
-# record_lastmod
+
+def formprep_record_created(data):
+    if not data:
+        data = datetime.now(converters.config.TZ)
+    return data
+
+def formprep_record_lastmod(data):
+    if not data:
+        data = datetime.now(converters.config.TZ)
+    return data
+
 # public
 # rights
 # title
-# creators
+
+def formprep_creators(data):
+    return converters.rolepeople_to_text(data)
+
 # extent
 # language
 # organization
@@ -1035,7 +1122,10 @@ def _formprep_basic(data):
 # title
 # unitdate_inclusive
 # unitdate_bulk
-# creators
+
+def formpost_creators(text):
+    return converters.text_to_rolepeople(text)
+
 # extent
 # language
 # organization
@@ -1082,10 +1172,10 @@ def ead_id(tree, namespaces, field, value):
     return tree
 
 def ead_record_created(tree, namespaces, field, value):
-    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_created", value.strftime(DATETIME_FORMAT))
+    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_created", converters.datetime_to_text(value))
 
 def ead_record_lastmod(tree, namespaces, field, value):
-    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_lastmod", value.strftime(DATETIME_FORMAT))
+    return _set_attr(tree, namespaces, "/ead/eadheader/eadid", "record_lastmod", converters.datetime_to_text(value))
 
 # public
 # rights
@@ -1148,6 +1238,8 @@ def _getval(tree, namespaces, xpath):
     return val
 
 def _set_attr(tree, namespaces, xpath, attr, value):
+    if value == None:
+        value = ''
     tags = tree.xpath(xpath, namespaces=namespaces)
     if tags:
         tag = tags[0]

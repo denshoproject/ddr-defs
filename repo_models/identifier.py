@@ -3,25 +3,42 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'repository',
+        'module': '',
         'class': 'DDR.models.Stub',
+        'level': -2,
         'component': {
             'name': 'repo',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'Repository Keyword',
+                'max_length': 10,
+            },
             'valid': ['ddr'],
         },
-        'parent': None,
-        'parents_all': None,
+        'parents': [],
+        'parents_all': [],
         'children': ['organization'],
         'children_all': ['organization'],
         'templates': {
-            'id': '{repo}',
+            'id': [
+                '{repo}',
+            ],
             'path': {
-                'rel': '',
-                'abs': '{basepath}/{repo}',
+                'rel': [
+                    '',
+                ],
+                'abs': [
+                    '{basepath}/{repo}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}',
-                'public': '/{repo}',
+                'editor': [
+                    '/ui/{repo}',
+                ],
+                'public': [
+                    '/{repo}',
+                ],
             },
         },
         'patterns': {
@@ -46,28 +63,45 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'organization',
+        'module': '',
         'class': 'DDR.models.Stub',
+        'level': -1,
         'component': {
             'name': 'org',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'Organization Keyword',
+                'max_length': 32,
+            },
             'valid': [
                 'densho', 'hmwf', 'jamsj', 'janm', 'jcch', 'manz', 'njpa',
                 'one', 'pc', 'dev', 'test', 'testing',
             ],
         },
-        'parent': None,
-        'parents_all': 'repository',
+        'parents': [],
+        'parents_all': ['repository'],
         'children': ['collection'],
         'children_all': ['collection'],
         'templates': {
-            'id': '{repo}-{org}',
+            'id': [
+                '{repo}-{org}',
+            ],
             'path': {
-                'rel': '',
-                'abs': '{basepath}/{repo}-{org}',
+                'rel': [
+                    '',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}',
-                'public': '/{repo}/{org}',
+                'editor': [
+                    '/ui/{repo}-{org}',
+                ],
+                'public': [
+                    '/{repo}/{org}',
+                ],
             },
         },
         'patterns': {
@@ -91,25 +125,41 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'collection',
+        'module': 'repo_models.collection',
         'class': 'DDR.models.Collection',
+        'level': 0,
         'component': {
             'name': 'cid',
             'type': int,
+            'form': {
+                'type': 'IntegerField',
+                'label': 'Collection ID',
+            },
             'valid': [],
         },
-        'parent': None,
-        'parents_all': 'organization',
+        'parents': [],
+        'parents_all': ['organization'],
         'children': ['entity'],
         'children_all': ['entity'],
         'templates': {
-            'id': '{repo}-{org}-{cid}',
+            'id': [
+                '{repo}-{org}-{cid}',
+            ],
             'path': {
-                'rel': '',
-                'abs': '{basepath}/{repo}-{org}-{cid}',
+                'rel': [
+                    '',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}',
-                'public': '/{repo}/{org}/{cid}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}',
+                ],
             },
         },
         'patterns': {
@@ -136,30 +186,47 @@ IDENTIFIERS = [
             'json': 'collection.json',
             'lock': 'lock',
         },
+        'filename_regex': 'collection.json',
     },
     
     # ------------------------------------------------------------------
     {
         'model': 'entity',
+        'module': 'repo_models.entity',
         'class': 'DDR.models.Entity',
+        'level': 1,
         'component': {
             'name': 'eid',
             'type': int,
+            'form': {
+                'type': 'IntegerField',
+                'label': 'Object ID',
+            },
             'valid': [],
         },
-        'parent': 'collection',
-        'parents_all': 'collection',
-        'children': ['file'],
-        'children_all': ['file-role'],
+        'parents': ['collection'],
+        'parents_all': ['collection'],
+        'children': ['segment', 'file'],
+        'children_all': ['segment', 'file-role'],
         'templates': {
-            'id': '{repo}-{org}-{cid}-{eid}',
+            'id': [
+                '{repo}-{org}-{cid}-{eid}',
+            ],
             'path': {
-                'rel': 'files/{repo}-{org}-{cid}-{eid}',
-                'abs': '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}',
+                'rel': [
+                    'files/{repo}-{org}-{cid}-{eid}',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}-{eid}',
-                'public': '/{repo}/{org}/{cid}/{eid}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}',
+                ],
             },
         },
         'patterns': {
@@ -167,11 +234,17 @@ IDENTIFIERS = [
                 r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)$',
             ],
             'path': [
-                r'(?P<basepath>[\w/-]+)/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)',
+                # ---------------------/collection-------/-----/entity
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)/entity.json',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)',
+                # ------/entity
+                r'^files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)/entity.json$',
                 r'^files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)$',
             ],
             'url': [
+                # editor
                 r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)$',
+                # public
                 r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)$',
             ],
         },
@@ -183,43 +256,140 @@ IDENTIFIERS = [
             'lock': 'lock',
             'mets': 'mets.xml',
         },
+        'filename_regex': 'entity.json',
+    },
+    
+    # ------------------------------------------------------------------
+    {
+        'model': 'segment',
+        'module': 'repo_models.segment',
+        'class': 'DDR.models.Entity',
+        'level': 2,
+        'component': {
+            'name': 'sid',
+            'type': int,
+            'form': {
+                'type': 'IntegerField',
+                'label': 'Segment ID',
+            },
+            'valid': [],
+        },
+        'parents': ['entity'],
+        'parents_all': ['entity'],
+        'children': ['file'],
+        'children_all': ['file-role'],
+        'templates': {
+            'id': [
+                '{repo}-{org}-{cid}-{eid}-{sid}',
+            ],
+            'path': {
+                'rel': [
+                    'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}',
+                ],
+                'abs': [
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}',
+                ],
+            },
+            'url': {
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}-{sid}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}/{sid}',
+                ],
+            },
+        },
+        'patterns': {
+            'id': [
+                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+            ],
+            'path': [
+                # ---------------------/collection-------/-----/entity-----------/-----/segment
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)/entity.json$',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+                # ------/entity-----------/-----/segment
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)/entity.json$',
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+            ],
+            'url': [
+                # editor
+                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)$',
+                # public
+                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<sid>[\d]+)$',
+            ],
+        },
+        'files': {
+            'changelog': 'changelog',
+            'control': 'control',
+            'files': 'files',
+            'json': 'entity.json',
+            'lock': 'lock',
+            'mets': 'mets.xml',
+        },
+        'filename_regex': 'entity.json',
     },
     
     # ------------------------------------------------------------------
     {
         'model': 'file-role',
+        'module': '',
         'class': 'DDR.models.Stub',
+        'level': 3,
         'component': {
             'name': 'role',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'Role',
+                'max_length': 32,
+            },
             'valid': [
-                'master', 'mezzanine',
+                'mezzanine',
+                'master',
+                'transcript',
+                'gloss',
+                'preservation',
+                'administrative',
             ],
         },
-        'parent': None,
-        'parents_all': 'entity',
+        'parents': [],
+        'parents_all': ['segment', 'entity'],
         'children': ['file'],
         'children_all': ['file'],
         'templates': {
-            'id': '{repo}-{org}-{cid}-{eid}-{role}',
+            'id': [
+                '{repo}-{org}-{cid}-{eid}-{sid}-{role}',
+                '{repo}-{org}-{cid}-{eid}-{role}',
+            ],
             'path': {
-                'rel': None,
-                'abs': None,
+                'rel': [],
+                'abs': [],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}-{eid}-{role}',
-                'public': '/{repo}/{org}/{cid}/{eid}/{role}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}-{sid}-{role}',
+                    '/ui/{repo}-{org}-{cid}-{eid}-{role}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}/{sid}/{role}',
+                    '/{repo}/{org}/{cid}/{eid}/{role}',
+                ],
             },
         },
         'patterns': {
             'id': [
-                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)$',
+                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)$',
+                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)$',
             ],
             'path': [
             ],
             'url': [
-                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)$',
-                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<role>[\w]+)$',
+                # editor
+                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)$',
+                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)$',
+                # public
+                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<sid>[\d]+)/(?P<role>[a-zA-Z]+)$',
+                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<role>[a-zA-Z]+)$',
             ],
         },
         'files': {
@@ -229,50 +399,91 @@ IDENTIFIERS = [
     # ------------------------------------------------------------------
     {
         'model': 'file',
+        'module': 'repo_models.files',
         'class': 'DDR.models.File',
+        'level': 4,
         'component': {
             'name': 'sha1',
             'type': str,
+            'form': {
+                'type': 'CharField',
+                'label': 'SHA1',
+                'max_length': 10,
+            },
             'valid': [],
         },
-        'parent': 'entity',
-        'parents_all': 'file-role',
+        'parents': ['segment', 'entity'],
+        'parents_all': ['file-role'],
         'children': [],
         'children_all': [],
         'templates': {
-            'id': '{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+            'id': [
+                '{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
+                '{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+            ],
             'path': {
-                'rel': 'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
-                'abs': '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                'rel': [
+                    # ----/entity------------------/-----/segment-----------------------/-----/file
+                    'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}/files/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
+                    # ----/entity------------------/-----/file
+                    'files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                ],
+                'abs': [
+                    # ---------/collection--------/-----/entity------------------/-----/segment-----------------------/-----/file
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{sid}/files/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
+                    # ---------/collection--------/-----/entity------------------/-----/file
+                    '{basepath}/{repo}-{org}-{cid}/files/{repo}-{org}-{cid}-{eid}/files/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                ],
             },
             'url': {
-                'editor': '/ui/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
-                'public': '/{repo}/{org}/{cid}/{eid}/{role}/{sha1}',
+                'editor': [
+                    '/ui/{repo}-{org}-{cid}-{eid}-{sid}-{role}-{sha1}',
+                    '/ui/{repo}-{org}-{cid}-{eid}-{role}-{sha1}',
+                ],
+                'public': [
+                    '/{repo}/{org}/{cid}/{eid}/{sid}/{role}/{sha1}',
+                    '/{repo}/{org}/{cid}/{eid}/{role}/{sha1}',
+                ],
             },
         },
         'patterns': {
             'id': [
-                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w]+)$',
+                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w]+)$',
+                r'^(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w]+)$',
             ],
             'path': [
                 # file-abs
-                r'(?P<basepath>[\w/-]+)/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)/files/(?P<repo1>[\w]+)-(?P<org1>[\w]+)-(?P<cid1>[\d]+)-(?P<eid1>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w\d]+)\.(?P<ext>[\w]+)$',
-                r'(?P<basepath>[\w/-]+)/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)/files/(?P<repo1>[\w]+)-(?P<org1>[\w]+)-(?P<cid1>[\d]+)-(?P<eid1>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w\d]+)\.json$',
-                r'(?P<basepath>[\w/-]+)/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)/files/(?P<repo1>[\w]+)-(?P<org1>[\w]+)-(?P<cid1>[\d]+)-(?P<eid1>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w\d]+)$',
+                # ---------------------/collection-------/-----/entity-----------/-----/segment----------/-----/file
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<id2>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.(?P<ext>[\w]+)$',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<id2>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.json$',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<id2>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)$',
+                # ---------------------/collection-------/-----/entity-----------/-----/file
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.(?P<ext>[\w]+)$',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.json$',
+                r'(?P<basepath>[\w/-]+)/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)$',
                 # file-rel
-                r'^files/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)-(?P<eid0>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w\d]+)\.(?P<ext>[\w]+)$',
-                r'^files/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)-(?P<eid0>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w\d]+)\.json$',
-                r'^files/(?P<repo0>[\w]+)-(?P<org0>[\w]+)-(?P<cid0>[\d]+)-(?P<eid0>[\d]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w\d]+)$',
+                # ------/enity------------/-----/segment----------------/file
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.(?P<ext>[\w]+)$',
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.json$',
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<id1>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)$',
+                # ------/enity------------/-----/file
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.(?P<ext>[\w]+)$',
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)\.json$',
+                r'^files/(?P<id0>[\w\d-]+)/files/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w\d]+)$',
             ],
             'url': [
-                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[\w]+)-(?P<sha1>[\w]+)$',
-                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<role>[\w]+)/(?P<sha1>[\w]+)$',
+                # editor
+                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<sid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w]+)$',
+                r'/ui/(?P<repo>[\w]+)-(?P<org>[\w]+)-(?P<cid>[\d]+)-(?P<eid>[\d]+)-(?P<role>[a-zA-Z]+)-(?P<sha1>[\w]+)$',
+                # public
+                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<sid>[\d]+)/(?P<role>[a-zA-Z]+)/(?P<sha1>[\w]+)$',
+                r'^/(?P<repo>[\w]+)/(?P<org>[\w]+)/(?P<cid>[\d]+)/(?P<eid>[\d]+)/(?P<role>[a-zA-Z]+)/(?P<sha1>[\w]+)$',
             ],
         },
         'files': {
             'access': '{id}-a.jpg',
             'json': '{id}.json',
         },
+        'filename_regex': '-([\d]+)-([\w]+)-([\w\d]+).json',
     },
-    
 ]
