@@ -1150,9 +1150,7 @@ def TEMP_scrub_topicdata(data):
                 item['id'] = tid
                 item['term'] = TEMP_this.TOPICS[tid]
             logging.debug('    -> %s' % item)
-        if len(item['term']) < 5:
-            logging.debug('Fixing topic term')
-            item['term'] = TEMP_this.TOPICS[item['id']]
+        item['term'] = TEMP_this.TOPICS[item['id']]
     return data
 def jsonload_topics(text):
     return TEMP_scrub_topicdata(
