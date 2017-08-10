@@ -72,7 +72,7 @@ FIELDS = [
         'name':       'record_created',
         'group':      '',
         'model_type': datetime,
-        'default':    '',
+        'default':    datetime.now,
         'csv': {
             'export': '',
             'import': '',
@@ -103,7 +103,7 @@ FIELDS = [
         'name':       'record_lastmod',
         'group':      '',
         'model_type': datetime,
-        'default':    '',
+        'default':    datetime.now,
         'csv': {
             'export': '',
             'import': '',
