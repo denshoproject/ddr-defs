@@ -168,6 +168,8 @@ class Repository(ESRepositoryObject):
     sid = dsl.Long()
     role = dsl.String(index='not_analyzed')
     sha1 = dsl.String(index='not_analyzed')
+    parent_id = dsl.String(index='not_analyzed')
+    collection_id = dsl.String(index='not_analyzed')
     #title
     url = dsl.String(index='not_analyzed')
     description = dsl.String()
@@ -185,6 +187,8 @@ class Organization(ESRepositoryObject):
     sid = dsl.Long()
     role = dsl.String(index='not_analyzed')
     sha1 = dsl.String(index='not_analyzed')
+    parent_id = dsl.String(index='not_analyzed')
+    collection_id = dsl.String(index='not_analyzed')
     #title
     url = dsl.String(index='not_analyzed')
     description = dsl.String()
