@@ -412,3 +412,16 @@ ELASTICSEARCH_CLASSES = {
     ],
 
 }
+
+ELASTICSEARCH_LIST_FIELDS = (
+    'id',
+    'signature_id',
+    'access_rel',
+    'title',
+    'label',
+    'description',
+    'url',
+    'role',
+    'extent',
+    'mimetype',
+)
