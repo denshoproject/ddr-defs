@@ -1119,7 +1119,44 @@ FIELDS_CSV_EXCLUDED = [
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 def jsonload_creators(text): return converters.text_to_rolepeople(text)
-def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
+#def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
+
+import sys
+import requests
+# this is a pointer to the module object instance itself.
+TEMP_this = sys.modules[__name__]
+# global var so we don't have to retrieve topics for every entity
+TEMP_this.TOPICS = {}
+def TEMP_scrub_topicdata(data):
+    # TEMPORARY function for fixing bad data
+    # see https://github.com/densho/ddr-cmdln/issues/43
+    if not TEMP_this.TOPICS:
+        # get topics so we can repair topic term (path) field
+        url = 'http://partner.densho.org/vocab/api/0.2/topics.json'
+        logging.debug('getting topics: %s' % url)
+        r = requests.get(url)
+        TEMP_this.TOPICS = {
+            str(term['id']): term['path']
+            for term in json.loads(r.text)['terms']
+        }
+        logging.debug('ok')
+    for item in data:
+        # 'id' field is supposed to be an integer in a str
+        if (not item['id'].isdigit()) and (':' in item['id']):
+            logging.debug('Fixing topic ID')
+            logging.debug('BEFORE %s' % item)
+            tid = item['id'].split(':')[-1]
+            if tid.isdigit():
+                item['id'] = tid
+                item['term'] = TEMP_this.TOPICS[tid]
+            logging.debug('    -> %s' % item)
+        item['term'] = TEMP_this.TOPICS[item['id']]
+    return data
+def jsonload_topics(text):
+    return TEMP_scrub_topicdata(
+        converters.text_to_bracketids(text, ['term','id'])
+    )
+
 def jsonload_persons(data): return converters.strip_list(data)
 def jsonload_facility(text): return converters.text_to_bracketids(text, ['term','id'])
 
