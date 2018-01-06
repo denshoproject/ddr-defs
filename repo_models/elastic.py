@@ -365,7 +365,7 @@ class File(ESCollectionObject):
     rights = dsl.String(index='not_analyzed')
     sort = dsl.Integer()
     thumb = dsl.String()
-    label = dsl.String()
+    label = dsl.String(copy_to="title")
     digitize_person = dsl.String()
     external_urls = dsl.Nested(
         doc_class=ExternalUrls,
