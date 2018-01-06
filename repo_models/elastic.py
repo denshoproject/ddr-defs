@@ -417,6 +417,8 @@ ELASTICSEARCH_LIST_FIELDS = (
     'id',
     'signature_id',
     'access_rel',
+    'status',
+    'public',
     'title',
     'label',
     'description',
