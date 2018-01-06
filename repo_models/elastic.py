@@ -424,4 +424,6 @@ ELASTICSEARCH_LIST_FIELDS = (
     'role',
     'extent',
     'mimetype',
+    'topics',
+    'facility',
 )
