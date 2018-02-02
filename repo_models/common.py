@@ -1,0 +1,78 @@
+
+STATUS_CHOICES = [['inprocess', 'In Progress'],
+                  ['completed', 'Completed'],]
+
+PERMISSIONS_CHOICES = [['1','Public'],
+                       ['0','Private'],]
+PERMISSIONS_CHOICES_DEFAULT = 1
+
+RIGHTS_CHOICES = [["cc", "DDR Creative Commons"],
+                  ["pcc", "Copyright, with special 3rd-party grant permitted"],
+                  ["nocc", "Copyright restricted"],
+                  ["pdm", "Public domain" ],]
+RIGHTS_CHOICES_DEFAULT = 'cc'
+
+LANGUAGE_CHOICES = [['',''],
+                    ['eng','English'],
+                    ['jpn','Japanese'],
+                    ['chi','Chinese'],
+                    ['fre','French'],
+                    ['ger','German'],
+					['ita', 'Italian'],
+                    ['kor','Korean'],
+                    ['por','Portuguese'],
+                    ['rus','Russian'],
+                    ['spa','Spanish'],
+                    ['tgl','Tagalog'],]
+
+GENRE_CHOICES = [['advertisement','Advertisements'],
+                 ['album','Albums'],
+                 ['architecture','Architecture'],
+                 ['baseball_card','Baseball Cards'],
+                 ['blank_form','Blank Forms'],
+                 ['book','Books'],
+                 ['broadside','Broadsides'],
+                 ['cartoon','Cartoons (Commentary)'],
+                 ['catalog','Catalogs'],
+                 ['cityscape','Cityscapes'],
+                 ['clipping','Clippings'],
+                 ['correspondence','Correspondence'],
+                 ['diary','Diaries'],
+                 ['drawing','Drawings'],
+                 ['ephemera','Ephemera'],
+                 ['essay','Essays'],
+                 ['ethnography','Ethnography'],
+                 ['fieldnotes','Fieldnotes'],
+                 ['illustration','Illustrations'],
+                 ['interview','Interviews'],
+                 ['landscape','Landscapes'],
+                 ['leaflet','Leaflets'],
+                 ['manuscript','Manuscripts'],
+                 ['map','Maps'],
+                 ['misc_document','Miscellaneous Documents'],
+                 ['motion_picture','Motion Pictures'],
+                 ['music','Music'],
+                 ['narrative','Narratives'],
+                 ['painting','Paintings'],
+                 ['pamphlet','Pamphlets'],
+                 ['periodical','Periodicals'],
+                 ['petition','Petitions'],
+                 ['photograph','Photographs'],
+                 ['physical_object','Physical Objects'],
+                 ['poetry','Poetry'],
+                 ['portrait','Portraits'],
+                 ['postcard','Postcards'],
+                 ['poster','Posters'],
+                 ['print','Prints'],
+                 ['program','Programs'],
+                 ['rec_log','Recording Logs'],
+                 ['score','Scores'],
+                 ['sheet_music','Sheet Music'],
+                 ['timetable','Timetables'],
+                 ['transcription','Transcriptions'],]
+
+FORMAT_CHOICES = [['av','Audio/Visual'],
+                  ['ds','Dataset'],
+                  ['doc','Document'],
+                  ['img','Still Image'],
+                  ['vh','Oral History'],]

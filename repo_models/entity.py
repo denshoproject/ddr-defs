@@ -7,90 +7,12 @@ import re
 #from lxml import etree
 
 from DDR import converters
+from . import common
 
 
 MODEL = 'entity'
 
-STATUS_CHOICES = [['inprocess', 'In Progress'],
-                  ['completed', 'Completed'],]
-
-PERMISSIONS_CHOICES = [['1','Public'],
-                       ['0','Private'],]
-PERMISSIONS_CHOICES_DEFAULT = 1
-			
-RIGHTS_CHOICES = [["cc", "DDR Creative Commons"],
-                  ["pcc", "Copyright, with special 3rd-party grant permitted"],
-                  ["nocc", "Copyright restricted"],
-                  ["pdm", "Public domain" ],]
-RIGHTS_CHOICES_DEFAULT = 'cc'
-
-LANGUAGE_CHOICES = [['',''],
-                    ['eng','English'],
-                    ['jpn','Japanese'],
-                    ['chi','Chinese'],
-                    ['fre','French'],
-                    ['ger','German'],
-					['ita', 'Italian'],
-                    ['kor','Korean'],
-                    ['por','Portuguese'],
-                    ['rus','Russian'],
-                    ['spa','Spanish'],
-                    ['tgl','Tagalog'],]
-
-GENRE_CHOICES = [['advertisement','Advertisements'],
-                 ['album','Albums'],
-                 ['architecture','Architecture'],
-                 ['baseball_card','Baseball Cards'],
-                 ['blank_form','Blank Forms'],
-                 ['book','Books'],
-                 ['broadside','Broadsides'],
-                 ['cartoon','Cartoons (Commentary)'],
-                 ['catalog','Catalogs'],
-                 ['cityscape','Cityscapes'],
-                 ['clipping','Clippings'],
-                 ['correspondence','Correspondence'],
-                 ['diary','Diaries'],
-                 ['drawing','Drawings'],
-                 ['ephemera','Ephemera'],
-                 ['essay','Essays'],
-                 ['ethnography','Ethnography'],
-                 ['fieldnotes','Fieldnotes'],
-                 ['illustration','Illustrations'],
-                 ['interview','Interviews'],
-                 ['landscape','Landscapes'],
-                 ['leaflet','Leaflets'],
-                 ['manuscript','Manuscripts'],
-                 ['map','Maps'],
-                 ['misc_document','Miscellaneous Documents'],
-                 ['motion_picture','Motion Pictures'],
-                 ['music','Music'],
-                 ['narrative','Narratives'],
-                 ['painting','Paintings'],
-                 ['pamphlet','Pamphlets'],
-                 ['periodical','Periodicals'],
-                 ['petition','Petitions'],
-                 ['photograph','Photographs'],
-                 ['physical_object','Physical Objects'],
-                 ['poetry','Poetry'],
-                 ['portrait','Portraits'],
-                 ['postcard','Postcards'],
-                 ['poster','Posters'],
-                 ['print','Prints'],
-                 ['program','Programs'],
-                 ['rec_log','Recording Logs'],
-                 ['score','Scores'],
-                 ['sheet_music','Sheet Music'],
-                 ['timetable','Timetables'],
-                 ['transcription','Transcriptions'],]
-
-FORMAT_CHOICES = [['av','Audio/Visual'],
-                  ['ds','Dataset'],
-                  ['doc','Document'],
-                  ['img','Still Image'],
-                  ['vh','Oral History'],]
-
 REQUIRED_FIELDS_EXCEPTIONS = ['record_created', 'record_lastmod', 'files',]
-
 
 FIELDS = [
     
@@ -202,7 +124,7 @@ FIELDS = [
             'label':      'Production Status',
             'help_text':  '"In Progress" = the object is not ready for release on the DDR public website. (The object will not be published even if the collection has a status of "Complete".) "Complete" = the object is ready for release on the DDR public website. (The object can only be published if the collection has a status of "Complete".)',
             'widget':     '',
-            'choices':    STATUS_CHOICES,
+            'choices':    common.STATUS_CHOICES,
             'initial':    '',
             'required':   True,
         },
@@ -235,8 +157,8 @@ FIELDS = [
             'label':      'Privacy Level',
             'help_text':  '"Public" = the object is viewable through the DDR public website. (Any files under the object with a status of "Private" will not be viewable regardless of the object\'s privacy level. If the entire collection has a status of "Private" no objects or files will be viewable). "Private" = the object is restricted and not viewable through the DDR public website. (Any files under the object inherit this privacy level and will not be viewable either. If the entire collection has a status of "Public" the object will remain not viewable).',
             'widget':     '',
-            'choices':    PERMISSIONS_CHOICES,
-            'initial':    PERMISSIONS_CHOICES_DEFAULT,
+            'choices':    common.PERMISSIONS_CHOICES,
+            'initial':    common.PERMISSIONS_CHOICES_DEFAULT,
             'required':   True,
         },
         'elasticsearch': {
@@ -461,7 +383,7 @@ FIELDS = [
         'form': {
             'label':      'Language',
             'help_text':  'Only needed for objects containing textual content (i.e. caption on a photograph, text of a letter). To select multiple languages hold the Ctrl key down and click on each language.',
-            'choices':  LANGUAGE_CHOICES,
+            'choices':  common.LANGUAGE_CHOICES,
             'widget':     '',
             'initial':    '',
             'required':   False,
@@ -492,7 +414,7 @@ FIELDS = [
         'form': {
             'label':      'Object Genre',
             'help_text':  'The genre, form, and/or physical characteristics of the object.	Use the Library of Congress Basic Genre Terms for Cultural Heritage Materials controlled vocabulary list. See Appendix E: Controlled Vocabularies or the Library of Congress website: http://memory.loc.gov/ammem/techdocs/genre.html',
-            'choices': GENRE_CHOICES,
+            'choices': common.GENRE_CHOICES,
             'widget':     '',
             'initial':    '',
             'required':   True,
@@ -523,7 +445,7 @@ FIELDS = [
         'form': {
             'label':      'Object Format',
             'help_text':  'A descriptor for indicating the type of object.	Use the Densho Object Type Controlled Vocabulary List found in Appendix E: Controlled Vocabularies.',
-            'choices': FORMAT_CHOICES,
+            'choices': common.FORMAT_CHOICES,
             'widget':     '',
             'initial':    '',
             'required':   True,
@@ -767,8 +689,8 @@ FIELDS = [
             'label':      'Rights',
             'help_text':  'Use rights for the object. Setting will determine the initial default for files associated with this object.',
             'widget':     '',
-            'choices':    RIGHTS_CHOICES,
-            'initial':    RIGHTS_CHOICES_DEFAULT,
+            'choices':    common.RIGHTS_CHOICES,
+            'initial':    common.RIGHTS_CHOICES_DEFAULT,
             'required':   True,
         },
         'elasticsearch': {
@@ -1189,19 +1111,19 @@ def display_record_lastmod(data):
     )
 
 def display_status( data ):
-    for c in STATUS_CHOICES:
+    for c in common.STATUS_CHOICES:
         if data == c[0]:
             return c[1]
     return data
 
 def display_public( data ):
-    for c in PERMISSIONS_CHOICES:
+    for c in common.PERMISSIONS_CHOICES:
         if data == c[0]:
             return c[1]
     return data
 
 def display_rights( data ):
-    for c in RIGHTS_CHOICES:
+    for c in common.RIGHTS_CHOICES:
         if data == c[0]:
             return c[1]
     return data
@@ -1223,7 +1145,7 @@ def display_creators( data ):
 
 def display_language( data ):
     labels = []
-    for c in LANGUAGE_CHOICES:
+    for c in common.LANGUAGE_CHOICES:
         if c[0] in data:
             labels.append(c[1])
     if labels:
@@ -1231,13 +1153,13 @@ def display_language( data ):
     return ''
 
 def display_genre( data ):
-    for c in GENRE_CHOICES:
+    for c in common.GENRE_CHOICES:
         if data == c[0]:
             return c[1]
     return data
 
 def display_format( data ):
-    for c in FORMAT_CHOICES:
+    for c in common.FORMAT_CHOICES:
         if data == c[0]:
             return c[1]
     return data

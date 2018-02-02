@@ -5,6 +5,7 @@ IDENTIFIERS = [
         'model': 'repository',
         'module': '',
         'class': 'DDR.models.Stub',
+        'elastic_class': 'repo_models.elastic.ESRepository',
         'level': -2,
         'component': {
             'name': 'repo',
@@ -65,6 +66,7 @@ IDENTIFIERS = [
         'model': 'organization',
         'module': '',
         'class': 'DDR.models.Stub',
+        'elastic_class': 'repo_models.elastic.ESOrganization',
         'level': -1,
         'component': {
             'name': 'org',
@@ -127,6 +129,7 @@ IDENTIFIERS = [
         'model': 'collection',
         'module': 'repo_models.collection',
         'class': 'DDR.models.Collection',
+        'elastic_class': 'repo_models.elastic.ESCollection',
         'level': 0,
         'component': {
             'name': 'cid',
@@ -194,6 +197,7 @@ IDENTIFIERS = [
         'model': 'entity',
         'module': 'repo_models.entity',
         'class': 'DDR.models.Entity',
+        'elastic_class': 'repo_models.elastic.ESEntity',
         'level': 1,
         'component': {
             'name': 'eid',
@@ -264,6 +268,7 @@ IDENTIFIERS = [
         'model': 'segment',
         'module': 'repo_models.segment',
         'class': 'DDR.models.Entity',
+        'elastic_class': 'repo_models.elastic.ESEntity',
         'level': 2,
         'component': {
             'name': 'sid',
@@ -334,6 +339,7 @@ IDENTIFIERS = [
         'model': 'file-role',
         'module': '',
         'class': 'DDR.models.Stub',
+        'elastic_class': '',
         'level': 3,
         'component': {
             'name': 'role',
@@ -401,6 +407,7 @@ IDENTIFIERS = [
         'model': 'file',
         'module': 'repo_models.files',
         'class': 'DDR.models.File',
+        'elastic_class': 'repo_models.elastic.ESFile',
         'level': 4,
         'component': {
             'name': 'sha1',
