@@ -19966,6 +19966,29 @@
             "notes": "", 
             "image_url": "hlillian.jpg",
             "has_published": "1"
+        },
+        {
+            "id": "887", 
+            "created": "2018-04-10T11:15:15",
+            "modified": "2018-04-10T11:15:15",
+            "nr_id": "", 
+            "b_date": "1919-12-11T00:00:00", 
+            "d_date": null, 
+            "last_name": "Aratani", 
+            "first_name": "Sakaye", 
+            "middle_name": "", 
+            "nickname": "", 
+            "display_name": "Sakaye Aratani", 
+            "bio": "Nisei female. Born December 11, 1919, in Los Angeles, California. Grew up in Gardena, where parents ran a chicken farm. After the bombing of Pearl Harbor, moved temporarily to live with family in Reedley, California, then was removed to the Poston concentration camp, Arizona. While on a visit to a different camp, Sakaye met her future husband, George Aratani, and they married in Minneapolis, Minnesota, while George was serving in the Military Intelligence Service. After leaving camp, Sakaye and George returned to Los Angeles and raised a family. Sakaye was a founding member of the Montebello Japanese Women's Club, and was also one of the first women to serve on the board of the Sumitomo Bank of California.", 
+            "gender": "F", 
+            "generation": "Nisei", 
+            "ethnicity": "Japanese", 
+            "nationality": "US", 
+            "religion": "", 
+            "birth_location": "Los Angeles, California", 
+            "notes": "", 
+            "image_url": "asakaye.jpg",
+            "has_published": "1"
         }
     ]
 }
