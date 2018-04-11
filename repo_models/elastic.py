@@ -130,9 +130,9 @@ class ESCollectionObject(ESRepositoryObject):
 
 # subclasses
 
-class Facet(ESObject):
-    #id
-    #title
+class Facet(dsl.DocType):
+    id = dsl.String(index='not_analyzed')
+    title = dsl.String()
     description = dsl.String()
     
     class Meta:
@@ -143,9 +143,9 @@ class Elinks(dsl.InnerObjectWrapper): pass
 class Location(dsl.InnerObjectWrapper): pass
 class Geopoint(dsl.InnerObjectWrapper): pass
 
-class FacetTerm(ESObject):
-    #id
-    #title
+class FacetTerm(dsl.DocType):
+    id = dsl.String(index='not_analyzed')
+    title = dsl.String()
     description = dsl.String()
     facet = dsl.String()
     # topics
