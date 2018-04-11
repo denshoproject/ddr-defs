@@ -382,6 +382,7 @@ ELASTICSEARCH_CLASSES = {
         {'doctype':'organization', 'class':Organization},
         {'doctype':'collection', 'class':Collection},
         {'doctype':'entity', 'class':Entity},
+        {'doctype':'segment', 'class':Entity},
         {'doctype':'file', 'class':File},
         {'doctype':'facet', 'class':Facet},
         {'doctype':'facetterm', 'class':FacetTerm},
@@ -394,6 +395,7 @@ ELASTICSEARCH_CLASSES = {
         {'doctype':'organization', 'class':Organization},
         {'doctype':'collection', 'class':Collection},
         {'doctype':'entity', 'class':Entity},
+        {'doctype':'segment', 'class':Entity},
         {'doctype':'file', 'class':File},
     ],
 
@@ -401,6 +403,7 @@ ELASTICSEARCH_CLASSES = {
     'collection': [
         {'doctype':'collection', 'class':Collection},
         {'doctype':'entity', 'class':Entity},
+        {'doctype':'segment', 'class':Entity},
         {'doctype':'file', 'class':File},
     ],
 
