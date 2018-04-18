@@ -132,6 +132,9 @@ class ESCollectionObject(ESRepositoryObject):
 
 class Facet(dsl.DocType):
     id = dsl.String(index='not_analyzed')
+    links_html = dsl.String(index='not_analyzed')
+    links_json = dsl.String(index='not_analyzed')
+    links_children = dsl.String(index='not_analyzed')
     title = dsl.String()
     description = dsl.String()
     
@@ -145,9 +148,13 @@ class Geopoint(dsl.InnerObjectWrapper): pass
 
 class FacetTerm(dsl.DocType):
     id = dsl.String(index='not_analyzed')
+    facet = dsl.String(index='not_analyzed')
+    term_id = dsl.String(index='not_analyzed')
+    links_html = dsl.String(index='not_analyzed')
+    links_json = dsl.String(index='not_analyzed')
+    links_children = dsl.String(index='not_analyzed')
     title = dsl.String()
     description = dsl.String()
-    facet = dsl.String()
     # topics
     path = dsl.String()
     parent_id = dsl.String(index='not_analyzed')
