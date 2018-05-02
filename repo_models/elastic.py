@@ -53,6 +53,7 @@ import elasticsearch_dsl as dsl
 
 #from DDR.models.common import ESObject
 
+from . import collection, entity, segment, files
 
 # superclasses
 
@@ -222,10 +223,18 @@ class Repository(ESRepositoryObject):
     class Meta:
         doc_type= 'repository'
 
+    @staticmethod
+    def list_fields():
+        return ['id', 'title', 'description', 'logo', 'url',]
+
 
 class Organization(ESRepositoryObject):
     class Meta:
         doc_type= 'organization'
+
+    @staticmethod
+    def list_fields():
+        return ['id', 'title', 'description', 'logo', 'url',]
 
 
 class Creators(dsl.InnerObjectWrapper): pass
@@ -269,6 +278,14 @@ class Collection(ESObject):
     
     class Meta:
         doc_type= 'collection'
+    
+    @staticmethod
+    def list_fields():
+        return [
+            field['name']
+            for field in collection.FIELDS
+            if field['elasticsearch']['public']
+        ]
 
 
 class Creators(dsl.InnerObjectWrapper): pass
@@ -343,6 +360,14 @@ class Entity(ESCollectionObject):
     
     class Meta:
         doc_type= 'entity'
+    
+    @staticmethod
+    def list_fields():
+        return [
+            field['name']
+            for field in entity.FIELDS
+            if field['elasticsearch']['public']
+        ]
 
 
 class ExternalUrls(dsl.InnerObjectWrapper): pass
@@ -378,6 +403,14 @@ class File(ESCollectionObject):
     
     class Meta:
         doc_type= 'file'
+
+    @staticmethod
+    def list_fields():
+        return [
+            field['name']
+            for field in files.FIELDS
+            if field['elasticsearch']['public']
+        ]
 
 
 # Help (ddr-cmdln) DDR.docstore access these classes
