@@ -392,6 +392,7 @@ class File(ESCollectionObject):
     thumb = dsl.String()
     label = dsl.String(copy_to="title")
     digitize_person = dsl.String()
+    tech_notes = dsl.String()
     external_urls = dsl.Nested(
         doc_class=ExternalUrls,
         properties={
