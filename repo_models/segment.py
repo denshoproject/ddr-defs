@@ -14,7 +14,6 @@ MODEL = 'segment'
 
 REQUIRED_FIELDS_EXCEPTIONS = ['record_created', 'record_lastmod', 'files',]
 
-
 FIELDS = [
     
     {
@@ -291,7 +290,7 @@ FIELDS = [
                 'store': "yes",
                 'index': "not_analyzed"
             },
-            'display': "facet"
+            'display': "string"
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateCreated",
         'xpath_dup':  [],
@@ -1084,7 +1083,6 @@ def jsonload_persons(data): return converters.strip_list(data)
 def jsonload_facility(text): return converters.text_to_bracketids(text, ['term','id'])
 
 
-
 # jsondump_* --- export-to-json functions ------------------------------
 #
 # These functions take Python data and format it for JSON.
@@ -1135,7 +1133,6 @@ def display_rights( data ):
 # description
 # creation
 # location
-
 
 DISPLAY_CREATORS = '{% if data.id %}' \
                    + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
@@ -1412,7 +1409,7 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return converters.text_to_listofdicts(text)
+def csvload_creators( text ): return converters.text_to_rolepeople(text)
 def csvload_language( text ): return converters.text_to_labelledlist(text)
 def csvload_topics( text ): return converters.text_to_listofdicts(text)
 def csvload_persons( text ): return converters.text_to_list(text)
