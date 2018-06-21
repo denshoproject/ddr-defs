@@ -51,15 +51,68 @@ d.save(using=ds.es, index=ds.indexname)
 
 import elasticsearch_dsl as dsl
 
+#from DDR.models.common import ESObject
 
+from . import collection, entity, segment, files
 
 # superclasses
 
+class ESObjectFields(dsl.DocType):
+    """List of fields in order for each class
+    """
+    model = dsl.String(index='not_analyzed')
+    fields = dsl.String(index='not_analyzed')
+    
+    class Meta:
+        doc_type = 'esobjectfields'
+
+class ESLineage(dsl.InnerObjectWrapper): pass
+
 class ESObject(dsl.DocType):
     """Base for Elasticsearch-DSL versions of model classes
+    
+    TODO This belongs in DDR.models.common but putting it there
+    causes an import loop or something.
     """
     id = dsl.String(index='not_analyzed')
+    model = dsl.String(index='not_analyzed')
+    parent_id = dsl.String(index='not_analyzed')
+    collection_id = dsl.String(index='not_analyzed')
+    organization_id = dsl.String(index='not_analyzed')
+    signature_id = dsl.String(index='not_analyzed')
+    #
+    links_html = dsl.String(index='not_analyzed')
+    links_json = dsl.String(index='not_analyzed')
+    links_img = dsl.String(index='not_analyzed')
+    links_thumb = dsl.String(index='not_analyzed')
+    links_parent = dsl.String(index='not_analyzed')
+    links_children = dsl.String(index='not_analyzed')
+    links_children_objects = dsl.String(index='not_analyzed')
+    links_children_files = dsl.String(index='not_analyzed')
+    lineage = dsl.Nested(
+        doc_class=ESLineage,
+        properties={
+            'id': dsl.String(index='not_analyzed'),
+            'model': dsl.String(index='not_analyzed'),
+            'idpart': dsl.String(index='not_analyzed'),
+            'label': dsl.String(index='not_analyzed'),
+        }
+    )
+    url = dsl.String(index='not_analyzed')
+    #
+    repo = dsl.String(index='not_analyzed')
+    org = dsl.String(index='not_analyzed')
+    cid = dsl.Long()
+    eid = dsl.Long()
+    sid = dsl.Long()
+    role = dsl.String(index='not_analyzed')
+    sha1 = dsl.String(index='not_analyzed')
+    #
     title = dsl.String()
+    description = dsl.String()
+    
+    class Meta:
+        doc_type = 'esobject'
     
     def __repr__(self):
         return "<%s.%s %s:\"%s\">" % (
@@ -78,9 +131,12 @@ class ESCollectionObject(ESRepositoryObject):
 
 # subclasses
 
-class Facet(ESObject):
-    #id
-    #title
+class Facet(dsl.DocType):
+    id = dsl.String(index='not_analyzed')
+    links_html = dsl.String(index='not_analyzed')
+    links_json = dsl.String(index='not_analyzed')
+    links_children = dsl.String(index='not_analyzed')
+    title = dsl.String()
     description = dsl.String()
     
     class Meta:
@@ -91,11 +147,15 @@ class Elinks(dsl.InnerObjectWrapper): pass
 class Location(dsl.InnerObjectWrapper): pass
 class Geopoint(dsl.InnerObjectWrapper): pass
 
-class FacetTerm(ESObject):
-    #id
-    #title
+class FacetTerm(dsl.DocType):
+    id = dsl.String(index='not_analyzed')
+    facet = dsl.String(index='not_analyzed')
+    term_id = dsl.String(index='not_analyzed')
+    links_html = dsl.String(index='not_analyzed')
+    links_json = dsl.String(index='not_analyzed')
+    links_children = dsl.String(index='not_analyzed')
+    title = dsl.String()
     description = dsl.String()
-    facet = dsl.String()
     # topics
     path = dsl.String()
     parent_id = dsl.String(index='not_analyzed')
@@ -160,59 +220,30 @@ class Narrator(ESObject):
 
 
 class Repository(ESRepositoryObject):
-    #id
-    repo = dsl.String(index='not_analyzed')
-    org = dsl.String(index='not_analyzed')
-    cid = dsl.Long()
-    eid = dsl.Long()
-    sid = dsl.Long()
-    role = dsl.String(index='not_analyzed')
-    sha1 = dsl.String(index='not_analyzed')
-    parent_id = dsl.String(index='not_analyzed')
-    collection_id = dsl.String(index='not_analyzed')
-    #title
-    url = dsl.String(index='not_analyzed')
-    description = dsl.String()
-    
     class Meta:
         doc_type= 'repository'
 
+    @staticmethod
+    def list_fields():
+        return ['id', 'title', 'description', 'logo', 'url',]
+
 
 class Organization(ESRepositoryObject):
-    #id
-    repo = dsl.String(index='not_analyzed')
-    org = dsl.String(index='not_analyzed')
-    cid = dsl.Long()
-    eid = dsl.Long()
-    sid = dsl.Long()
-    role = dsl.String(index='not_analyzed')
-    sha1 = dsl.String(index='not_analyzed')
-    parent_id = dsl.String(index='not_analyzed')
-    collection_id = dsl.String(index='not_analyzed')
-    #title
-    url = dsl.String(index='not_analyzed')
-    description = dsl.String()
-    
     class Meta:
         doc_type= 'organization'
+
+    @staticmethod
+    def list_fields():
+        return ['id', 'title', 'description', 'logo', 'url',]
 
 
 class Creators(dsl.InnerObjectWrapper): pass
 
-class Collection(ESCollectionObject):
+class Collection(ESObject):
     """IMPORTANT: keep in sync with fields in repo_models/collections.py
     """
-    #id
-    repo = dsl.String(index='not_analyzed')
-    org = dsl.String(index='not_analyzed')
-    cid = dsl.Long()
-    eid = dsl.Long()
-    sid = dsl.Long()
-    role = dsl.String(index='not_analyzed')
-    sha1 = dsl.String(index='not_analyzed')
-    parent_id = dsl.String(index='not_analyzed')
-    collection_id = dsl.String(index='not_analyzed')
     #title
+    #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
     status = dsl.String(index='not_analyzed')
@@ -244,10 +275,17 @@ class Collection(ESCollectionObject):
     scopecontent = dsl.String()
     relatedmaterial = dsl.String()
     separatedmaterial = dsl.String()
-    signature_id = dsl.String(index='not_analyzed')
     
     class Meta:
         doc_type= 'collection'
+    
+    @staticmethod
+    def list_fields():
+        return [
+            field['name']
+            for field in collection.FIELDS
+            if field['elasticsearch']['public']
+        ]
 
 
 class Creators(dsl.InnerObjectWrapper): pass
@@ -259,22 +297,12 @@ class Geography(dsl.InnerObjectWrapper): pass
 class Entity(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/entity.py
     """
-    #id
-    repo = dsl.String(index='not_analyzed')
-    org = dsl.String(index='not_analyzed')
-    cid = dsl.Long()
-    eid = dsl.Long()
-    sid = dsl.Long()
-    role = dsl.String(index='not_analyzed')
-    sha1 = dsl.String(index='not_analyzed')
-    parent_id = dsl.String(index='not_analyzed')
-    collection_id = dsl.String(index='not_analyzed')
     #title
+    #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
     status = dsl.String(index='not_analyzed')
     sort = dsl.Integer()
-    description = dsl.String()
     creation = dsl.String()
     location = dsl.String(index='not_analyzed')
     creators = dsl.Nested(
@@ -329,11 +357,17 @@ class Entity(ESCollectionObject):
             'term': dsl.String(index='not_analyzed'),
         }
     )
-    parent = dsl.String(index='not_analyzed')
-    signature_id = dsl.String(index='not_analyzed')
     
     class Meta:
         doc_type= 'entity'
+    
+    @staticmethod
+    def list_fields():
+        return [
+            field['name']
+            for field in entity.FIELDS
+            if field['elasticsearch']['public']
+        ]
 
 
 class ExternalUrls(dsl.InnerObjectWrapper): pass
@@ -341,17 +375,8 @@ class ExternalUrls(dsl.InnerObjectWrapper): pass
 class File(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/file.py
     """
-    #id
-    repo = dsl.String(index='not_analyzed')
-    org = dsl.String(index='not_analyzed')
-    cid = dsl.Long()
-    eid = dsl.Long()
-    sid = dsl.Long()
-    role = dsl.String(index='not_analyzed')
-    sha1 = dsl.String(index='not_analyzed')
-    parent_id = dsl.String(index='not_analyzed')
-    collection_id = dsl.String(index='not_analyzed')
     #title
+    #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
     external = dsl.Integer()
@@ -367,6 +392,7 @@ class File(ESCollectionObject):
     thumb = dsl.String()
     label = dsl.String(copy_to="title")
     digitize_person = dsl.String()
+    tech_notes = dsl.String()
     external_urls = dsl.Nested(
         doc_class=ExternalUrls,
         properties={
@@ -378,6 +404,14 @@ class File(ESCollectionObject):
     
     class Meta:
         doc_type= 'file'
+
+    @staticmethod
+    def list_fields():
+        return [
+            field['name']
+            for field in files.FIELDS
+            if field['elasticsearch']['public']
+        ]
 
 
 # Help (ddr-cmdln) DDR.docstore access these classes
