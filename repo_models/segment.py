@@ -1043,8 +1043,10 @@ def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 def jsonload_creators(text): return converters.text_to_rolepeople(text)
 #def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
 
+import os
 import sys
-import requests
+from DDR import config
+from DDR import vocab
 # this is a pointer to the module object instance itself.
 TEMP_this = sys.modules[__name__]
 # global var so we don't have to retrieve topics for every entity
@@ -1054,12 +1056,11 @@ def TEMP_scrub_topicdata(data):
     # see https://github.com/densho/ddr-cmdln/issues/43
     if not TEMP_this.TOPICS:
         # get topics so we can repair topic term (path) field
-        url = 'http://partner.densho.org/vocab/api/0.2/topics.json'
-        logging.debug('getting topics: %s' % url)
-        r = requests.get(url)
+        path = os.path.join(config.VOCAB_TERMS_URL, 'topics.json')
+        logging.debug('getting topics: %s' % path)
         TEMP_this.TOPICS = {
             str(term['id']): term['path']
-            for term in json.loads(r.text)['terms']
+            for term in vocab.get_vocab(path)['terms']
         }
         logging.debug('ok')
     for item in data:
