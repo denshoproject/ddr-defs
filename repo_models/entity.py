@@ -1357,6 +1357,12 @@ def _formpost_basic(data):
 #
 
 def _choice_is_valid(field, valid_values, value):
+    """
+    @param field: str
+    @param valid_values: dict {'field': ['list', 'of', 'valid', 'values']
+    @param value: str
+    @returns: boolean
+    """
     if value in valid_values[field]:
 	return True
     return False
@@ -1378,19 +1384,35 @@ def _validate_labelled_kvlist(field, data):
 def _validate_vocab_list(field, valid_values, data):
     """Validate list of keyvalve pairs in which we only care about the keys.
     
-    Matches terms from the topics and facility controlled vocabs:
-        Activism and involvement: Politics [235]
-        Arts and literature: Literary arts: Fiction: Adult [242]
+    Matches terms from the topics and facility controlled vocabs as str:
+        'Activism and involvement: Politics [235]'
+        'Arts and literature: Literary arts: Fiction: Adult [242]'
+    And as dict:
+        {u'id': u'235', u'term': u'Activism and involvement: Politics'}
+        {u'id': u'242', u'term': u'Arts and literature: Literary arts: Fiction: Adult'}
+    
+    @param field: str
+    @param valid_values: dict {'field': ['list', 'of', 'valid', 'values']
+    @param data: str,dict
+    @returns: boolean
     """
     pattern = '\[([0-9]+)\]'
     for datum in data:
-        m = re.search(pattern, datum)
-        if m:
-            code = m.group(1)
-            raw_is_valid = _choice_is_valid(field, valid_values, code)
-            int_is_valid = _choice_is_valid(field, valid_values, int(code))
+        if isinstance(datum, basestring):
+            m = re.search(pattern, datum)
+            if m:
+                code = m.group(1)
+                raw_is_valid = _choice_is_valid(field, valid_values, code)
+                int_is_valid = _choice_is_valid(field, valid_values, int(code))
+                if not (raw_is_valid or int_is_valid):
+                    return False
+        elif isinstance(datum, dict) and datum.get('id'):
+            raw_is_valid = _choice_is_valid(field, valid_values, datum['id'])
+            int_is_valid = _choice_is_valid(field, valid_values, int(datum['id']))
             if not (raw_is_valid or int_is_valid):
                 return False
+        else:
+            raise Exception('Datum is malformed: "%s"' % datum)
     return True
 
 def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
