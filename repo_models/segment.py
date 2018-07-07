@@ -1059,7 +1059,7 @@ def TEMP_scrub_topicdata(data):
         logging.debug('getting topics')
         TEMP_this.TOPICS = {
             str(term['id']): term['path']
-            for term in vocab.get_vocabs_all(config.VOCABS_URL)['topics']['terms']
+            for term in vocab.get_vocabs(config.VOCABS_URL)['topics']['terms']
         }
         logging.debug('ok')
     for item in data:
