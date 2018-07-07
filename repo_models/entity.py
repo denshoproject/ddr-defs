@@ -1056,7 +1056,7 @@ def TEMP_scrub_topicdata(data):
     # see https://github.com/densho/ddr-cmdln/issues/43
     if not TEMP_this.TOPICS:
         # get topics so we can repair topic term (path) field
-        path = os.path.join(config.VOCAB_TERMS_URL, 'topics.json')
+        path = os.path.join(config.VOCABS_URL, 'topics.json')
         logging.debug('getting topics: %s' % path)
         TEMP_this.TOPICS = {
             str(term['id']): term['path']
