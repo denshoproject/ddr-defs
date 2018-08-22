@@ -1070,7 +1070,8 @@ def TEMP_scrub_topicdata(data):
                 item['id'] = tid
                 item['term'] = TEMP_this.TOPICS[tid]
             logging.debug('    -> %s' % item)
-        item['term'] = TEMP_this.TOPICS[item['id']]
+        if TEMP_this.TOPICS.get(item['id']):
+            item['term'] = TEMP_this.TOPICS[item['id']]
     return data
 def jsonload_topics(text):
     return TEMP_scrub_topicdata(
