@@ -37,6 +37,7 @@ LANGUAGE_CHOICES = [['',''],
 FIELDS = [
     
     {
+        'model':      'collection',
         'name':       'id',
         'group':      '',
         'model_type': str,
@@ -67,6 +68,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'record_created',
         'group':      '',
         'model_type': datetime,
@@ -98,6 +100,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'record_lastmod',
         'group':      '',
         'model_type': datetime,
@@ -129,6 +132,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'status',
         'group':      '',
         'inheritable':True,
@@ -162,6 +166,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'public',
         'group':      '',
         'inheritable':True,
@@ -196,6 +201,7 @@ FIELDS = [
     
     # overview ---------------------------------------------------------
     {
+        'model':      'collection',
         'name':       'title',
         'group':      'overview',
         'model_type': str,
@@ -227,6 +233,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'unitdateinclusive',
         'group':      'overview',
         'model_type': str,
@@ -258,6 +265,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'unitdatebulk',
         'group':      'overview',
         'model_type': str,
@@ -289,6 +297,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'creators',
         'group':      'overview',
         'model_type': str,
@@ -335,6 +344,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'extent',
         'group':      'overview',
         'model_type': str,
@@ -366,6 +376,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'language',
         'group':      'overview',
         'model_type': str,
@@ -398,6 +409,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'contributor',
         'group':      'overview',
         'model_type': str,
@@ -429,6 +441,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'description',
         'group':      'overview',
         'model_type': str,
@@ -459,6 +472,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'notes',
         'group':      'overview',
         'model_type': str,
@@ -489,6 +503,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'physloc',
         'group':      'overview',
         'model_type': str,
@@ -521,6 +536,7 @@ FIELDS = [
     
     # administative ----------------------------------------------------
     {
+        'model':      'collection',
         'name':       'acqinfo',
         'group':      'administative',
         'model_type': str,
@@ -551,6 +567,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'custodhist',
         'group':      'administative',
         'model_type': str,
@@ -581,6 +598,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'accruals',
         'group':      'administative',
         'model_type': str,
@@ -611,6 +629,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'processinfo',
         'group':      'administative',
         'model_type': str,
@@ -641,6 +660,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'rights',
         'group':      '',
         'inheritable':True,
@@ -674,6 +694,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'accessrestrict',
         'group':      'administative',
         'model_type': str,
@@ -704,6 +725,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'userrestrict',
         'group':      'administative',
         'model_type': str,
@@ -734,6 +756,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'prefercite',
         'group':      'administative',
         'model_type': str,
@@ -766,6 +789,7 @@ FIELDS = [
     
     # bioghist ---------------------------------------------------------
     {
+        'model':      'collection',
         'name':       'bioghist',
         'group':      'bioghist',
         'model_type': str,
@@ -797,6 +821,7 @@ FIELDS = [
     
     # scopecontent -----------------------------------------------------
     {
+        'model':      'collection',
         'name':       'scopecontent',
         'group':      'scopecontent',
         'model_type': str,
@@ -828,6 +853,7 @@ FIELDS = [
     
     # related ----------------------------------------------------------
     {
+        'model':      'collection',
         'name':       'relatedmaterial',
         'group':      'related',
         'model_type': str,
@@ -858,6 +884,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'separatedmaterial',
         'group':      'related',
         'model_type': str,
@@ -888,6 +915,7 @@ FIELDS = [
     },
     
     {
+        'model':      'collection',
         'name':       'signature_id',
         'group':      '',
         'model_type': str,

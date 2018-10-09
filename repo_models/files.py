@@ -22,6 +22,7 @@ REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_
 FIELDS = [
     
     {
+        'model':      'file',
         'name':       'id',
         'model_type': str,
         'default': None,
@@ -54,6 +55,7 @@ FIELDS = [
     },
 
     {
+        'model':      'file',
         'name':       'external',
         'group':      '',
         'model_type': int,
@@ -84,6 +86,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'role',
         'model_type': str,
         'default':    None,
@@ -107,6 +110,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'sha1',
         'model_type': str,
         'default':    None,
@@ -130,6 +134,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'sha256',
         'model_type': str,
         'default':    None,
@@ -153,6 +158,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'md5',
         'model_type': str,
         'default':    None,
@@ -176,6 +182,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'size',
         'model_type': long,
         'default':    None,
@@ -199,6 +206,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'basename_orig',
         'model_type': str,
         'default':    None,
@@ -221,6 +229,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'access_rel',
         'model_type': str,
         'default':    None,
@@ -243,6 +252,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'mimetype',
         'group':      '',
         'model_type': str,
@@ -274,8 +284,10 @@ FIELDS = [
     },
 
     {
+        'model':      'file',
         'name':       'public',
         'group':      '',
+        'inherits':   ['collection.public', 'entity.public', 'segment.public'],
         'model_type': int,
         'vocab':      True,
         'default':    PERMISSIONS_CHOICES_DEFAULT,
@@ -306,8 +318,10 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'rights',
         'group':      '',
+        'inherits':   ['collection.rights', 'entity.rights', 'segment.rights'],
         'model_type': str,
         'vocab':      True,
         'default':    RIGHTS_CHOICES_DEFAULT,
@@ -338,6 +352,7 @@ FIELDS = [
     },
 
     {
+        'model':      'file',
         'name':       'sort',
         'group':      '',
         'model_type': int,
@@ -368,6 +383,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'thumb',
         'group':      '',
         'model_type': int,
@@ -397,6 +413,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'label',
         'group':      '',
         'model_type': str,
@@ -427,7 +444,9 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'digitize_person',
+        'inherits':   ['entity.digitize_person', 'segment.digitize_person'],
         'group':      '',
         'model_type': str,
         'default':    '',
@@ -458,6 +477,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'tech_notes',
         'model_type': str,
         'default':    '',
@@ -487,6 +507,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'xmp',
         'group':      '',
         'model_type': str,
@@ -517,6 +538,7 @@ FIELDS = [
     },
     
     {
+        'model':      'file',
         'name':       'external_urls',
         'model_type': str,
         'default':    '',
@@ -557,6 +579,7 @@ FIELDS = [
     },
 
     {
+        'model':      'file',
         'name':       'links',
         'model_type': str,
         'default':    '',
