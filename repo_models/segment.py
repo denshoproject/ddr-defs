@@ -5,6 +5,7 @@ logger = logging.getLogger(__name__)
 import re
 
 from DDR import converters
+from DDR import vocab
 from . import common
 
 
@@ -1076,40 +1077,8 @@ def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 def jsonload_creators(text): return converters.text_to_rolepeople(text)
 #def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
 
-import os
-import sys
-from DDR import config
-from DDR import vocab
-# this is a pointer to the module object instance itself.
-TEMP_this = sys.modules[__name__]
-# global var so we don't have to retrieve topics for every entity
-TEMP_this.TOPICS = {}
-def TEMP_scrub_topicdata(data):
-    # TEMPORARY function for fixing bad data
-    # see https://github.com/densho/ddr-cmdln/issues/43
-    if not TEMP_this.TOPICS:
-        # get topics so we can repair topic term (path) field
-        logging.debug('getting topics')
-        TEMP_this.TOPICS = {
-            str(term['id']): term['path']
-            for term in vocab.get_vocabs(config.VOCABS_URL)['topics']['terms']
-        }
-        logging.debug('ok')
-    for item in data:
-        # 'id' field is supposed to be an integer in a str
-        if (not item['id'].isdigit()) and (':' in item['id']):
-            logging.debug('Fixing topic ID')
-            logging.debug('BEFORE %s' % item)
-            tid = item['id'].split(':')[-1]
-            if tid.isdigit():
-                item['id'] = tid
-                item['term'] = TEMP_this.TOPICS[tid]
-            logging.debug('    -> %s' % item)
-        if TEMP_this.TOPICS.get(item['id']):
-            item['term'] = TEMP_this.TOPICS[item['id']]
-    return data
 def jsonload_topics(text):
-    return TEMP_scrub_topicdata(
+    return vocab.TEMP_scrub_topicdata(
         converters.text_to_bracketids(text, ['term','id'])
     )
 
