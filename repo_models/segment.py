@@ -5,6 +5,7 @@ logger = logging.getLogger(__name__)
 import re
 
 from DDR import converters
+from DDR import vocab
 from . import common
 
 
@@ -15,6 +16,7 @@ REQUIRED_FIELDS_EXCEPTIONS = ['record_created', 'record_lastmod', 'files',]
 FIELDS = [
     
     {
+        'model':      'segment',
         'name':       'id',
         'model_type': str,
         'default': None,
@@ -47,6 +49,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'record_created',
         'model_type': datetime,
         'default':    datetime.now,
@@ -77,6 +80,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'record_lastmod',
         'model_type': datetime,
         'default':    datetime.now,
@@ -107,9 +111,10 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'status',
         'group':      '',
-        'inheritable':True,
+        'inherits':   ['collection.status', 'entity.status'],
         'model_type': int,
         'vocab':      True,
         'default':    '',
@@ -140,9 +145,10 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'public',
         'group':      '',
-        'inheritable':True,
+        'inherits':   ['collection.public', 'entity.public'],
         'model_type': int,
         'vocab':      True,
         'default':    '',
@@ -173,6 +179,7 @@ FIELDS = [
     },
 
     {
+        'model':      'segment',
         'name':       'sort',
         'group':      '',
         'model_type': int,
@@ -203,6 +210,7 @@ FIELDS = [
     },
 
     {
+        'model':      'segment',
         'name':       'title',
         'model_type': str,
         'default':    '',
@@ -235,6 +243,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'description',
         'model_type': str,
         'default':    '',
@@ -265,6 +274,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'creation',
         'model_type': str,
         'default':    '',
@@ -295,6 +305,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'location',
         'model_type': str,
         'default':    '',
@@ -325,6 +336,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'creators',
         'model_type': str,
         'default':    '',
@@ -369,6 +381,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'language',
         'model_type': str,
         'vocab':      True,
@@ -400,6 +413,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'genre',
         'model_type': str,
         'vocab':      True,
@@ -431,6 +445,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'format',
         'model_type': str,
         'vocab':      True,
@@ -462,6 +477,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'extent',
         'model_type': str,
         'default':    '',
@@ -492,7 +508,9 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'contributor',
+        'inherits':   ['collection.contributor', 'entity.contributor'],
         'model_type': str,
         'default':    '',
         'csv': {
@@ -522,6 +540,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'alternate_id',
         'model_type': str,
         'default':    '',
@@ -552,7 +571,9 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'digitize_person',
+        'inherits':   ['entity.digitize_person'],
         'model_type': str,
         'default':    '',
         'csv': {
@@ -582,7 +603,9 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'digitize_organization',
+        'inherits':   ['entity.digitize_organization'],
         'model_type': str,
         'default':    '',
         'csv': {
@@ -612,6 +635,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'digitize_date',
         'model_type': str,
         'default':    '',
@@ -642,7 +666,9 @@ FIELDS = [
     
     # technical
     {
+        'model':      'segment',
         'name':       'credit',
+        'inherits':   ['collection.prefercite', 'entity.credit'],
         'model_type': str,
         'default':    '',
         'csv': {
@@ -672,9 +698,10 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'rights',
         'group':      '',
-        'inheritable':True,
+        'inherits':   ['collection.rights', 'entity.rights'],
         'model_type': str,
         'vocab':      True,
         'default':    '',
@@ -705,6 +732,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'rights_statement',
         'model_type': str,
         'default':    '',
@@ -734,6 +762,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'topics',
         'model_type': str,
         'vocab':      True,
@@ -775,6 +804,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'persons',
         'model_type': str,
         'default':    '',
@@ -804,6 +834,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'facility',
         'model_type': str,
         'vocab':      True,
@@ -844,6 +875,7 @@ FIELDS = [
     },
 
     {
+        'model':      'segment',
         'name':       'chronology',
         'model_type': str,
         'default':    '',
@@ -889,6 +921,7 @@ FIELDS = [
     },
 
     {
+        'model':      'segment',
         'name':       'geography',
         'model_type': str,
         'default':    '',
@@ -939,6 +972,7 @@ FIELDS = [
     },
 
     {
+        'model':      'segment',
         'name':       'parent',
         'model_type': str,
         'default':    '',
@@ -969,6 +1003,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'signature_id',
         'group':      '',
         'model_type': str,
@@ -998,6 +1033,7 @@ FIELDS = [
     },
     
     {
+        'model':      'segment',
         'name':       'notes',
         'model_type': str,
         'default':    '',
@@ -1041,40 +1077,8 @@ def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
 def jsonload_creators(text): return converters.text_to_rolepeople(text)
 #def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
 
-import os
-import sys
-from DDR import config
-from DDR import vocab
-# this is a pointer to the module object instance itself.
-TEMP_this = sys.modules[__name__]
-# global var so we don't have to retrieve topics for every entity
-TEMP_this.TOPICS = {}
-def TEMP_scrub_topicdata(data):
-    # TEMPORARY function for fixing bad data
-    # see https://github.com/densho/ddr-cmdln/issues/43
-    if not TEMP_this.TOPICS:
-        # get topics so we can repair topic term (path) field
-        logging.debug('getting topics')
-        TEMP_this.TOPICS = {
-            str(term['id']): term['path']
-            for term in vocab.get_vocabs(config.VOCABS_URL)['topics']['terms']
-        }
-        logging.debug('ok')
-    for item in data:
-        # 'id' field is supposed to be an integer in a str
-        if (not item['id'].isdigit()) and (':' in item['id']):
-            logging.debug('Fixing topic ID')
-            logging.debug('BEFORE %s' % item)
-            tid = item['id'].split(':')[-1]
-            if tid.isdigit():
-                item['id'] = tid
-                item['term'] = TEMP_this.TOPICS[tid]
-            logging.debug('    -> %s' % item)
-        if TEMP_this.TOPICS.get(item['id']):
-            item['term'] = TEMP_this.TOPICS[item['id']]
-    return data
 def jsonload_topics(text):
-    return TEMP_scrub_topicdata(
+    return vocab.TEMP_scrub_topicdata(
         converters.text_to_bracketids(text, ['term','id'])
     )
 
