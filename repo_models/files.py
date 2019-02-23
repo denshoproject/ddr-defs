@@ -115,7 +115,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -139,7 +139,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -163,7 +163,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -187,7 +187,7 @@ FIELDS = [
         'model_type': long,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
