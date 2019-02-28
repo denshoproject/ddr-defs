@@ -456,7 +456,7 @@ FIELDS = [
         },
         'form_type':  'CharField',
         'form': {
-            'label':      'digitize_person',
+            'label':      'Digitize Person',
             'help_text':  '',
             'max_length': 255,
             'widget':     '',
