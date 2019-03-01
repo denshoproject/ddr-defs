@@ -58,24 +58,24 @@ FIELDS = [
         'model':      'file',
         'name':       'external',
         'group':      '',
-        'model_type': int,
-        'default':    0,
+        'model_type': bool,
+        'default':    False,
         'csv': {
             'export': '',
             'import': '',
         },
-        'form_type':  'IntegerField',
+        'form_type':  'BooleanField',
         'form': {
             'label':      'External',
-            'help_text':  '',
-            'widget':     'HiddenInput',
-            'initial':    0,
+            'help_text':  '(Optional) True if the file binary lives outside of this repository.',
+            'widget':     '',
+            'initial':    False,
             'required':   False,
         },
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "integer",
+                'type': "boolean",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -115,7 +115,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -139,7 +139,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -163,7 +163,7 @@ FIELDS = [
         'model_type': str,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -187,7 +187,7 @@ FIELDS = [
         'model_type': long,
         'default':    None,
         'csv': {
-            'export': 'ignore',
+            'export': '',
             'import': '',
         },
         # no form_type
@@ -456,7 +456,7 @@ FIELDS = [
         },
         'form_type':  'CharField',
         'form': {
-            'label':      'digitize_person',
+            'label':      'Digitize Person',
             'help_text':  '',
             'max_length': 255,
             'widget':     '',
@@ -618,12 +618,21 @@ FIELDS_NEW = [field for field in FIELDS if field['name'] in newfile_fields]
 FIELDS_CSV_EXCLUDED = ['role','size','access_rel','sha1','sha256','md5','xmp']
 
 
+def truthify(value):
+    if value and isinstance(value, basestring):
+        if value.isdigit(): value = int(value)
+        if value == 'true':    return True
+        elif value == 'false': return False
+    if value:
+        return True
+    return False
 
 # jsonload_* --- load-from-json functions ----------------------------
 #
 # These functions take raw JSON and convert it to a Python data type.
 #
 
+def jsonload_external(data): return truthify(data)
 
 
 # jsondump_* --- export-to-json functions ------------------------------
@@ -631,6 +640,7 @@ FIELDS_CSV_EXCLUDED = ['role','size','access_rel','sha1','sha256','md5','xmp']
 # These functions take Python data and format it for JSON.
 #
 
+def jsondump_external(data): return truthify(data)
 
 
 # display_* --- Display functions --------------------------------------
@@ -771,6 +781,8 @@ def _validate_vocab_list(field, valid_values, data):
 # data for the corresponding Entity field.
 #
 
+def csvload_external(data): return truthify(data)
+
 #def csvload_role(text):
 #def csvload_sha1(text):
 #def csvload_sha256(text):
@@ -797,6 +809,8 @@ def csvload_external_urls(text):
 # These functions take Python data from the corresponding Entity field
 # and format it for export in a CSV field.
 #
+
+def csvdump_external(data): return truthify(data)
 
 #def csvdump_role(data):
 #def csvdump_sha1(data):
