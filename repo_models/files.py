@@ -75,7 +75,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "boolean",
+                'type': "integer",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -688,6 +688,10 @@ def display_links( data ):
 # These functions take Python data and format it for JSON.
 #
 
+def index_external(data):
+    if data:
+        return 1
+    return 0
 
 
 # formprep_* --- Form pre-processing functions.--------------------------
