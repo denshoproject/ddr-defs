@@ -19997,7 +19997,7 @@
             "modified": "2018-10-24T11:15:15",
             "nr_id": "",
             "b_date": "1890-11-19T00:00:00",
-            "d_date": "1995-11-01T00:00:00",
+            "d_date": "1995-T00:00:00",
             "last_name": "Mukaeda",
             "first_name": "Katsuma",
             "middle_name": "",
@@ -20019,8 +20019,8 @@
             "created": "2018-10-24T11:15:15",
             "modified": "2018-10-24T11:15:15",
             "nr_id": "",
-            "b_date": null,
-            "d_date": null,
+            "b_date": "",
+            "d_date": "",
             "last_name": "Shimizu",
             "first_name": "Mitsuhiko",
             "middle_name": "H.",
@@ -20083,13 +20083,13 @@
             "image_url": "",
             "has_published": "0"
         },		
-        {
+		{
             "id": "892",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1996-11-11T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Hrahsheh",
             "first_name": "Saffiyah",
             "middle_name": "",
@@ -20106,7 +20106,7 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "893",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20129,13 +20129,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "894",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1929-03-16T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Sato",
             "first_name": "Frank",
             "middle_name": "Saburo",
@@ -20152,13 +20152,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "895",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1922-09-10T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Oki",
             "first_name": "Kim",
             "middle_name": "",
@@ -20175,13 +20175,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "896",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1934-04-04T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Sahara",
             "first_name": "Kanji",
             "middle_name": "",
@@ -20198,13 +20198,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "897",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1926-12-16T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Kaneta",
             "first_name": "Miyoko",
             "middle_name": "",
@@ -20221,19 +20221,19 @@
             "image_url": "ddr-densho-1000-449_narr.jpg",
             "has_published": "1"
         },
-        {
+		{
             "id": "898",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1945-08-09T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Nishio",
             "first_name": "Alan",
             "middle_name": "Takeshi",
             "nickname": "",
             "display_name": "Alan Nishio",
-            "bio": "",
+            "bio": "Sansei male. Born August 9, 1945, at the Manzanar concentration camp, California, where his parents were incarcerated during World War II. Grew up in the Venice area of California, and became increasingly politically active while attending the University of California, Berkeley, during the Free Speech Movement during the late 1960s. Earned a master's degree at the University of Southern California, then helped to found the UCLA Asian American Studies Center. Became an administrator at California State University, Long Beach, eventually advancing to the position of Associate Vice President, Student Services. Became a community activist in Los Angeles and helped to form several important community organizations such as the Little Tokyo People's Rights Organization and the Little Tokyo Service Center.",
             "gender": "M",
             "generation": "Sansei",
             "ethnicity": "Japanese",
@@ -20241,16 +20241,16 @@
             "religion": "",
             "birth_location": "Manzanar, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-450_narr.jpg",
             "has_published": "0"
         },
-        {
+		{
             "id": "899",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1925-07-25T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Osajima",
             "first_name": "Elsie",
             "middle_name": "Uyematsu",
@@ -20267,13 +20267,13 @@
             "image_url": "ddr-densho-1000-451_narr.jpg",
             "has_published": "1"
         },
-        {
+			{
             "id": "900",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1936-01-02T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Suzuki",
             "first_name": "Bob",
             "middle_name": "",
@@ -20290,19 +20290,19 @@
             "image_url": "ddr-densho-1000-452_narr.jpg",
             "has_published": "1"
         },
-        {
+		{
             "id": "901",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1932-10-17T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Berk",
             "first_name": "June",
             "middle_name": "Yasuno Aochi Yamashiro",
             "nickname": "",
             "display_name": "June Yasuno Aochi (Yamashiro) Berk",
-            "bio": "",
+            "bio": "Nisei female. Born October 17, 1932, in Los Angeles, California. Grew up in Los Angeles, and was involved at an early age with traditional Japanese dancing and stage performance. During World War II, removed with family to the Santa Anita Assembly Center, California, and the Rohwer concentration camp, Arkansas. After leaving camp, family resettled in Denver, Colorado, for ten years before returning to California. After the war, pursued a career as a model and actor for a time, then got involved in numerous Japanese American community groups.",
             "gender": "F",
             "generation": "Nisei",
             "ethnicity": "Japanese",
@@ -20310,16 +20310,16 @@
             "religion": "",
             "birth_location": "Los Angeles, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-453_narr.jpg",
             "has_published": "0"
         },
-        {
+		{
             "id": "902",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1922-05-13T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Watanabe",
             "first_name": "May",
             "middle_name": "Ohmura",
@@ -20336,13 +20336,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "903",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1929-04-26T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Sato",
             "first_name": "Wilbur",
             "middle_name": "Isao",
@@ -20359,13 +20359,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "904",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1939-01-31T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Higuchi",
             "first_name": "Hatsuko",
             "middle_name": "Mary",
@@ -20382,13 +20382,13 @@
             "image_url": "ddr-densho-1000-456_narr.jpg",
             "has_published": "1"
         },
-        {
+		{
             "id": "905",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1939-03-04T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Hata",
             "first_name": "Donald",
             "middle_name": "Teruo",
@@ -20405,13 +20405,13 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "906",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1931-10-23T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Keimi",
             "first_name": "Harold",
             "middle_name": "Jiro",
@@ -20428,13 +20428,13 @@
             "image_url": "ddr-densho-1000-458_narr.jpg",
             "has_published": "1"
         },
-        {
+		{
             "id": "907",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1935-12-04T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Keimi",
             "first_name": "Barbara",
             "middle_name": "Reiko Mikami",
@@ -20451,19 +20451,19 @@
             "image_url": "ddr-densho-1000-459_narr.jpg",
             "has_published": "1"
         },
-        {
+		{
             "id": "908",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
-            "b_date": null,
-            "d_date": null,
+            "b_date": "",
+            "d_date": "",
             "last_name": "Wakabayashi",
             "first_name": "Ron",
             "middle_name": "",
             "nickname": "",
             "display_name": "Ron Wakabayashi",
-            "bio": "",
+            "bio": "Sansei male. Born November 13, 1944, in Reno, Nevada, where parents had resettled after leaving the concentration camps in Topaz, Utah, and Rohwer, Arkansas, during World War II. Grew up in East Los Angeles. Involved in a number of community social service organizations in Los Angeles, such as Oriental Concern and the Asian American Drug Abuse Program. Elected national director of the Japanese American Citizens League in 1981, and was heavily involved in the redress movement. Regional Director with the U.S. Department of Justice, Community Relations Service.",
             "gender": "M",
             "generation": "Nisei-han",
             "ethnicity": "Japanese",
@@ -20471,16 +20471,16 @@
             "religion": "",
             "birth_location": "",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-460_narr.jpg",
             "has_published": "0"
         },
-        {
+		{
             "id": "909",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1948-12-03T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Ikejiri",
             "first_name": "Ronald",
             "middle_name": "",
@@ -20497,19 +20497,19 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		{
             "id": "910",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1945-05-20T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Oda",
             "first_name": "Nancy",
             "middle_name": "Kyoko",
             "nickname": "",
             "display_name": "Nancy Kyoko Oda",
-            "bio": "",
+            "bio": "Sansei female. Born May 20, 1945, at the Tule Lake concentration camp, California. Shortly after birth, parents returned to the Los Angeles, California, area, where they had been living before World War II. Grew up in the Boyle Heights neighborhood of Los Angeles, and was involved in judo along with father, who was a judo instructor. Established a career as a public school teacher and administrator, and was also involved in numerous community groups.",
             "gender": "F",
             "generation": "Sansei",
             "ethnicity": "Japanese",
@@ -20517,16 +20517,16 @@
             "religion": "Buddhist",
             "birth_location": "Tule Lake, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-463_narr.jpg",
             "has_published": "0"
         },
-        {
+		{
             "id": "911",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1940-01-21T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Kumamoto",
             "first_name": "Alan",
             "middle_name": "Francis Kiyotaka",
@@ -20543,13 +20543,14 @@
             "image_url": "",
             "has_published": "0"
         }, 
-        {
+		
+		{
             "id": "912",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1929-04-01T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Takeshita",
             "first_name": "Cookie",
             "middle_name": "Takano",
@@ -20566,42 +20567,44 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "913",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1948-03-13T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Shimomura",
             "first_name": "Floyd",
             "middle_name": "",
             "nickname": "",
             "display_name": "Floyd Shimomura",
-            "bio": "",
+            "bio": "Sansei male. Born March 13, 1948, in Winters, California. Grew up in the Winters area where parents worked on a farm they had run before World War II, when they were incarcerated at the Amache concentration camp, Colorado. Graduated from UC Davis School of Law, and worked in various capacities for the State of California. Elected National President of the Japanese American Citizens League in 1982, and was involved in the redress movement, helping to draft the redress resolution.",
             "gender": "M",
             "generation": "Sansei",
             "ethnicity": "Japanese",
             "nationality": "US",
             "religion": "",
-            "birth_location": "",
+            "birth_location": "Winters, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-466_narr.jpg",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "914",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1930-08-02T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Takeshita",
             "first_name": "Ben",
             "middle_name": "",
             "nickname": "",
             "display_name": "Ben Takeshita",
-            "bio": "",
+            "bio": "Nisei male. Born August 2, 1930, in San Mateo, California. During World War II, removed with family to the Tanforan Assembly Center, California, and the Topaz concentration camp, Utah. Due to parents' answers on the so-called \"loyalty questionnaire,\" transferred to Tule Lake when it was designated a segregation center. After leaving camp, returned to San Mateo, and served with Military Intelligence in Japan and Korea during the Korean War. Became involved in numerous Japanese community organizations.",
             "gender": "M",
             "generation": "Nisei",
             "ethnicity": "Japanese",
@@ -20609,22 +20612,23 @@
             "religion": "Buddhist",
             "birth_location": "Alameda, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-467_narr.jpg",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "915",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1939-09-11T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Hayashi",
             "first_name": "Norman",
             "middle_name": "Makoto",
             "nickname": "",
             "display_name": "Norm Hayashi",
-            "bio": "",
+            "bio": "Sansei male. Born September 11, 1939, in Oakland, California. Grandfather, father, and other family members established a nursery business in San Francisco, California prior to World War II. During the war, removed with family to the Tanforan Assembly Center, California, and the Topaz concentration camp, Utah. After the war, the family returned to San Francisco and reestablished the nursery. After going to college and living in Los Angeles for a number of years, Norm eventually returned to the family business.",
             "gender": "M",
             "generation": "Sansei",
             "ethnicity": "Japanese",
@@ -20632,22 +20636,23 @@
             "religion": "Protestant",
             "birth_location": "Oakland, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-468_narr.jpg",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "916",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1935-07-05T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Mass",
             "first_name": "Amy",
             "middle_name": "Iwasaki",
             "nickname": "",
             "display_name": "Amy Iwasaki Mass",
-            "bio": "",
+            "bio": "Nisei female. Born July 5, 1935, in Los Angeles, California. Grew up in Los Angeles, where father ran a produce business. During World War II, removed to the Pomona Assembly Center, California, and the Heart Mountain concentration camp, Wyoming. After leaving camp, returned to family home in Los Angeles. Became a social worker, one of the few Japanese American women in the field at that time.",
             "gender": "F",
             "generation": "Nisei",
             "ethnicity": "Japanese",
@@ -20655,16 +20660,17 @@
             "religion": "",
             "birth_location": "Los Angeles, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-470_narr.jpg",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "917",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1935-02-27T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Takeshita",
             "first_name": "Sumako",
             "middle_name": "Akashi",
@@ -20681,19 +20687,20 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "918",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1923-10-27T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Sakai",
             "first_name": "Lawson",
             "middle_name": "Iichiro",
             "nickname": "",
             "display_name": "Lawson I. Sakai",
-            "bio": "",
+            "bio": "Nisei male. Born October 27, 1923, in Montebello, California. Grew up in Montebello, where father and other family members ran a farm. After the bombing of Pearl Harbor, family moved to Colorado to avoid mass removal. In 1943, volunteered for the army and joined the 442nd Regimental Combat Team, fighting in campaigns in Italy and France. After completing military service, married and went to work with wife's family in Gilroy, California. Integral in organizing ongoing reunions of 442nd veterans, and was involved in the campaign for the 442nd Regimental Combat Team to receive the Congressional Gold Medal.",
             "gender": "M",
             "generation": "Nisei",
             "ethnicity": "Japanese",
@@ -20701,16 +20708,17 @@
             "religion": "",
             "birth_location": "Montebello, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-472_narr.jpg",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "919",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1935-04-08T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Ninomiya",
             "first_name": "Flora",
             "middle_name": "Ayako",
@@ -20727,19 +20735,20 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		
+		{
             "id": "920",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1944-05-25T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Ina",
             "first_name": "Satsuki",
             "middle_name": "",
             "nickname": "",
             "display_name": "Satsuki Ina",
-            "bio": "",
+            "bio": "Sansei female. Born May 25, 1944, in the Tule Lake concentration camp, California. Her parents, both Kibei, grew up in San Francisco, California. During World War II, they were incarcerated at the Topaz concentration camp, Utah. They signed \"no-no\" on the so-called \"loyalty questionnaire,\" renounced their U.S. citizenship, and were transferred to Tule Lake when it was designated a segregation camp. Dr. Ina became a psychotherapist specializing in the treatment of community trauma, and in addition to being an author and activist, has produced two award-winning documentaries, Children of the Camps and From A Silk Cocoon.",
             "gender": "F",
             "generation": "Sansei",
             "ethnicity": "Japanese",
@@ -20747,16 +20756,18 @@
             "religion": "",
             "birth_location": "Richmond, California",
             "notes": "",
-            "image_url": "",
+            "image_url": "ddr-densho-1000-474_narr.jpg",
             "has_published": "0"
         },
-        {
+		
+		
+		{
             "id": "921",
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
             "nr_id": "",
-            "b_date": null,
-            "d_date": null,
+            "b_date": "",
+            "d_date": "",
             "last_name": "Sakai",
             "first_name": "Hisaji",
             "middle_name": "Quintus",
@@ -20773,13 +20784,15 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		
+		
+		{
             "id": "922",
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
             "nr_id": "",
             "b_date": "1920-01-01T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Wada",
             "first_name": "Yae",
             "middle_name": "Tokunaga/Katayanagi",
@@ -20796,13 +20809,15 @@
             "image_url": "",
             "has_published": "0"
         },
-        {
+		
+		
+		{
             "id": "923",
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
             "nr_id": "",
             "b_date": "1930-06-23T00:00:00",
-            "d_date": null,
+            "d_date": "",
             "last_name": "Kamibayashi",
             "first_name": "Noboru",
             "middle_name": "",
@@ -20816,6 +20831,31 @@
             "religion": "Buddhist",
             "birth_location": "Fairfax, Washington",
             "notes": "",
+            "image_url": "",
+            "has_published": "0"
+        },
+		
+		
+		{
+            "id": "924",
+            "created": "2019-06-19T11:15:15",
+            "modified": "2019-06-19T11:15:15",
+            "nr_id": "",
+            "b_date": "1935-10-9T00:00:00",
+            "d_date": "",
+            "last_name": "Kanazawa",
+            "first_name": "Yoshiko",
+            "middle_name": "",
+            "nickname": "",
+            "display_name": "Yoshiko Kanazawa",
+            "bio": "",
+            "gender": "F",
+            "generation": "Nisei",
+            "ethnicity": "Japanese",
+            "nationality": "US",
+            "religion": "",
+            "birth_location": "Pasadena, California",
+            "notes": "ddr-jamsj-2-15_narr.jpg",
             "image_url": "",
             "has_published": "0"
         }
