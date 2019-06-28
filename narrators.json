@@ -15359,8 +15359,7 @@
             "bio": "", 
             "gender": "F", 
             "generation": "Issei", 
-            "ethnicity": "Japanese",
-            "bio": "Issei female. Born March 14, 1960, in Japan, where family owned and operated a silkworm business. At age fifteen, immigrated to the United States to join father who was already there. Lived in Milwaukie, Oregon, before the war, and married and had six children. Husband passed away before World War II. During the war, removed to the Portland assembly center, Oregon, and the Minidoka concentration camp, Idaho. After leaving camp, returned to Oregon and eventually became a U.S. citizen.", 
+            "ethnicity": "Japanese Issei female. Born March 14, 1960, in Japan, where family owned and operated a silkworm business. At age fifteen, immigrated to the United States to join father who was already there. Lived in Milwaukie, Oregon, before the war, and married and had six children. Husband passed away before World War II. During the war, removed to the Portland assembly center, Oregon, and the Minidoka concentration camp, Idaho. After leaving camp, returned to Oregon and eventually became a U.S. citizen.", 
             "nationality": "US", 
             "religion": "Christian", 
             "birth_location": "Japan", 
@@ -20083,7 +20082,7 @@
             "image_url": "",
             "has_published": "0"
         },		
-		{
+        {
             "id": "892",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20106,7 +20105,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "893",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20129,7 +20128,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "894",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20152,7 +20151,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "895",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20175,7 +20174,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "896",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20198,7 +20197,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "897",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20221,7 +20220,7 @@
             "image_url": "ddr-densho-1000-449_narr.jpg",
             "has_published": "1"
         },
-		{
+        {
             "id": "898",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20242,9 +20241,9 @@
             "birth_location": "Manzanar, California",
             "notes": "",
             "image_url": "ddr-densho-1000-450_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		{
+        {
             "id": "899",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20267,7 +20266,7 @@
             "image_url": "ddr-densho-1000-451_narr.jpg",
             "has_published": "1"
         },
-			{
+        {
             "id": "900",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20290,7 +20289,7 @@
             "image_url": "ddr-densho-1000-452_narr.jpg",
             "has_published": "1"
         },
-		{
+        {
             "id": "901",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20311,9 +20310,9 @@
             "birth_location": "Los Angeles, California",
             "notes": "",
             "image_url": "ddr-densho-1000-453_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		{
+        {
             "id": "902",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20336,7 +20335,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "903",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20359,7 +20358,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "904",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20382,7 +20381,7 @@
             "image_url": "ddr-densho-1000-456_narr.jpg",
             "has_published": "1"
         },
-		{
+        {
             "id": "905",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20405,7 +20404,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "906",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20428,7 +20427,7 @@
             "image_url": "ddr-densho-1000-458_narr.jpg",
             "has_published": "1"
         },
-		{
+        {
             "id": "907",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20451,7 +20450,7 @@
             "image_url": "ddr-densho-1000-459_narr.jpg",
             "has_published": "1"
         },
-		{
+        {
             "id": "908",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20472,9 +20471,9 @@
             "birth_location": "",
             "notes": "",
             "image_url": "ddr-densho-1000-460_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		{
+        {
             "id": "909",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20497,7 +20496,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		{
+        {
             "id": "910",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20518,9 +20517,9 @@
             "birth_location": "Tule Lake, California",
             "notes": "",
             "image_url": "ddr-densho-1000-463_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		{
+        {
             "id": "911",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20543,8 +20542,7 @@
             "image_url": "",
             "has_published": "0"
         }, 
-		
-		{
+        {
             "id": "912",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20567,8 +20565,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		
-		{
+        {
             "id": "913",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20589,7 +20586,7 @@
             "birth_location": "Winters, California",
             "notes": "",
             "image_url": "ddr-densho-1000-466_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
 		
 		{
@@ -20613,10 +20610,9 @@
             "birth_location": "Alameda, California",
             "notes": "",
             "image_url": "ddr-densho-1000-467_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		
-		{
+        {
             "id": "915",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20637,10 +20633,9 @@
             "birth_location": "Oakland, California",
             "notes": "",
             "image_url": "ddr-densho-1000-468_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		
-		{
+        {
             "id": "916",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20661,10 +20656,9 @@
             "birth_location": "Los Angeles, California",
             "notes": "",
             "image_url": "ddr-densho-1000-470_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		
-		{
+        {
             "id": "917",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20687,8 +20681,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		
-		{
+        ]{
             "id": "918",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20709,10 +20702,9 @@
             "birth_location": "Montebello, California",
             "notes": "",
             "image_url": "ddr-densho-1000-472_narr.jpg",
-            "has_published": "0"
-        },
-		
-		{
+            "has_published": "1"
+            },
+            {
             "id": "919",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20735,8 +20727,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		
-		{
+        {
             "id": "920",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
@@ -20757,11 +20748,9 @@
             "birth_location": "Richmond, California",
             "notes": "",
             "image_url": "ddr-densho-1000-474_narr.jpg",
-            "has_published": "0"
+            "has_published": "1"
         },
-		
-		
-		{
+        {
             "id": "921",
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
@@ -20784,9 +20773,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		
-		
-		{
+        {
             "id": "922",
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
@@ -20809,9 +20796,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		
-		
-		{
+        {
             "id": "923",
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
@@ -20834,9 +20819,7 @@
             "image_url": "",
             "has_published": "0"
         },
-		
-		
-		{
+        {
             "id": "924",
             "created": "2019-06-19T11:15:15",
             "modified": "2019-06-19T11:15:15",
@@ -20855,8 +20838,8 @@
             "nationality": "US",
             "religion": "",
             "birth_location": "Pasadena, California",
-            "notes": "ddr-jamsj-2-15_narr.jpg",
-            "image_url": "",
+            "notes": "",
+            "image_url": "ddr-jamsj-2-15_narr.jpg",
             "has_published": "0"
         }
     ]
