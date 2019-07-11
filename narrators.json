@@ -20018,8 +20018,8 @@
             "created": "2018-10-24T11:15:15",
             "modified": "2018-10-24T11:15:15",
             "nr_id": "",
-            "b_date": "",
-            "d_date": "",
+            "b_date": null,
+            "d_date": null,
             "last_name": "Shimizu",
             "first_name": "Mitsuhiko",
             "middle_name": "H.",
@@ -20088,7 +20088,7 @@
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1996-11-11T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Hrahsheh",
             "first_name": "Saffiyah",
             "middle_name": "",
@@ -20104,7 +20104,8 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "893",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
@@ -20126,13 +20127,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "894",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1929-03-16T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Sato",
             "first_name": "Frank",
             "middle_name": "Saburo",
@@ -20148,13 +20150,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "895",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1922-09-10T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Oki",
             "first_name": "Kim",
             "middle_name": "",
@@ -20170,13 +20173,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "896",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1934-04-04T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Sahara",
             "first_name": "Kanji",
             "middle_name": "",
@@ -20192,13 +20196,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "897",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1926-12-16T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Kaneta",
             "first_name": "Miyoko",
             "middle_name": "",
@@ -20214,13 +20219,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-449_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "898",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1945-08-09T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Nishio",
             "first_name": "Alan",
             "middle_name": "Takeshi",
@@ -20236,13 +20242,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-450_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "899",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1925-07-25T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Osajima",
             "first_name": "Elsie",
             "middle_name": "Uyematsu",
@@ -20258,13 +20265,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-451_narr.jpg",
             "has_published": "1"
-        },	{
+        },
+        {
             "id": "900",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1936-01-02T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Suzuki",
             "first_name": "Bob",
             "middle_name": "",
@@ -20280,13 +20288,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-452_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "901",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1932-10-17T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Berk",
             "first_name": "June",
             "middle_name": "Yasuno Aochi Yamashiro",
@@ -20302,13 +20311,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-453_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "902",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1922-05-13T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Watanabe",
             "first_name": "May",
             "middle_name": "Ohmura",
@@ -20324,13 +20334,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "903",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1929-04-26T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Sato",
             "first_name": "Wilbur",
             "middle_name": "Isao",
@@ -20346,13 +20357,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "904",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1939-01-31T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Higuchi",
             "first_name": "Hatsuko",
             "middle_name": "Mary",
@@ -20368,13 +20380,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-456_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "905",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1939-03-04T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Hata",
             "first_name": "Donald",
             "middle_name": "Teruo",
@@ -20390,13 +20403,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "906",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1931-10-23T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Keimi",
             "first_name": "Harold",
             "middle_name": "Jiro",
@@ -20412,13 +20426,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-458_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "907",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1935-12-04T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Keimi",
             "first_name": "Barbara",
             "middle_name": "Reiko Mikami",
@@ -20434,13 +20449,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-459_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "908",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
-            "b_date": "",
-            "d_date": "",
+            "b_date": null,
+            "d_date": null,
             "last_name": "Wakabayashi",
             "first_name": "Ron",
             "middle_name": "",
@@ -20456,13 +20472,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-460_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "909",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1948-12-03T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Ikejiri",
             "first_name": "Ronald",
             "middle_name": "",
@@ -20478,13 +20495,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        },{
+        },
+        {
             "id": "910",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1945-05-20T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Oda",
             "first_name": "Nancy",
             "middle_name": "Kyoko",
@@ -20500,13 +20518,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-463_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "911",
             "created": "2019-03-01T11:15:15",
             "modified": "2019-03-01T11:15:15",
             "nr_id": "",
             "b_date": "1940-01-21T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Kumamoto",
             "first_name": "Alan",
             "middle_name": "Francis Kiyotaka",
@@ -20522,15 +20541,14 @@
             "notes": "",
             "image_url": "",
             "has_published": "0"
-        }, 
-		
+        },
         {
             "id": "912",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1929-04-01T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Takeshita",
             "first_name": "Cookie",
             "middle_name": "Takano",
@@ -20553,7 +20571,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1948-03-13T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Shimomura",
             "first_name": "Floyd",
             "middle_name": "",
@@ -20576,7 +20594,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1930-08-02T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Takeshita",
             "first_name": "Ben",
             "middle_name": "",
@@ -20599,7 +20617,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1939-09-11T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Hayashi",
             "first_name": "Norman",
             "middle_name": "Makoto",
@@ -20622,7 +20640,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1935-07-05T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Mass",
             "first_name": "Amy",
             "middle_name": "Iwasaki",
@@ -20638,13 +20656,14 @@
             "notes": "",
             "image_url": "ddr-densho-1000-470_narr.jpg",
             "has_published": "1"
-        },{
+        },
+        {
             "id": "917",
             "created": "2019-03-15T11:15:15",
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1935-02-27T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Takeshita",
             "first_name": "Sumako",
             "middle_name": "Akashi",
@@ -20667,7 +20686,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1923-10-27T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Sakai",
             "first_name": "Lawson",
             "middle_name": "Iichiro",
@@ -20690,7 +20709,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1935-04-08T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Ninomiya",
             "first_name": "Flora",
             "middle_name": "Ayako",
@@ -20713,7 +20732,7 @@
             "modified": "2019-03-15T11:15:15",
             "nr_id": "",
             "b_date": "1944-05-25T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Ina",
             "first_name": "Satsuki",
             "middle_name": "",
@@ -20735,8 +20754,8 @@
             "created": "2019-05-02T11:15:15",
             "modified": "2019-05-02T11:15:15",
             "nr_id": "",
-            "b_date": "",
-            "d_date": "",
+            "b_date": null,
+            "d_date": null,
             "last_name": "Sakai",
             "first_name": "Hisaji",
             "middle_name": "Quintus",
@@ -20759,7 +20778,7 @@
             "modified": "2019-05-02T11:15:15",
             "nr_id": "",
             "b_date": "1920-01-01T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Wada",
             "first_name": "Yae",
             "middle_name": "Tokunaga/Katayanagi",
@@ -20782,7 +20801,7 @@
             "modified": "2019-05-02T11:15:15",
             "nr_id": "",
             "b_date": "1930-06-23T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Kamibayashi",
             "first_name": "Noboru",
             "middle_name": "",
@@ -20805,7 +20824,7 @@
             "modified": "2019-06-19T11:15:15",
             "nr_id": "",
             "b_date": "1935-10-9T00:00:00",
-            "d_date": "",
+            "d_date": null,
             "last_name": "Kanazawa",
             "first_name": "Yoshiko",
             "middle_name": "",
