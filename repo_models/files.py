@@ -16,7 +16,7 @@ RIGHTS_CHOICES = [["cc", "DDR Creative Commons"],
                   ["pdm", "Public domain" ],]
 RIGHTS_CHOICES_DEFAULT = 'cc'
 
-REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_rel', 'xmp', 'links']
+REQUIRED_FIELDS_EXCEPTIONS = ['sha1', 'sha256', 'md5', 'size', 'access_rel', 'xmp', 'links']
 
 
 FIELDS = [
@@ -384,36 +384,6 @@ FIELDS = [
     
     {
         'model':      'file',
-        'name':       'thumb',
-        'group':      '',
-        'model_type': int,
-        'default':    -1,
-        'csv': {
-            'export': '',
-            'import': '',
-        },
-        'form_type':  'IntegerField',
-        'form': {
-            'label':      'Thumbnail',
-            'help_text':  '',
-            'widget':     'HiddenInput',
-            'initial':    -1,
-            'required':   True,
-        },
-        'elasticsearch': {
-            'public': True,
-            'properties': {
-                'type': "string",
-                'store': "yes"
-            },
-            'display': ""
-        },
-        'xpath':      "",
-        'xpath_dup':  [],
-    },
-    
-    {
-        'model':      'file',
         'name':       'label',
         'group':      '',
         'model_type': str,
@@ -655,9 +625,6 @@ def display_rights( data ):
 def display_sort( data ):
     return ''
 
-def display_thumb( data ):
-    return ''
-
 def display_xmp( data ):
     return ''
 
@@ -758,7 +725,6 @@ def _validate_vocab_list(field, valid_values, data):
 #public
 #rights
 #sort
-#thumb
 #label
 #digitize_person
 #tech_notes
@@ -788,7 +754,6 @@ def csvload_external(data): return converters.text_to_boolean(data)
 #def csvload_public(text):
 #def csvload_rights(text):
 #def csvload_sort(text):
-#def csvload_thumb(text):
 #def csvload_label(text):
 #def csvload_digitize_person(text):
 #def csvload_tech_notes(text):
@@ -817,7 +782,6 @@ def csvdump_external(data): return converters.text_to_boolean(data)
 #def csvdump_public(data):
 #def csvdump_rights(data):
 #def csvdump_sort(data):
-#def csvdump_thumb(data):
 #def csvdump_label(data):
 #def csvdump_digitize_person(data):
 #def csvdump_tech_notes(data):
