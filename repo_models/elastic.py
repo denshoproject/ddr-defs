@@ -60,8 +60,8 @@ from . import collection, entity, segment, files
 class ESObjectFields(dsl.DocType):
     """List of fields in order for each class
     """
-    model = dsl.String(index='not_analyzed')
-    fields = dsl.String(index='not_analyzed')
+    model = dsl.Keyword(index='not_analyzed')
+    fields = dsl.Keyword(index='not_analyzed')
     
     class Meta:
         doc_type = 'esobjectfields'
@@ -74,42 +74,42 @@ class ESObject(dsl.DocType):
     TODO This belongs in DDR.models.common but putting it there
     causes an import loop or something.
     """
-    id = dsl.String(index='not_analyzed')
-    model = dsl.String(index='not_analyzed')
-    parent_id = dsl.String(index='not_analyzed')
-    collection_id = dsl.String(index='not_analyzed')
-    organization_id = dsl.String(index='not_analyzed')
-    signature_id = dsl.String(index='not_analyzed')
+    id = dsl.Keyword(index='not_analyzed')
+    model = dsl.Keyword(index='not_analyzed')
+    parent_id = dsl.Keyword(index='not_analyzed')
+    collection_id = dsl.Keyword(index='not_analyzed')
+    organization_id = dsl.Keyword(index='not_analyzed')
+    signature_id = dsl.Keyword(index='not_analyzed')
     #
-    links_html = dsl.String(index='not_analyzed')
-    links_json = dsl.String(index='not_analyzed')
-    links_img = dsl.String(index='not_analyzed')
-    links_thumb = dsl.String(index='not_analyzed')
-    links_parent = dsl.String(index='not_analyzed')
-    links_children = dsl.String(index='not_analyzed')
-    links_children_objects = dsl.String(index='not_analyzed')
-    links_children_files = dsl.String(index='not_analyzed')
+    links_html = dsl.Keyword(index='not_analyzed')
+    links_json = dsl.Keyword(index='not_analyzed')
+    links_img = dsl.Keyword(index='not_analyzed')
+    links_thumb = dsl.Keyword(index='not_analyzed')
+    links_parent = dsl.Keyword(index='not_analyzed')
+    links_children = dsl.Keyword(index='not_analyzed')
+    links_children_objects = dsl.Keyword(index='not_analyzed')
+    links_children_files = dsl.Keyword(index='not_analyzed')
     lineage = dsl.Nested(
         doc_class=ESLineage,
         properties={
-            'id': dsl.String(index='not_analyzed'),
-            'model': dsl.String(index='not_analyzed'),
-            'idpart': dsl.String(index='not_analyzed'),
-            'label': dsl.String(index='not_analyzed'),
+            'id': dsl.Keyword(index='not_analyzed'),
+            'model': dsl.Keyword(index='not_analyzed'),
+            'idpart': dsl.Keyword(index='not_analyzed'),
+            'label': dsl.Keyword(index='not_analyzed'),
         }
     )
-    url = dsl.String(index='not_analyzed')
+    url = dsl.Keyword(index='not_analyzed')
     #
-    repo = dsl.String(index='not_analyzed')
-    org = dsl.String(index='not_analyzed')
+    repo = dsl.Keyword(index='not_analyzed')
+    org = dsl.Keyword(index='not_analyzed')
     cid = dsl.Long()
     eid = dsl.Long()
     sid = dsl.Long()
-    role = dsl.String(index='not_analyzed')
-    sha1 = dsl.String(index='not_analyzed')
+    role = dsl.Keyword(index='not_analyzed')
+    sha1 = dsl.Keyword(index='not_analyzed')
     #
-    title = dsl.String()
-    description = dsl.String()
+    title = dsl.Text()
+    description = dsl.Text()
     
     class Meta:
         doc_type = 'esobject'
@@ -132,12 +132,12 @@ class ESCollectionObject(ESRepositoryObject):
 # subclasses
 
 class Facet(dsl.DocType):
-    id = dsl.String(index='not_analyzed')
-    links_html = dsl.String(index='not_analyzed')
-    links_json = dsl.String(index='not_analyzed')
-    links_children = dsl.String(index='not_analyzed')
-    title = dsl.String()
-    description = dsl.String()
+    id = dsl.Keyword(index='not_analyzed')
+    links_html = dsl.Keyword(index='not_analyzed')
+    links_json = dsl.Keyword(index='not_analyzed')
+    links_children = dsl.Keyword(index='not_analyzed')
+    title = dsl.Text()
+    description = dsl.Text()
     
     class Meta:
         doc_type = 'facet'
@@ -148,29 +148,29 @@ class Location(dsl.InnerObjectWrapper): pass
 class Geopoint(dsl.InnerObjectWrapper): pass
 
 class FacetTerm(dsl.DocType):
-    id = dsl.String(index='not_analyzed')
-    facet = dsl.String(index='not_analyzed')
-    term_id = dsl.String(index='not_analyzed')
-    links_html = dsl.String(index='not_analyzed')
-    links_json = dsl.String(index='not_analyzed')
-    links_children = dsl.String(index='not_analyzed')
-    title = dsl.String()
-    description = dsl.String()
+    id = dsl.Keyword(index='not_analyzed')
+    facet = dsl.Keyword(index='not_analyzed')
+    term_id = dsl.Keyword(index='not_analyzed')
+    links_html = dsl.Keyword(index='not_analyzed')
+    links_json = dsl.Keyword(index='not_analyzed')
+    links_children = dsl.Keyword(index='not_analyzed')
+    title = dsl.Text()
+    description = dsl.Text()
     # topics
-    path = dsl.String()
-    parent_id = dsl.String(index='not_analyzed')
+    path = dsl.Text()
+    parent_id = dsl.Keyword(index='not_analyzed')
     ancestors = dsl.Long()
     siblings = dsl.Long()
     children = dsl.Long()
     weight = dsl.Long()
-    encyc_urls = dsl.String()
+    encyc_urls = dsl.Text()
     # facility
-    type = dsl.String()
+    type = dsl.Text()
     elinks = dsl.Nested(
         doc_class=Elinks,
         properties={
-            'label': dsl.String(),
-            'url': dsl.String(),
+            'label': dsl.Text(),
+            'url': dsl.Text(),
         }
     )
     location_geopoint = dsl.Nested(
@@ -183,7 +183,7 @@ class FacetTerm(dsl.DocType):
                     'lng': dsl.Double(),
                 }
             ),
-            'label': dsl.String(),
+            'label': dsl.Text(),
         }
     )
     
@@ -194,26 +194,26 @@ class FacetTerm(dsl.DocType):
 class Narrator(ESObject):
     #id
     #title
-    nr_id = dsl.String(index='not_analyzed')
+    nr_id = dsl.Keyword(index='not_analyzed')
     created = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
     modified = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
     b_date = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
     d_date = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
-    last_name = dsl.String()
-    first_name = dsl.String()
-    middle_name = dsl.String()
-    display_name = dsl.String(index="no", copy_to="title")
-    bio = dsl.String(index="no", copy_to="description")
-    description = dsl.String()
-    gender = dsl.String()
-    generation = dsl.String()
-    ethnicity = dsl.String()
-    nationality = dsl.String()
-    religion = dsl.String()
-    birth_location = dsl.String()
-    notes = dsl.String(index="no", copy_to="notes_private")
-    nickname = dsl.String()
-    image_url = dsl.String()
+    last_name = dsl.Text()
+    first_name = dsl.Text()
+    middle_name = dsl.Text()
+    display_name = dsl.Text(index="no", copy_to="title")
+    bio = dsl.Text(index="no", copy_to="description")
+    description = dsl.Text()
+    gender = dsl.Text()
+    generation = dsl.Text()
+    ethnicity = dsl.Text()
+    nationality = dsl.Text()
+    religion = dsl.Text()
+    birth_location = dsl.Text()
+    notes = dsl.Text(index="no", copy_to="notes_private")
+    nickname = dsl.Text()
+    image_url = dsl.Text()
     
     class Meta:
         doc_type = 'narrator'
@@ -246,35 +246,35 @@ class Collection(ESObject):
     #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
-    status = dsl.String(index='not_analyzed')
-    public = dsl.String(index='not_analyzed')
-    unitdateinclusive = dsl.String()
-    unitdatebulk = dsl.String()
+    status = dsl.Keyword(index='not_analyzed')
+    public = dsl.Keyword(index='not_analyzed')
+    unitdateinclusive = dsl.Text()
+    unitdatebulk = dsl.Text()
     creators = dsl.Nested(
         doc_class=Creators,
         properties={
-            'namepart': dsl.String(index='not_analyzed'),
+            'namepart': dsl.Keyword(index='not_analyzed'),
             'id': dsl.Integer(index='not_analyzed'),
-            'role': dsl.String(index='not_analyzed'),
+            'role': dsl.Keyword(index='not_analyzed'),
         }
     )
-    extent = dsl.String()
-    language = dsl.String(index='not_analyzed')
-    contributor = dsl.String(index='not_analyzed')
-    description = dsl.String()
-    physloc = dsl.String()
-    acqinfo = dsl.String()
-    custodhist = dsl.String()
-    accruals = dsl.String()
-    processinfo = dsl.String()
-    rights = dsl.String(index='not_analyzed')
-    accessrestrict = dsl.String()
-    userrestrict = dsl.String()
-    prefercite = dsl.String()
-    bioghist = dsl.String()
-    scopecontent = dsl.String()
-    relatedmaterial = dsl.String()
-    separatedmaterial = dsl.String()
+    extent = dsl.Text()
+    language = dsl.Keyword(index='not_analyzed')
+    contributor = dsl.Keyword(index='not_analyzed')
+    description = dsl.Text()
+    physloc = dsl.Text()
+    acqinfo = dsl.Text()
+    custodhist = dsl.Text()
+    accruals = dsl.Text()
+    processinfo = dsl.Text()
+    rights = dsl.Keyword(index='not_analyzed')
+    accessrestrict = dsl.Text()
+    userrestrict = dsl.Text()
+    prefercite = dsl.Text()
+    bioghist = dsl.Text()
+    scopecontent = dsl.Text()
+    relatedmaterial = dsl.Text()
+    separatedmaterial = dsl.Text()
     
     class Meta:
         doc_type= 'collection'
@@ -301,60 +301,60 @@ class Entity(ESCollectionObject):
     #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
-    status = dsl.String(index='not_analyzed')
+    status = dsl.Keyword(index='not_analyzed')
     sort = dsl.Integer()
-    creation = dsl.String()
-    location = dsl.String(index='not_analyzed')
+    creation = dsl.Text()
+    location = dsl.Keyword(index='not_analyzed')
     creators = dsl.Nested(
         doc_class=Creators,
         properties={
-            'namepart': dsl.String(index='not_analyzed'),
+            'namepart': dsl.Keyword(index='not_analyzed'),
             'id': dsl.Integer(index='not_analyzed'),
-            'role': dsl.String(index='not_analyzed'),
+            'role': dsl.Keyword(index='not_analyzed'),
         }
     )
-    language = dsl.String(index='not_analyzed')
-    genre = dsl.String(index='not_analyzed')
-    format = dsl.String(index='not_analyzed')
-    extent = dsl.String()
-    contributor = dsl.String(index='not_analyzed')
-    alternate_id = dsl.String()
-    digitize_person = dsl.String()
-    digitize_organization = dsl.String(index='not_analyzed')
-    digitize_date = dsl.String(index='not_analyzed')
-    credit = dsl.String()
-    rights = dsl.String(index='not_analyzed')
-    rights_statement = dsl.String()
+    language = dsl.Keyword(index='not_analyzed')
+    genre = dsl.Keyword(index='not_analyzed')
+    format = dsl.Keyword(index='not_analyzed')
+    extent = dsl.Text()
+    contributor = dsl.Keyword(index='not_analyzed')
+    alternate_id = dsl.Text()
+    digitize_person = dsl.Text()
+    digitize_organization = dsl.Keyword(index='not_analyzed')
+    digitize_date = dsl.Keyword(index='not_analyzed')
+    credit = dsl.Text()
+    rights = dsl.Keyword(index='not_analyzed')
+    rights_statement = dsl.Text()
     topics = dsl.Nested(
         doc_class=Topics,
         properties={
-            'id': dsl.String(index='not_analyzed'),
-            'term': dsl.String(index='not_analyzed'),
+            'id': dsl.Keyword(index='not_analyzed'),
+            'term': dsl.Keyword(index='not_analyzed'),
         }
     )
-    persons = dsl.String(index='not_analyzed')
+    persons = dsl.Keyword(index='not_analyzed')
     facility = dsl.Nested(
         doc_class=Facility,
         properties={
-            'id': dsl.String(index='not_analyzed'),
-            'term': dsl.String(index='not_analyzed'),
+            'id': dsl.Keyword(index='not_analyzed'),
+            'term': dsl.Keyword(index='not_analyzed'),
         }
     )
     chronology = dsl.Nested(
         doc_class=Chronology,
         properties={
-            'startdate': dsl.String(index='not_analyzed'),
-            'enddate': dsl.String(index='not_analyzed'),
-            'term': dsl.String(index='not_analyzed'),
+            'startdate': dsl.Keyword(index='not_analyzed'),
+            'enddate': dsl.Keyword(index='not_analyzed'),
+            'term': dsl.Keyword(index='not_analyzed'),
         }
     )
     geography = dsl.Nested(
         doc_class=Geography,
         properties={
-            'id': dsl.String(index='not_analyzed'),
-            'geo_lat': dsl.String(index='not_analyzed'),
-            'geo_lng': dsl.String(index='not_analyzed'),
-            'term': dsl.String(index='not_analyzed'),
+            'id': dsl.Keyword(index='not_analyzed'),
+            'geo_lat': dsl.Keyword(index='not_analyzed'),
+            'geo_lng': dsl.Keyword(index='not_analyzed'),
+            'term': dsl.Keyword(index='not_analyzed'),
         }
     )
     
@@ -380,27 +380,27 @@ class File(ESCollectionObject):
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
     external = dsl.Integer()
-    sha256 = dsl.String(index='not_analyzed')
-    md5 = dsl.String(index='not_analyzed')
+    sha256 = dsl.Keyword(index='not_analyzed')
+    md5 = dsl.Keyword(index='not_analyzed')
     size = dsl.Long()
-    basename_orig = dsl.String()
-    access_rel = dsl.String()
-    mimetype = dsl.String(index='not_analyzed')
-    public = dsl.String(index='not_analyzed')
-    rights = dsl.String(index='not_analyzed')
+    basename_orig = dsl.Text()
+    access_rel = dsl.Text()
+    mimetype = dsl.Keyword(index='not_analyzed')
+    public = dsl.Keyword(index='not_analyzed')
+    rights = dsl.Keyword(index='not_analyzed')
     sort = dsl.Integer()
-    thumb = dsl.String()
-    label = dsl.String(copy_to="title")
-    digitize_person = dsl.String()
-    tech_notes = dsl.String()
+    thumb = dsl.Text()
+    label = dsl.Text(copy_to="title")
+    digitize_person = dsl.Text()
+    tech_notes = dsl.Text()
     external_urls = dsl.Nested(
         doc_class=ExternalUrls,
         properties={
-            'label': dsl.String(store='no', index='not_analyzed'),
-            'url': dsl.String(store='no', index='not_analyzed'),
+            'label': dsl.Keyword(store='no', index='not_analyzed'),
+            'url': dsl.Keyword(store='no', index='not_analyzed'),
         }
     )
-    links = dsl.String()
+    links = dsl.Text()
     
     class Meta:
         doc_type= 'file'

@@ -42,7 +42,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'index': 'not_analyzed',
             },
             'display': "string"
@@ -99,7 +99,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "no",
                 'index': "not_analyzed"
             },
@@ -123,7 +123,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "no",
                 'index': "not_analyzed"
             },
@@ -147,7 +147,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "no",
                 'index': "not_analyzed"
             },
@@ -171,7 +171,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "no",
                 'index': "not_analyzed"
             },
@@ -219,7 +219,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes"
             },
             'display': "string"
@@ -242,7 +242,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes"
             },
             'display': ""
@@ -273,7 +273,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': 'not_analyzed',
             },
@@ -307,7 +307,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -341,7 +341,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -403,7 +403,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes"
             },
             'display': ""
@@ -434,7 +434,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes"
             },
             'display': "string"
@@ -466,7 +466,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -496,7 +496,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "no",
                 'index': "no"
             },
@@ -527,7 +527,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "no",
                 'index': "no"
             },
@@ -561,12 +561,12 @@ FIELDS = [
                 'type': "object",
                 'properties': {
                     'label': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'url': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -599,7 +599,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes"
             },
             'display': ""
