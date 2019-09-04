@@ -66,7 +66,11 @@ class ESObjectFields(dsl.DocType):
     class Meta:
         doc_type = 'esobjectfields'
 
-class ESLineage(dsl.InnerObjectWrapper): pass
+class ESLineage(dsl.InnerDoc):
+    id = dsl.Keyword(index='not_analyzed')
+    model = dsl.Keyword(index='not_analyzed')
+    idpart = dsl.Keyword(index='not_analyzed')
+    label = dsl.Keyword(index='not_analyzed')
 
 class ESObject(dsl.DocType):
     """Base for Elasticsearch-DSL versions of model classes
@@ -89,15 +93,7 @@ class ESObject(dsl.DocType):
     links_children = dsl.Keyword(index='not_analyzed')
     links_children_objects = dsl.Keyword(index='not_analyzed')
     links_children_files = dsl.Keyword(index='not_analyzed')
-    lineage = dsl.Nested(
-        doc_class=ESLineage,
-        properties={
-            'id': dsl.Keyword(index='not_analyzed'),
-            'model': dsl.Keyword(index='not_analyzed'),
-            'idpart': dsl.Keyword(index='not_analyzed'),
-            'label': dsl.Keyword(index='not_analyzed'),
-        }
-    )
+    lineage = dsl.Nested(ESLineage)
     url = dsl.Keyword(index='not_analyzed')
     #
     repo = dsl.Keyword(index='not_analyzed')
@@ -143,9 +139,17 @@ class Facet(dsl.DocType):
         doc_type = 'facet'
 
 
-class Elinks(dsl.InnerObjectWrapper): pass
-class Location(dsl.InnerObjectWrapper): pass
-class Geopoint(dsl.InnerObjectWrapper): pass
+class Elinks(dsl.InnerDoc):
+    label = dsl.Text()
+    url = dsl.Text()
+
+class Geopoint(dsl.InnerDoc):
+    lat = dsl.Double()
+    lng = dsl.Double()
+
+class Location(dsl.InnerDoc):
+    geopoint = dsl.Nested(Geopoint)
+    label = dsl.Text()
 
 class FacetTerm(dsl.DocType):
     id = dsl.Keyword(index='not_analyzed')
@@ -166,26 +170,8 @@ class FacetTerm(dsl.DocType):
     encyc_urls = dsl.Text()
     # facility
     type = dsl.Text()
-    elinks = dsl.Nested(
-        doc_class=Elinks,
-        properties={
-            'label': dsl.Text(),
-            'url': dsl.Text(),
-        }
-    )
-    location_geopoint = dsl.Nested(
-        doc_class=Location,
-        properties={
-            'geopoint': dsl.Nested(
-                doc_class=Geopoint,
-                properties={
-                    'lat': dsl.Double(),
-                    'lng': dsl.Double(),
-                }
-            ),
-            'label': dsl.Text(),
-        }
-    )
+    elinks = dsl.Nested(Elinks)
+    location_geopoint = dsl.Nested(Location)
     
     class Meta:
         doc_type = 'facetterm'
@@ -237,7 +223,10 @@ class Organization(ESRepositoryObject):
         return ['id', 'title', 'description', 'logo', 'url',]
 
 
-class Creators(dsl.InnerObjectWrapper): pass
+class Creators(dsl.InnerDoc):
+    namepart = dsl.Keyword(index='not_analyzed')
+    id = dsl.Integer(index='not_analyzed')
+    role = dsl.Keyword(index='not_analyzed')
 
 class Collection(ESObject):
     """IMPORTANT: keep in sync with fields in repo_models/collections.py
@@ -250,14 +239,7 @@ class Collection(ESObject):
     public = dsl.Keyword(index='not_analyzed')
     unitdateinclusive = dsl.Text()
     unitdatebulk = dsl.Text()
-    creators = dsl.Nested(
-        doc_class=Creators,
-        properties={
-            'namepart': dsl.Keyword(index='not_analyzed'),
-            'id': dsl.Integer(index='not_analyzed'),
-            'role': dsl.Keyword(index='not_analyzed'),
-        }
-    )
+    creators = dsl.Nested(Creators)
     extent = dsl.Text()
     language = dsl.Keyword(index='not_analyzed')
     contributor = dsl.Keyword(index='not_analyzed')
@@ -288,11 +270,24 @@ class Collection(ESObject):
         ]
 
 
-class Creators(dsl.InnerObjectWrapper): pass
-class Topics(dsl.InnerObjectWrapper): pass
-class Facility(dsl.InnerObjectWrapper): pass
-class Chronology(dsl.InnerObjectWrapper): pass
-class Geography(dsl.InnerObjectWrapper): pass
+class Topics(dsl.InnerDoc):
+    id = dsl.Keyword(index='not_analyzed')
+    term = dsl.Keyword(index='not_analyzed')
+
+class Facility(dsl.InnerDoc):
+    id = dsl.Keyword(index='not_analyzed')
+    term = dsl.Keyword(index='not_analyzed')
+
+class Chronology(dsl.InnerDoc):
+    startdate = dsl.Keyword(index='not_analyzed')
+    enddate = dsl.Keyword(index='not_analyzed')
+    term = dsl.Keyword(index='not_analyzed')
+
+class Geography(dsl.InnerDoc):
+    id = dsl.Keyword(index='not_analyzed')
+    geo_lat = dsl.Keyword(index='not_analyzed')
+    geo_lng = dsl.Keyword(index='not_analyzed')
+    term = dsl.Keyword(index='not_analyzed')
 
 class Entity(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/entity.py
@@ -305,14 +300,7 @@ class Entity(ESCollectionObject):
     sort = dsl.Integer()
     creation = dsl.Text()
     location = dsl.Keyword(index='not_analyzed')
-    creators = dsl.Nested(
-        doc_class=Creators,
-        properties={
-            'namepart': dsl.Keyword(index='not_analyzed'),
-            'id': dsl.Integer(index='not_analyzed'),
-            'role': dsl.Keyword(index='not_analyzed'),
-        }
-    )
+    creators = dsl.Nested(Creators)
     language = dsl.Keyword(index='not_analyzed')
     genre = dsl.Keyword(index='not_analyzed')
     format = dsl.Keyword(index='not_analyzed')
@@ -325,38 +313,11 @@ class Entity(ESCollectionObject):
     credit = dsl.Text()
     rights = dsl.Keyword(index='not_analyzed')
     rights_statement = dsl.Text()
-    topics = dsl.Nested(
-        doc_class=Topics,
-        properties={
-            'id': dsl.Keyword(index='not_analyzed'),
-            'term': dsl.Keyword(index='not_analyzed'),
-        }
-    )
+    topics = dsl.Nested(Topics)
     persons = dsl.Keyword(index='not_analyzed')
-    facility = dsl.Nested(
-        doc_class=Facility,
-        properties={
-            'id': dsl.Keyword(index='not_analyzed'),
-            'term': dsl.Keyword(index='not_analyzed'),
-        }
-    )
-    chronology = dsl.Nested(
-        doc_class=Chronology,
-        properties={
-            'startdate': dsl.Keyword(index='not_analyzed'),
-            'enddate': dsl.Keyword(index='not_analyzed'),
-            'term': dsl.Keyword(index='not_analyzed'),
-        }
-    )
-    geography = dsl.Nested(
-        doc_class=Geography,
-        properties={
-            'id': dsl.Keyword(index='not_analyzed'),
-            'geo_lat': dsl.Keyword(index='not_analyzed'),
-            'geo_lng': dsl.Keyword(index='not_analyzed'),
-            'term': dsl.Keyword(index='not_analyzed'),
-        }
-    )
+    facility = dsl.Nested(Facility)
+    chronology = dsl.Nested(Chronology)
+    geography = dsl.Nested(Geography)
     
     class Meta:
         doc_type= 'entity'
@@ -370,7 +331,9 @@ class Entity(ESCollectionObject):
         ]
 
 
-class ExternalUrls(dsl.InnerObjectWrapper): pass
+class ExternalUrls(dsl.InnerDoc):
+    label = dsl.Keyword(store='no', index='not_analyzed')
+    url = dsl.Keyword(store='no', index='not_analyzed')
 
 class File(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/file.py
@@ -393,13 +356,7 @@ class File(ESCollectionObject):
     label = dsl.Text(copy_to="title")
     digitize_person = dsl.Text()
     tech_notes = dsl.Text()
-    external_urls = dsl.Nested(
-        doc_class=ExternalUrls,
-        properties={
-            'label': dsl.Keyword(store='no', index='not_analyzed'),
-            'url': dsl.Keyword(store='no', index='not_analyzed'),
-        }
-    )
+    external_urls = dsl.Nested(ExternalUrls)
     links = dsl.Text()
     
     class Meta:
