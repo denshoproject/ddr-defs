@@ -57,7 +57,7 @@ from . import collection, entity, segment, files
 
 # superclasses
 
-class ESObjectFields(dsl.DocType):
+class ESObjectFields(dsl.Document):
     """List of fields in order for each class
     """
     model = dsl.Keyword(index='not_analyzed')
@@ -72,7 +72,7 @@ class ESLineage(dsl.InnerDoc):
     idpart = dsl.Keyword(index='not_analyzed')
     label = dsl.Keyword(index='not_analyzed')
 
-class ESObject(dsl.DocType):
+class ESObject(dsl.Document):
     """Base for Elasticsearch-DSL versions of model classes
     
     TODO This belongs in DDR.models.common but putting it there
@@ -127,7 +127,7 @@ class ESCollectionObject(ESRepositoryObject):
 
 # subclasses
 
-class Facet(dsl.DocType):
+class Facet(dsl.Document):
     id = dsl.Keyword(index='not_analyzed')
     links_html = dsl.Keyword(index='not_analyzed')
     links_json = dsl.Keyword(index='not_analyzed')
@@ -151,7 +151,7 @@ class Location(dsl.InnerDoc):
     geopoint = dsl.Nested(Geopoint)
     label = dsl.Text()
 
-class FacetTerm(dsl.DocType):
+class FacetTerm(dsl.Document):
     id = dsl.Keyword(index='not_analyzed')
     facet = dsl.Keyword(index='not_analyzed')
     term_id = dsl.Keyword(index='not_analyzed')
