@@ -60,17 +60,17 @@ from . import collection, entity, segment, files
 class ESObjectFields(dsl.Document):
     """List of fields in order for each class
     """
-    model = dsl.Keyword(index='not_analyzed')
-    fields = dsl.Keyword(index='not_analyzed')
+    model = dsl.Keyword()
+    fields = dsl.Keyword()
     
     class Meta:
         doc_type = 'esobjectfields'
 
 class ESLineage(dsl.InnerDoc):
-    id = dsl.Keyword(index='not_analyzed')
-    model = dsl.Keyword(index='not_analyzed')
-    idpart = dsl.Keyword(index='not_analyzed')
-    label = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    model = dsl.Keyword()
+    idpart = dsl.Keyword()
+    label = dsl.Keyword()
 
 class ESObject(dsl.Document):
     """Base for Elasticsearch-DSL versions of model classes
@@ -78,31 +78,31 @@ class ESObject(dsl.Document):
     TODO This belongs in DDR.models.common but putting it there
     causes an import loop or something.
     """
-    id = dsl.Keyword(index='not_analyzed')
-    model = dsl.Keyword(index='not_analyzed')
-    parent_id = dsl.Keyword(index='not_analyzed')
-    collection_id = dsl.Keyword(index='not_analyzed')
-    organization_id = dsl.Keyword(index='not_analyzed')
-    signature_id = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    model = dsl.Keyword()
+    parent_id = dsl.Keyword()
+    collection_id = dsl.Keyword()
+    organization_id = dsl.Keyword()
+    signature_id = dsl.Keyword()
     #
-    links_html = dsl.Keyword(index='not_analyzed')
-    links_json = dsl.Keyword(index='not_analyzed')
-    links_img = dsl.Keyword(index='not_analyzed')
-    links_thumb = dsl.Keyword(index='not_analyzed')
-    links_parent = dsl.Keyword(index='not_analyzed')
-    links_children = dsl.Keyword(index='not_analyzed')
-    links_children_objects = dsl.Keyword(index='not_analyzed')
-    links_children_files = dsl.Keyword(index='not_analyzed')
+    links_html = dsl.Keyword()
+    links_json = dsl.Keyword()
+    links_img = dsl.Keyword()
+    links_thumb = dsl.Keyword()
+    links_parent = dsl.Keyword()
+    links_children = dsl.Keyword()
+    links_children_objects = dsl.Keyword()
+    links_children_files = dsl.Keyword()
     lineage = dsl.Nested(ESLineage)
-    url = dsl.Keyword(index='not_analyzed')
+    url = dsl.Keyword()
     #
-    repo = dsl.Keyword(index='not_analyzed')
-    org = dsl.Keyword(index='not_analyzed')
+    repo = dsl.Keyword()
+    org = dsl.Keyword()
     cid = dsl.Long()
     eid = dsl.Long()
     sid = dsl.Long()
-    role = dsl.Keyword(index='not_analyzed')
-    sha1 = dsl.Keyword(index='not_analyzed')
+    role = dsl.Keyword()
+    sha1 = dsl.Keyword()
     #
     title = dsl.Text()
     description = dsl.Text()
@@ -128,10 +128,10 @@ class ESCollectionObject(ESRepositoryObject):
 # subclasses
 
 class Facet(dsl.Document):
-    id = dsl.Keyword(index='not_analyzed')
-    links_html = dsl.Keyword(index='not_analyzed')
-    links_json = dsl.Keyword(index='not_analyzed')
-    links_children = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    links_html = dsl.Keyword()
+    links_json = dsl.Keyword()
+    links_children = dsl.Keyword()
     title = dsl.Text()
     description = dsl.Text()
     
@@ -152,17 +152,17 @@ class Location(dsl.InnerDoc):
     label = dsl.Text()
 
 class FacetTerm(dsl.Document):
-    id = dsl.Keyword(index='not_analyzed')
-    facet = dsl.Keyword(index='not_analyzed')
-    term_id = dsl.Keyword(index='not_analyzed')
-    links_html = dsl.Keyword(index='not_analyzed')
-    links_json = dsl.Keyword(index='not_analyzed')
-    links_children = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    facet = dsl.Keyword()
+    term_id = dsl.Keyword()
+    links_html = dsl.Keyword()
+    links_json = dsl.Keyword()
+    links_children = dsl.Keyword()
     title = dsl.Text()
     description = dsl.Text()
     # topics
     path = dsl.Text()
-    parent_id = dsl.Keyword(index='not_analyzed')
+    parent_id = dsl.Keyword()
     ancestors = dsl.Long()
     siblings = dsl.Long()
     children = dsl.Long()
@@ -180,11 +180,11 @@ class FacetTerm(dsl.Document):
 class Narrator(ESObject):
     #id
     #title
-    nr_id = dsl.Keyword(index='not_analyzed')
-    created = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
-    modified = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
-    b_date = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
-    d_date = dsl.Date(index='not_analyzed', format="yyyy-MM-dd'T'HH:mm:ss")
+    nr_id = dsl.Keyword()
+    created = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
+    modified = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
+    b_date = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
+    d_date = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
     last_name = dsl.Text()
     first_name = dsl.Text()
     middle_name = dsl.Text()
@@ -224,9 +224,9 @@ class Organization(ESRepositoryObject):
 
 
 class Creators(dsl.InnerDoc):
-    namepart = dsl.Keyword(index='not_analyzed')
-    id = dsl.Integer(index='not_analyzed')
-    role = dsl.Keyword(index='not_analyzed')
+    namepart = dsl.Keyword()
+    id = dsl.Integer()
+    role = dsl.Keyword()
 
 class Collection(ESObject):
     """IMPORTANT: keep in sync with fields in repo_models/collections.py
@@ -235,21 +235,21 @@ class Collection(ESObject):
     #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
-    status = dsl.Keyword(index='not_analyzed')
-    public = dsl.Keyword(index='not_analyzed')
+    status = dsl.Keyword()
+    public = dsl.Keyword()
     unitdateinclusive = dsl.Text()
     unitdatebulk = dsl.Text()
     creators = dsl.Nested(Creators)
     extent = dsl.Text()
-    language = dsl.Keyword(index='not_analyzed')
-    contributor = dsl.Keyword(index='not_analyzed')
+    language = dsl.Keyword()
+    contributor = dsl.Keyword()
     description = dsl.Text()
     physloc = dsl.Text()
     acqinfo = dsl.Text()
     custodhist = dsl.Text()
     accruals = dsl.Text()
     processinfo = dsl.Text()
-    rights = dsl.Keyword(index='not_analyzed')
+    rights = dsl.Keyword()
     accessrestrict = dsl.Text()
     userrestrict = dsl.Text()
     prefercite = dsl.Text()
@@ -271,23 +271,23 @@ class Collection(ESObject):
 
 
 class Topics(dsl.InnerDoc):
-    id = dsl.Keyword(index='not_analyzed')
-    term = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    term = dsl.Keyword()
 
 class Facility(dsl.InnerDoc):
-    id = dsl.Keyword(index='not_analyzed')
-    term = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    term = dsl.Keyword()
 
 class Chronology(dsl.InnerDoc):
-    startdate = dsl.Keyword(index='not_analyzed')
-    enddate = dsl.Keyword(index='not_analyzed')
-    term = dsl.Keyword(index='not_analyzed')
+    startdate = dsl.Keyword()
+    enddate = dsl.Keyword()
+    term = dsl.Keyword()
 
 class Geography(dsl.InnerDoc):
-    id = dsl.Keyword(index='not_analyzed')
-    geo_lat = dsl.Keyword(index='not_analyzed')
-    geo_lng = dsl.Keyword(index='not_analyzed')
-    term = dsl.Keyword(index='not_analyzed')
+    id = dsl.Keyword()
+    geo_lat = dsl.Keyword()
+    geo_lng = dsl.Keyword()
+    term = dsl.Keyword()
 
 class Entity(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/entity.py
@@ -296,25 +296,25 @@ class Entity(ESCollectionObject):
     #description
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
-    status = dsl.Keyword(index='not_analyzed')
+    status = dsl.Keyword()
     sort = dsl.Integer()
     creation = dsl.Text()
-    location = dsl.Keyword(index='not_analyzed')
+    location = dsl.Keyword()
     creators = dsl.Nested(Creators)
-    language = dsl.Keyword(index='not_analyzed')
-    genre = dsl.Keyword(index='not_analyzed')
-    format = dsl.Keyword(index='not_analyzed')
+    language = dsl.Keyword()
+    genre = dsl.Keyword()
+    format = dsl.Keyword()
     extent = dsl.Text()
-    contributor = dsl.Keyword(index='not_analyzed')
+    contributor = dsl.Keyword()
     alternate_id = dsl.Text()
     digitize_person = dsl.Text()
-    digitize_organization = dsl.Keyword(index='not_analyzed')
-    digitize_date = dsl.Keyword(index='not_analyzed')
+    digitize_organization = dsl.Keyword()
+    digitize_date = dsl.Keyword()
     credit = dsl.Text()
-    rights = dsl.Keyword(index='not_analyzed')
+    rights = dsl.Keyword()
     rights_statement = dsl.Text()
     topics = dsl.Nested(Topics)
-    persons = dsl.Keyword(index='not_analyzed')
+    persons = dsl.Keyword()
     facility = dsl.Nested(Facility)
     chronology = dsl.Nested(Chronology)
     geography = dsl.Nested(Geography)
@@ -332,8 +332,8 @@ class Entity(ESCollectionObject):
 
 
 class ExternalUrls(dsl.InnerDoc):
-    label = dsl.Keyword(store='no', index='not_analyzed')
-    url = dsl.Keyword(store='no', index='not_analyzed')
+    label = dsl.Keyword(store='no')
+    url = dsl.Keyword(store='no')
 
 class File(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/file.py
@@ -343,14 +343,14 @@ class File(ESCollectionObject):
     record_created = dsl.Date()
     record_lastmod = dsl.Date()
     external = dsl.Integer()
-    sha256 = dsl.Keyword(index='not_analyzed')
-    md5 = dsl.Keyword(index='not_analyzed')
+    sha256 = dsl.Keyword()
+    md5 = dsl.Keyword()
     size = dsl.Long()
     basename_orig = dsl.Text()
     access_rel = dsl.Text()
-    mimetype = dsl.Keyword(index='not_analyzed')
-    public = dsl.Keyword(index='not_analyzed')
-    rights = dsl.Keyword(index='not_analyzed')
+    mimetype = dsl.Keyword()
+    public = dsl.Keyword()
+    rights = dsl.Keyword()
     sort = dsl.Integer()
     thumb = dsl.Text()
     label = dsl.Text(copy_to="title")
