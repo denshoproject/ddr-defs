@@ -188,8 +188,9 @@ class Narrator(ESObject):
     last_name = dsl.Text()
     first_name = dsl.Text()
     middle_name = dsl.Text()
-    display_name = dsl.Text(index="no", copy_to="title")
-    bio = dsl.Text(index="no", copy_to="description")
+    #display_name
+    #bio
+    title = dsl.Text()
     description = dsl.Text()
     gender = dsl.Text()
     generation = dsl.Text()
@@ -197,7 +198,7 @@ class Narrator(ESObject):
     nationality = dsl.Text()
     religion = dsl.Text()
     birth_location = dsl.Text()
-    notes = dsl.Text(index="no", copy_to="notes_private")
+    #notes
     nickname = dsl.Text()
     image_url = dsl.Text()
     
@@ -332,8 +333,8 @@ class Entity(ESCollectionObject):
 
 
 class ExternalUrls(dsl.InnerDoc):
-    label = dsl.Keyword(store='no')
-    url = dsl.Keyword(store='no')
+    label = dsl.Keyword() # store=no
+    url = dsl.Keyword() # store=no
 
 class File(ESCollectionObject):
     """IMPORTANT: keep in sync with fields in repo_models/file.py
@@ -353,7 +354,7 @@ class File(ESCollectionObject):
     rights = dsl.Keyword()
     sort = dsl.Integer()
     thumb = dsl.Text()
-    label = dsl.Text(copy_to="title")
+    #label
     digitize_person = dsl.Text()
     tech_notes = dsl.Text()
     external_urls = dsl.Nested(ExternalUrls)
