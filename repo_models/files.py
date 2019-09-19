@@ -16,7 +16,7 @@ RIGHTS_CHOICES = [["cc", "DDR Creative Commons"],
                   ["pdm", "Public domain" ],]
 RIGHTS_CHOICES_DEFAULT = 'cc'
 
-REQUIRED_FIELDS_EXCEPTIONS = ['thumb', 'sha1', 'sha256', 'md5', 'size', 'access_rel', 'xmp', 'links']
+REQUIRED_FIELDS_EXCEPTIONS = ['sha1', 'sha256', 'md5', 'size', 'access_rel', 'xmp', 'links']
 
 
 FIELDS = [
@@ -384,36 +384,6 @@ FIELDS = [
     
     {
         'model':      'file',
-        'name':       'thumb',
-        'group':      '',
-        'model_type': int,
-        'default':    -1,
-        'csv': {
-            'export': '',
-            'import': '',
-        },
-        'form_type':  'IntegerField',
-        'form': {
-            'label':      'Thumbnail',
-            'help_text':  '',
-            'widget':     'HiddenInput',
-            'initial':    -1,
-            'required':   True,
-        },
-        'elasticsearch': {
-            'public': True,
-            'properties': {
-                'type': "string",
-                'store': "yes"
-            },
-            'display': ""
-        },
-        'xpath':      "",
-        'xpath_dup':  [],
-    },
-    
-    {
-        'model':      'file',
         'name':       'label',
         'group':      '',
         'model_type': str,
@@ -618,21 +588,12 @@ FIELDS_NEW = [field for field in FIELDS if field['name'] in newfile_fields]
 FIELDS_CSV_EXCLUDED = ['role','size','access_rel','sha1','sha256','md5','xmp']
 
 
-def truthify(value):
-    if value and isinstance(value, basestring):
-        if value.isdigit(): value = int(value)
-        if value == 'true':    return True
-        elif value == 'false': return False
-    if value:
-        return True
-    return False
-
 # jsonload_* --- load-from-json functions ----------------------------
 #
 # These functions take raw JSON and convert it to a Python data type.
 #
 
-def jsonload_external(data): return truthify(data)
+def jsonload_external(data): return converters.text_to_boolean(data)
 
 
 # jsondump_* --- export-to-json functions ------------------------------
@@ -640,7 +601,7 @@ def jsonload_external(data): return truthify(data)
 # These functions take Python data and format it for JSON.
 #
 
-def jsondump_external(data): return truthify(data)
+def jsondump_external(data): return converters.text_to_boolean(data)
 
 
 # display_* --- Display functions --------------------------------------
@@ -662,9 +623,6 @@ def display_rights( data ):
     return data
 
 def display_sort( data ):
-    return ''
-
-def display_thumb( data ):
     return ''
 
 def display_xmp( data ):
@@ -767,7 +725,6 @@ def _validate_vocab_list(field, valid_values, data):
 #public
 #rights
 #sort
-#thumb
 #label
 #digitize_person
 #tech_notes
@@ -785,7 +742,7 @@ def _validate_vocab_list(field, valid_values, data):
 # data for the corresponding Entity field.
 #
 
-def csvload_external(data): return truthify(data)
+def csvload_external(data): return converters.text_to_boolean(data)
 
 #def csvload_role(text):
 #def csvload_sha1(text):
@@ -797,7 +754,6 @@ def csvload_external(data): return truthify(data)
 #def csvload_public(text):
 #def csvload_rights(text):
 #def csvload_sort(text):
-#def csvload_thumb(text):
 #def csvload_label(text):
 #def csvload_digitize_person(text):
 #def csvload_tech_notes(text):
@@ -814,7 +770,7 @@ def csvload_external_urls(text):
 # and format it for export in a CSV field.
 #
 
-def csvdump_external(data): return truthify(data)
+def csvdump_external(data): return converters.text_to_boolean(data)
 
 #def csvdump_role(data):
 #def csvdump_sha1(data):
@@ -826,7 +782,6 @@ def csvdump_external(data): return truthify(data)
 #def csvdump_public(data):
 #def csvdump_rights(data):
 #def csvdump_sort(data):
-#def csvdump_thumb(data):
 #def csvdump_label(data):
 #def csvdump_digitize_person(data):
 #def csvdump_tech_notes(data):
