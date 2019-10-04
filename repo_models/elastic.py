@@ -107,6 +107,13 @@ class ESObject(dsl.Document):
     title = dsl.Text()
     description = dsl.Text()
     
+    #class Index:
+    #    name = ???
+    # We don't define Index here because this module cannot know anything
+    # about the application configs.
+    # Instead we specify "index=OBJECT.index_name(model)" to Elasticsearch
+    # create_index(), get(), search(), delete(), etc.
+    
     class Meta:
         doc_type = 'esobject'
     
