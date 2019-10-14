@@ -36,7 +36,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'index': 'not_analyzed',
             },
             'display': "string"
@@ -134,7 +134,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -168,7 +168,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -230,7 +230,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -263,7 +263,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -294,7 +294,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -325,7 +325,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -359,7 +359,7 @@ FIELDS = [
                 'type': "object",
                 'properties': {
                     'namepart': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -369,7 +369,7 @@ FIELDS = [
                         'index': "not_analyzed"
                     },
                     'role': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -402,7 +402,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -434,7 +434,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -466,7 +466,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -497,7 +497,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -529,7 +529,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -560,7 +560,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -591,7 +591,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -622,7 +622,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -652,7 +652,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -685,7 +685,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -719,7 +719,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -749,7 +749,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "text",
                 'store': "yes",
                 'index': "analyzed"
             },
@@ -783,12 +783,12 @@ FIELDS = [
                 'type': "object",
                 'properties': {
                     'id': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'term': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -821,7 +821,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -855,12 +855,12 @@ FIELDS = [
                 'type': "object",
                 'properties': {
                     'id': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'term': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -896,17 +896,17 @@ FIELDS = [
                 'type': "object",
                 'properties': {
                     'startdate': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'enddate': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'term': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -942,22 +942,22 @@ FIELDS = [
                 'type': "object",
                 'properties': {
                     'id': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'geo_lat': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'geo_lng': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'term': {
-                        'type': "string",
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -990,7 +990,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -1022,7 +1022,7 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "string",
+                'type': "keyword",
                 'store': "yes",
                 'index': "not_analyzed"
             },
@@ -1450,8 +1450,8 @@ def csvdump_record_created(data): return converters.datetime_to_text(data)
 def csvdump_record_lastmod(data): return converters.datetime_to_text(data)
 def csvdump_creators(data): return converters.rolepeople_to_text(data)
 def csvdump_language(data): return converters.labelledlist_to_text(data)
-def csvdump_topics(data): return converters.listofdicts_to_text(data)
+def csvdump_topics(data): return converters.listofdicts_to_text(data, newlines=False)
 def csvdump_persons(data): return converters.list_to_text(data)
-def csvdump_facility(data): return converters.listofdicts_to_text(data)
-def csvdump_chronology(data): return converters.listofdicts_to_text(data)
-def csvdump_geography(data): return converters.listofdicts_to_text(data)
+def csvdump_facility(data): return converters.listofdicts_to_text(data, newlines=False)
+def csvdump_chronology(data): return converters.listofdicts_to_text(data, newlines=False)
+def csvdump_geography(data): return converters.listofdicts_to_text(data, newlines=False)
