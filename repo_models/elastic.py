@@ -184,26 +184,26 @@ class FacetTerm(dsl.Document):
         doc_type = 'facetterm'
 
 
-class Narrator(ESObject):
-    #id
+class Narrator(dsl.Document):
+    id = dsl.Keyword()
     #title
     nr_id = dsl.Keyword()
     created = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
     modified = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
     b_date = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
     d_date = dsl.Date(format="yyyy-MM-dd'T'HH:mm:ss")
-    last_name = dsl.Text()
-    first_name = dsl.Text()
-    middle_name = dsl.Text()
+    last_name = dsl.Keyword()
+    first_name = dsl.Keyword()
+    middle_name = dsl.Keyword()
     #display_name
     #bio
     title = dsl.Text()
     description = dsl.Text()
-    gender = dsl.Text()
-    generation = dsl.Text()
-    ethnicity = dsl.Text()
-    nationality = dsl.Text()
-    religion = dsl.Text()
+    gender = dsl.Keyword()
+    generation = dsl.Keyword()
+    ethnicity = dsl.Keyword()
+    nationality = dsl.Keyword()
+    religion = dsl.Keyword()
     birth_location = dsl.Text()
     #notes
     nickname = dsl.Text()
