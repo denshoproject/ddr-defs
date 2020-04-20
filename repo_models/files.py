@@ -680,7 +680,7 @@ def formpost_external_urls(text):
 
 def _choice_is_valid(field, valid_values, value):
     if value in valid_values[field]:
-	return True
+        return True
     return False
 
 def _validate_labelled_kvlist(field, data):
