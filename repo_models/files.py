@@ -184,7 +184,7 @@ FIELDS = [
     {
         'model':      'file',
         'name':       'size',
-        'model_type': long,
+        'model_type': int,
         'default':    None,
         'csv': {
             'export': '',
