@@ -425,7 +425,7 @@ FIELDS = [
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Object Genre',
-            'help_text':  'The genre, form, and/or physical characteristics of the object.	Use the Library of Congress Basic Genre Terms for Cultural Heritage Materials controlled vocabulary list. See Appendix E: Controlled Vocabularies or the Library of Congress website: http://memory.loc.gov/ammem/techdocs/genre.html',
+            'help_text':  'The genre, form, and/or physical characteristics of the object.  Use the Library of Congress Basic Genre Terms for Cultural Heritage Materials controlled vocabulary list. See Appendix E: Controlled Vocabularies or the Library of Congress website: http://memory.loc.gov/ammem/techdocs/genre.html',
             'choices': common.GENRE_CHOICES,
             'widget':     '',
             'initial':    '',
@@ -457,7 +457,7 @@ FIELDS = [
         'form_type':  'ChoiceField',
         'form': {
             'label':      'Object Format',
-            'help_text':  'A descriptor for indicating the type of object.	Use the Densho Object Type Controlled Vocabulary List found in Appendix E: Controlled Vocabularies.',
+            'help_text':  'A descriptor for indicating the type of object.  Use the Densho Object Type Controlled Vocabulary List found in Appendix E: Controlled Vocabularies.',
             'choices': common.FORMAT_CHOICES,
             'widget':     '',
             'initial':    '',
@@ -813,7 +813,7 @@ FIELDS = [
         'form_type':  'CharField',
         'form': {
             'label':      'Person/Organization',
-            'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name" (e.g., Adams, Ansel). For organizations use the following format: "Organization Name" (e.g., Associated Press). 			Multiple creators are allowed, but must be separated using a semi-colon.',
+            'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name" (e.g., Adams, Ansel). For organizations use the following format: "Organization Name" (e.g., Associated Press).  Multiple creators are allowed, but must be separated using a semi-colon.',
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -981,7 +981,7 @@ FIELDS = [
         'form_type':  'CharField',
         'form': {
             'label':      'Parent Object',
-            'help_text':  'Identifier of the object that contains this object. (I.e., the scrapbook that the photo belongs to)	Must be an existing DDR Object ID',
+            'help_text':  'Identifier of the object that contains this object. (I.e., the scrapbook that the photo belongs to)  Must be an existing DDR Object ID',
             'max_length': 255,
             'widget':     '',
             'initial':    '',
