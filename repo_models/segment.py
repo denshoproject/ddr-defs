@@ -1400,7 +1400,7 @@ def _validate_vocab_list(field, valid_values, data):
     """
     pattern = '\[([0-9]+)\]'
     for datum in data:
-        if isinstance(datum, basestring):
+        if isinstance(datum, str):
             m = re.search(pattern, datum)
             if m:
                 code = m.group(1)
