@@ -332,6 +332,7 @@ IDENTIFIERS = [
             'json': 'entity.json',
             'lock': 'lock',
             'mets': 'mets.xml',
+            'xml': 'mets.xml',
         },
         'filename_regex': 'entity.json',
     },
