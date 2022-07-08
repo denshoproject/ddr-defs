@@ -358,6 +358,11 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
+                    'nr_id': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
                     'namepart': {
                         'type': "keyword",
                         'store': "no",
