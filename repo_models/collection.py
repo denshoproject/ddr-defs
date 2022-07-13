@@ -1012,11 +1012,11 @@ def display_rights( data ):
 
 # title
 
-DISPLAY_CREATORS = '{% if data.id %}' \
-                   + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
-                   + '{% else %}' \
-                   + '{{ data.role }}: {{ data.namepart }}' \
-                   + '{% endif %}'
+DISPLAY_CREATORS = """{%
+if data.nr_id %}<a href="{{ data.nr_id }}">{{ data.role }}: {{ data.namepart }} ({{ data.nr_id }})</a>{%
+elif data.id %}<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>{%
+else %}{{ data.role }}: {{ data.namepart }}{%
+endif %}"""
 
 def display_creators( data ):
     return _display_multiline_dict(DISPLAY_CREATORS, data)
