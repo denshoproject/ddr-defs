@@ -232,6 +232,7 @@ class Organization(ESRepositoryObject):
 
 
 class Creators(dsl.InnerDoc):
+    nr_id = dsl.Keyword()
     namepart = dsl.Keyword()
     id = dsl.Integer()
     role = dsl.Keyword()
