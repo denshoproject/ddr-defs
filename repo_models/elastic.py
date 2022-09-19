@@ -266,6 +266,7 @@ class Collection(ESObject):
     scopecontent = dsl.Text()
     relatedmaterial = dsl.Text()
     separatedmaterial = dsl.Text()
+    search_hidden = dsl.Text()
     
     class Meta:
         doc_type= 'collection'
@@ -327,6 +328,7 @@ class Entity(ESCollectionObject):
     facility = dsl.Nested(Facility)
     chronology = dsl.Nested(Chronology)
     geography = dsl.Nested(Geography)
+    search_hidden = dsl.Text()
     
     class Meta:
         doc_type= 'entity'
