@@ -1306,7 +1306,7 @@ def formprep_topics(data):
     return converters.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_persons(data):
-    return ';\n'.join(data)
+    return converters.rolepeople_to_text(data)
 
 def formprep_facility(data):
     return converters.listofdicts_to_textnolabels(data, ['term','id'])
