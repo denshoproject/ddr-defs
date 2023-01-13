@@ -823,11 +823,30 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "keyword",
-                'store': "yes",
-                'index': "not_analyzed"
-            },
-            'display': "facet"
+                'type': "object",
+                'properties': {
+                    'nr_id': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'namepart': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'role': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            }
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
         'xpath_dup':  [],
