@@ -1065,6 +1065,16 @@ FIELDS_CSV_EXCLUDED = [
     'files',
 ]
 
+# used for both creators and persons
+def persons_allowed_keys():
+    for field in FIELDS:
+        if field['name'] in ['creators', 'persons']:
+            return list(
+                field['elasticsearch']['properties']['properties'].keys()
+            )
+
+CREATORS_DEFAULT_DICT = {'namepart':'', 'role':'author'}
+PERSONS_DEFAULT_DICT = {'namepart':''}
 
 
 # jsonload_* --- load-from-json functions ----------------------------
@@ -1074,7 +1084,10 @@ FIELDS_CSV_EXCLUDED = [
 
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
-def jsonload_creators(text): return converters.text_to_rolepeople(text)
+def jsonload_creators(text):
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), CREATORS_DEFAULT_DICT
+    )
 #def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
 
 def jsonload_topics(text):
@@ -1082,7 +1095,11 @@ def jsonload_topics(text):
         converters.text_to_bracketids(text, ['term','id'])
     )
 
-def jsonload_persons(data): return converters.strip_list(data)
+def jsonload_persons(text):
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), PERSONS_DEFAULT_DICT
+    )
+
 def jsonload_facility(text): return converters.text_to_bracketids(text, ['term','id'])
 
 
@@ -1312,7 +1329,9 @@ def formpost_parent(data):     return _formpost_basic(data)
 # location
 
 def formpost_creators(text):
-    return converters.text_to_rolepeople(text)
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), CREATORS_DEFAULT_DICT
+    )
 
 # genre
 # format
@@ -1327,8 +1346,10 @@ def formpost_creators(text):
 def formpost_topics(text):
     return converters.text_to_dicts(text, ['term', 'id'])
 
-def formpost_persons(data):
-    return [n.strip() for n in data.split(';')]
+def formpost_persons(text):
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), PERSONS_DEFAULT_DICT
+    )
 
 def formpost_facility(text):
     return converters.text_to_dicts(text, ['term', 'id'])
@@ -1434,10 +1455,16 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return converters.text_to_rolepeople(text)
+def csvload_creators( text ):
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), CREATORS_DEFAULT_DICT
+    )
 def csvload_language( text ): return converters.text_to_labelledlist(text)
 def csvload_topics( text ): return converters.text_to_listofdicts(text)
-def csvload_persons( text ): return converters.text_to_list(text)
+def csvload_persons( text ):
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), PERSONS_DEFAULT_DICT
+    )
 def csvload_facility( text ): return converters.text_to_listofdicts(text)
 def csvload_chronology( text ): return converters.text_to_listofdicts(text)
 def csvload_geography( text ): return converters.text_to_listofdicts(text)

@@ -951,6 +951,15 @@ FIELDS = [
 # List of FIELDS to be excluded when exporting and updating.
 FIELDS_CSV_EXCLUDED = []
 
+# used for both creators and persons
+def persons_allowed_keys():
+    for field in FIELDS:
+        if field['name'] in ['creators', 'persons']:
+            return list(
+                field['elasticsearch']['properties']['properties'].keys()
+            )
+
+CREATORS_DEFAULT_DICT = {'namepart':'', 'role':'author'}
 
 
 # jsonload_* --- load-from-json functions ----------------------------
@@ -960,7 +969,10 @@ FIELDS_CSV_EXCLUDED = []
 
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
-def jsonload_creators(text): return converters.text_to_rolepeople(text)
+def jsonload_creators(text):
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), CREATORS_DEFAULT_DICT
+    )
 
 
 
@@ -1152,7 +1164,9 @@ def _formprep_basic(data):
 # unitdate_bulk
 
 def formpost_creators(text):
-    return converters.text_to_rolepeople(text)
+    return converters.text_to_rolepeople(
+        text, persons_allowed_keys(), CREATORS_DEFAULT_DICT
+    )
 
 # extent
 # language
