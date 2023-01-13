@@ -231,8 +231,9 @@ class Organization(ESRepositoryObject):
         return ['id', 'title', 'description', 'logo', 'url',]
 
 
-class Creators(dsl.InnerDoc):
+class Persons(dsl.InnerDoc):
     namepart = dsl.Keyword()
+    nr_id = dsl.Integer()
     id = dsl.Integer()
     role = dsl.Keyword()
 
@@ -247,7 +248,7 @@ class Collection(ESObject):
     public = dsl.Keyword()
     unitdateinclusive = dsl.Text()
     unitdatebulk = dsl.Text()
-    creators = dsl.Nested(Creators)
+    creators = dsl.Nested(Persons)
     extent = dsl.Text()
     language = dsl.Keyword()
     contributor = dsl.Keyword()
@@ -308,7 +309,7 @@ class Entity(ESCollectionObject):
     sort = dsl.Integer()
     creation = dsl.Text()
     location = dsl.Keyword()
-    creators = dsl.Nested(Creators)
+    creators = dsl.Nested(Persons)
     language = dsl.Keyword()
     genre = dsl.Keyword()
     format = dsl.Keyword()
