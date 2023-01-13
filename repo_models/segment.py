@@ -1154,14 +1154,14 @@ def display_rights( data ):
 # creation
 # location
 
-DISPLAY_CREATORS = '{% if data.id %}' \
+DISPLAY_PERSONS = '{% if data.id %}' \
                    + '<a href="{{ data.id }}">{{ data.role }}: {{ data.namepart }}</a>' \
                    + '{% else %}' \
                    + '{{ data.role }}: {{ data.namepart }}' \
                    + '{% endif %}'
 
 def display_creators( data ):
-    return _display_multiline_dict(DISPLAY_CREATORS, data)
+    return _display_multiline_dict(DISPLAY_PERSONS, data)
 
 def display_language( data ):
     labels = []
@@ -1196,10 +1196,7 @@ def display_topics( data ):
     return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
 
 def display_persons( data ):
-    d = []
-    for line in data:
-        d.append({'person': line.strip()})
-    return _display_multiline_dict('<a href="{{ data.person }}">{{ data.person }}</a>', d)
+    return _display_multiline_dict(DISPLAY_PERSONS, data)
 
 def display_facility( data ):
     return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
