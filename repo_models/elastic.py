@@ -323,7 +323,7 @@ class Entity(ESCollectionObject):
     rights = dsl.Keyword()
     rights_statement = dsl.Text()
     topics = dsl.Nested(Topics)
-    persons = dsl.Keyword()
+    persons = dsl.Nested(Persons)
     facility = dsl.Nested(Facility)
     chronology = dsl.Nested(Chronology)
     geography = dsl.Nested(Geography)
