@@ -819,6 +819,7 @@ FIELDS = [
         'form': {
             'label':      'Person/Organization',
             'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name" (e.g., Adams, Ansel). For organizations use the following format: "Organization Name" (e.g., Associated Press).  Multiple creators are allowed, but must be separated using a semi-colon.',
+            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -826,11 +827,30 @@ FIELDS = [
         'elasticsearch': {
             'public': True,
             'properties': {
-                'type': "keyword",
-                'store': "yes",
-                'index': "not_analyzed"
-            },
-            'display': "facet"
+                'type': "object",
+                'properties': {
+                    'nr_id': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'namepart': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "integer",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'role': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                }
+            }
         },
         'xpath':      "/mets:mets/mets:dmdSec[@ID='DM1']/mets:mdWrap/mets:xmlData/mods:mods/mods:subject[@ID='persons']",
         'xpath_dup':  [],
@@ -1068,6 +1088,8 @@ FIELDS_CSV_EXCLUDED = [
     'files',
 ]
 
+CREATORS_DEFAULT_DICT = {'namepart':'', 'role':'author'}
+PERSONS_DEFAULT_DICT = {'namepart':''}
 
 
 # jsonload_* --- load-from-json functions ----------------------------
@@ -1077,7 +1099,10 @@ FIELDS_CSV_EXCLUDED = [
 
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
-def jsonload_creators(text): return converters.text_to_rolepeople(text)
+def jsonload_creators(text):
+    return converters.text_to_rolepeople(
+        text, CREATORS_DEFAULT_DICT
+    )
 #def jsonload_topics(text): return converters.text_to_bracketids(text, ['term','id'])
 
 def jsonload_topics(text):
@@ -1085,7 +1110,10 @@ def jsonload_topics(text):
         converters.text_to_bracketids(text, ['term','id'])
     )
 
-def jsonload_persons(data): return converters.strip_list(data)
+def jsonload_persons(text):
+    return converters.text_to_rolepeople(
+        text, PERSONS_DEFAULT_DICT
+    )
 def jsonload_facility(text): return converters.text_to_bracketids(text, ['term','id'])
 
 
@@ -1182,10 +1210,7 @@ def display_topics( data ):
     return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
 
 def display_persons( data ):
-    d = []
-    for line in data:
-        d.append({'person': line.strip()})
-    return _display_multiline_dict('<a href="{{ data.person }}">{{ data.person }}</a>', d)
+    return _display_multiline_dict(DISPLAY_CREATORS, data)
 
 def display_facility( data ):
     return _display_multiline_dict('<a href="{{ data.id }}">{{ data.term }}</a>', data)
@@ -1273,7 +1298,7 @@ def formprep_topics(data):
     return converters.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_persons(data):
-    return ';\n'.join(data)
+    return converters.rolepeople_to_text(data)
 
 def formprep_facility(data):
     return converters.listofdicts_to_textnolabels(data, ['term','id'])
@@ -1315,7 +1340,9 @@ def formpost_parent(data):     return _formpost_basic(data)
 # location
 
 def formpost_creators(text):
-    return converters.text_to_rolepeople(text)
+    return converters.text_to_rolepeople(
+        text, CREATORS_DEFAULT_DICT
+    )
 
 # genre
 # format
@@ -1330,8 +1357,10 @@ def formpost_creators(text):
 def formpost_topics(text):
     return converters.text_to_dicts(text, ['term', 'id'])
 
-def formpost_persons(data):
-    return [n.strip() for n in data.split(';')]
+def formpost_persons(text):
+    return converters.text_to_rolepeople(
+        text, PERSONS_DEFAULT_DICT
+    )
 
 def formpost_facility(text):
     return converters.text_to_dicts(text, ['term', 'id'])
@@ -1437,10 +1466,16 @@ def csvvalidate_facility( data ): return _validate_vocab_list('facility', data[0
 # data for the corresponding Entity field.
 #
 
-def csvload_creators( text ): return converters.text_to_rolepeople(text)
+def csvload_creators( text ):
+    return converters.text_to_rolepeople(
+        text, CREATORS_DEFAULT_DICT
+    )
 def csvload_language( text ): return converters.text_to_labelledlist(text)
 def csvload_topics( text ): return converters.text_to_listofdicts(text)
-def csvload_persons( text ): return converters.text_to_list(text)
+def csvload_persons( text ):
+    return converters.text_to_rolepeople(
+        text, PERSONS_DEFAULT_DICT
+    )
 def csvload_facility( text ): return converters.text_to_listofdicts(text)
 def csvload_chronology( text ): return converters.text_to_listofdicts(text)
 def csvload_geography( text ): return converters.text_to_listofdicts(text)
@@ -1456,7 +1491,7 @@ def csvdump_record_lastmod(data): return converters.datetime_to_text(data)
 def csvdump_creators(data): return converters.rolepeople_to_text(data)
 def csvdump_language(data): return converters.labelledlist_to_text(data)
 def csvdump_topics(data): return converters.listofdicts_to_text(data, newlines=False)
-def csvdump_persons(data): return converters.list_to_text(data)
+def csvdump_persons(data): return converters.rolepeople_to_text(data)
 def csvdump_facility(data): return converters.listofdicts_to_text(data, newlines=False)
 def csvdump_chronology(data): return converters.listofdicts_to_text(data, newlines=False)
 def csvdump_geography(data): return converters.listofdicts_to_text(data, newlines=False)
