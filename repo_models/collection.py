@@ -318,25 +318,30 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
+                    'namepart': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
                     'nr_id': {
                         'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    "namepart": {
-                        "type": "keyword",
-                        "store": "no",
-                        "index": "not_analyzed"
+                    'matching': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'role': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
                     },
                     'id': {
                         'type': "integer",
                         'store': "no",
                         'index': "not_analyzed"
-                    },
-                    "role": {
-                        "type": "keyword",
-                        "store": "no",
-                        "index": "not_analyzed"
                     },
                 }
             },

@@ -363,13 +363,23 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
-                        'type': "integer",
+                    'nr_id': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'matching': {
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
                     'role': {
                         'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "integer",
                         'store': "no",
                         'index': "not_analyzed"
                     },
@@ -831,13 +841,18 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
-                        'type': "integer",
+                    'nr_id': {
+                        'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'role': {
+                    'matching': {
                         'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'id': {
+                        'type': "integer",
                         'store': "no",
                         'index': "not_analyzed"
                     },
