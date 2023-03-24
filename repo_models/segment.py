@@ -1098,6 +1098,13 @@ FIELDS_CSV_EXCLUDED = [
 CREATORS_DEFAULT_DICT = {'namepart':'', 'role':'author'}
 PERSONS_DEFAULT_DICT = {'namepart':''}
 
+def subfield_fieldnames_in_order(fieldname):
+    for field in FIELDS:
+        if field['name'] == fieldname:
+            return field['elasticsearch']['properties']['properties'].keys()
+
+PERSONS_FIELD_ORDER = subfield_fieldnames_in_order('persons')
+
 
 # jsonload_* --- load-from-json functions ----------------------------
 #
@@ -1305,7 +1312,7 @@ def formprep_topics(data):
     return converters.listofdicts_to_textnolabels(data, ['term','id'])
 
 def formprep_persons(data):
-    return converters.rolepeople_to_text(data)
+    return converters.rolepeople_to_text(data, field_order=PERSONS_FIELD_ORDER)
 
 def formprep_facility(data):
     return converters.listofdicts_to_textnolabels(data, ['term','id'])
