@@ -318,25 +318,30 @@ FIELDS = [
             'properties': {
                 'type': "object",
                 'properties': {
+                    'namepart': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
                     'nr_id': {
                         'type': "keyword",
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    "namepart": {
-                        "type": "keyword",
-                        "store": "no",
-                        "index": "not_analyzed"
+                    'matching': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
+                    },
+                    'role': {
+                        'type': "keyword",
+                        'store': "no",
+                        'index': "not_analyzed"
                     },
                     'id': {
                         'type': "integer",
                         'store': "no",
                         'index': "not_analyzed"
-                    },
-                    "role": {
-                        "type": "keyword",
-                        "store": "no",
-                        "index": "not_analyzed"
                     },
                 }
             },
@@ -951,6 +956,7 @@ FIELDS = [
 # List of FIELDS to be excluded when exporting and updating.
 FIELDS_CSV_EXCLUDED = []
 
+CREATORS_DEFAULT_DICT = {'namepart':'', 'role':'author'}
 
 
 # jsonload_* --- load-from-json functions ----------------------------
@@ -960,7 +966,10 @@ FIELDS_CSV_EXCLUDED = []
 
 def jsonload_record_created(text): return converters.text_to_datetime(text)
 def jsonload_record_lastmod(text): return converters.text_to_datetime(text)
-def jsonload_creators(text): return converters.text_to_rolepeople(text)
+def jsonload_creators(text):
+    return converters.text_to_rolepeople(
+        text, CREATORS_DEFAULT_DICT
+    )
 
 
 
@@ -1152,7 +1161,9 @@ def _formprep_basic(data):
 # unitdate_bulk
 
 def formpost_creators(text):
-    return converters.text_to_rolepeople(text)
+    return converters.text_to_rolepeople(
+        text, CREATORS_DEFAULT_DICT
+    )
 
 # extent
 # language
