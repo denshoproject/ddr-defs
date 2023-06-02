@@ -387,33 +387,33 @@ ELASTICSEARCH_CLASSES = {
 
     # all classes to be included in Elasticsearch
     'all': [
-        {'doctype':'repository', 'class':Repository},
-        {'doctype':'organization', 'class':Organization},
-        {'doctype':'collection', 'class':Collection},
-        {'doctype':'entity', 'class':Entity},
-        {'doctype':'segment', 'class':Entity},
-        {'doctype':'file', 'class':File},
-        {'doctype':'facet', 'class':Facet},
-        {'doctype':'facetterm', 'class':FacetTerm},
-        {'doctype':'narrator', 'class':Narrator},
+        {'doctype':'repository', 'class':Repository, 'doc_type': 'ddrrepository'},
+        {'doctype':'organization', 'class':Organization, 'doc_type': 'ddrorganization'},
+        {'doctype':'collection', 'class':Collection, 'doc_type': 'ddrcollection'},
+        {'doctype':'entity', 'class':Entity, 'doc_type': 'ddrentity'},
+        {'doctype':'segment', 'class':Entity, 'doc_type': 'ddrsegment'},
+        {'doctype':'file', 'class':File, 'doc_type': 'ddrfile'},
+        {'doctype':'facet', 'class':Facet, 'doc_type': 'ddrfacet'},
+        {'doctype':'facetterm', 'class':FacetTerm, 'doc_type': 'ddrfacetterm'},
+        {'doctype':'narrator', 'class':Narrator, 'doc_type': 'ddrnarrator'},
     ],
 
     # classes that form the Repository structure
     'repository': [
-        {'doctype':'repository', 'class':Repository},
-        {'doctype':'organization', 'class':Organization},
-        {'doctype':'collection', 'class':Collection},
-        {'doctype':'entity', 'class':Entity},
-        {'doctype':'segment', 'class':Entity},
-        {'doctype':'file', 'class':File},
+        {'doctype':'repository', 'class':Repository, 'doc_type': 'ddrrepository'},
+        {'doctype':'organization', 'class':Organization, 'doc_type': 'ddrorganization'},
+        {'doctype':'collection', 'class':Collection, 'doc_type': 'ddrcollection'},
+        {'doctype':'entity', 'class':Entity, 'doc_type': 'ddrentity'},
+        {'doctype':'segment', 'class':Entity, 'doc_type': 'ddrsegment'},
+        {'doctype':'file', 'class':File, 'doc_type': 'ddrfile'},
     ],
 
     # class that are part of collections
     'collection': [
-        {'doctype':'collection', 'class':Collection},
-        {'doctype':'entity', 'class':Entity},
-        {'doctype':'segment', 'class':Entity},
-        {'doctype':'file', 'class':File},
+        {'doctype':'collection', 'class':Collection, 'doc_type': 'ddrcollection'},
+        {'doctype':'entity', 'class':Entity, 'doc_type': 'ddrentity'},
+        {'doctype':'segment', 'class':Entity, 'doc_type': 'ddrsegment'},
+        {'doctype':'file', 'class':File, 'doc_type': 'ddrfile'},
     ],
 
 }
