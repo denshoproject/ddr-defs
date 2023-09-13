@@ -1,5 +1,7 @@
 import logging
 logger = logging.getLogger(__name__)
+import mimetypes
+mimetypes.init()
 
 from DDR import converters
 
@@ -520,7 +522,6 @@ FIELDS = [
         'form': {
             'label':      'External URLs',
             'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -715,16 +716,23 @@ def _validate_vocab_list(field, valid_values, data):
                 return False
     return True
 
-#role
-#sha1
-#sha256
-#md5
-#size
+def _validate_hash(text, type):
+    if isinstance(text, str) and type in ['sha1', 'sha256', 'md5'] \
+    and len(text.strip()) == {'sha1': 40, 'sha256': 64, 'md5': 32}[type]:
+        return True
+    return False
+
+def csvvalidate_role(data): return _choice_is_valid('role', data[0], data[1])
+def csvvalidate_sha1(data):   return _validate_hash(data[1], 'sha1')
+def csvvalidate_sha256(data): return _validate_hash(data[1], 'sha256')
+def csvvalidate_md5(data):    return _validate_hash(data[1], 'md5')
+def csvvalidate_size(data): return str(data[1]).strip().isdigit()
 #basename_orig
-#access_rel
-#public
-#rights
-#sort
+#def csvvalidate_access_rel(data): return _choice_is_valid('access_rel', data[0], data[1])
+def csvvalidate_mimetype(data): return mimetypes.guess_extension(data[1]) != None
+def csvvalidate_public(data): return _choice_is_valid('public', data[0], data[1])
+def csvvalidate_rights(data): return _choice_is_valid('rights', data[0], data[1])
+def csvvalidate_sort(data): return str(data[1]).strip().isdigit()
 #label
 #digitize_person
 #tech_notes
@@ -732,9 +740,6 @@ def _validate_vocab_list(field, valid_values, data):
 #external_urls
 #links
 
-#def csvvalidate_status( data ): return _choice_is_valid('status', data[0], data[1])
-#def csvvalidate_language( data ): return _validate_labelled_kvlist('language', data)
-#def csvvalidate_topics( data ): return _validate_vocab_list('topics', data[0], data[1])
 
 # csvload_* --- import-from-csv functions ----------------------------
 #
