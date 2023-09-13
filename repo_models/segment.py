@@ -376,7 +376,7 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
+                    'oh_id': {
                         'type': "integer",
                         'store': "no",
                         'index': "not_analyzed"
@@ -848,7 +848,7 @@ FIELDS = [
                         'store': "no",
                         'index': "not_analyzed"
                     },
-                    'id': {
+                    'oh_id': {
                         'type': "integer",
                         'store': "no",
                         'index': "not_analyzed"
