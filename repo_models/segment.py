@@ -255,7 +255,6 @@ FIELDS = [
         'form': {
             'label':      'Description',
             'help_text':  'Use if the title field is not sufficient for the amount of information you have about the object. The description can also include transcriptions of anything handwritten, stamped, or printed on the material. In such cases, specify that is how the information originated. Follow Chicago Manual of Style guidelines for text.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -348,7 +347,6 @@ FIELDS = [
         'form': {
             'label':      'Creator',
             'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name: Creator Role" (e.g., Adams, Ansel:photographer). For organizations use the following format: "Organization Name: Creator Role" (e.g., Associated Press:publisher). Multiple creators are allowed, but must be separated using a semi-colon.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -826,7 +824,6 @@ FIELDS = [
         'form': {
             'label':      'Person/Organization',
             'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name" (e.g., Adams, Ansel). For organizations use the following format: "Organization Name" (e.g., Associated Press). 			Multiple creators are allowed, but must be separated using a semi-colon.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -917,7 +914,6 @@ FIELDS = [
         'form': {
             'label':      'Chronology',
             'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
@@ -963,7 +959,6 @@ FIELDS = [
         'form': {
             'label':      'Geography',
             'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,

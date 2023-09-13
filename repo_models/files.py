@@ -522,7 +522,6 @@ FIELDS = [
         'form': {
             'label':      'External URLs',
             'help_text':  'Use the following format: "Label:URL" (e.g., "Internet Archive download:https://archive.org/download/..."). Multiple URLs are allowed, but must be separated using a semi-colon.',
-            'max_length': 4000,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,
