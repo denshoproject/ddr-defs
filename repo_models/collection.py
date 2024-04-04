@@ -308,7 +308,6 @@ FIELDS = [
         'form': {
             'label':      'Creator',
             'help_text':  'When possible use the Library of Congress Name Authority Headings. For individuals use the following format: "Last Name, First Name: Creator Role" (e.g., Adams, Ansel:photographer). For organizations use the following format: "Organization Name: Creator Role" (e.g., Associated Press:publisher). Multiple creators are allowed, but must be separated using a semi-colon.',
-            'max_length': 255,
             'widget':     'Textarea',
             'initial':    '',
             'required':   False,

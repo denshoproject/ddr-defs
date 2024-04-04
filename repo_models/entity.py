@@ -497,8 +497,7 @@ FIELDS = [
         'form': {
             'label':      'Physical Description',
             'help_text':  'Optional: extent, media-type, and any additional relevant information about the material. (e.g. 1 scrapbook, 1 photograph). Construct the statement using a standard like AACR2, RDA, DACS or DCRM(G). Required: width in inches, followed by height in inches, in the following format: "5.25W x 3.5H". For photographs, do not include border, mounts and/or frames. Separate the extent/media-type and the dimensions with a colon. (e.g. 1 scrapbook: 8W x 10H).',
-            'max_length': 255,
-            'widget':     '',
+            'widget':     'Textarea',
             'initial':    '',
             'required':   True,
         },
