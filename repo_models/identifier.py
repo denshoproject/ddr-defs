@@ -59,6 +59,7 @@ IDENTIFIERS = [
         'files': {
             'json': 'repository.json',
         },
+        'filename_regex': 'repository.json',
     },
     
     # ------------------------------------------------------------------
@@ -119,6 +120,7 @@ IDENTIFIERS = [
         'files': {
             'json': 'organization.json',
         },
+        'filename_regex': 'organization.json',
     },
     
     # ------------------------------------------------------------------
