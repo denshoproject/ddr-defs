@@ -705,7 +705,7 @@ def _validate_vocab_list(field, valid_values, data):
         Activism and involvement: Politics [235]
         Arts and literature: Literary arts: Fiction: Adult [242]
     """
-    pattern = '\[([0-9]+)\]'
+    pattern = r'\[([0-9]+)\]'
     for datum in data:
         m = re.search(pattern, datum)
         if m:
