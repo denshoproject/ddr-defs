@@ -1435,7 +1435,7 @@ def _validate_vocab_list(field, valid_values, data):
     @param data: str,dict
     @returns: boolean
     """
-    pattern = '\[([0-9]+)\]'
+    pattern = r'\[([0-9]+)\]'
     for datum in data:
         if isinstance(datum, str):
             m = re.search(pattern, datum)

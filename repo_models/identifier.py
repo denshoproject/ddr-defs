@@ -59,7 +59,7 @@ IDENTIFIERS = [
         'files': {
             'json': 'repository.json',
         },
-        'filename_regex': 'repository.json',
+        'filename_regex': r'repository.json',
     },
     
     # ------------------------------------------------------------------
@@ -120,7 +120,7 @@ IDENTIFIERS = [
         'files': {
             'json': 'organization.json',
         },
-        'filename_regex': 'organization.json',
+        'filename_regex': r'organization.json',
     },
     
     # ------------------------------------------------------------------
@@ -189,7 +189,7 @@ IDENTIFIERS = [
             'json': 'collection.json',
             'lock': 'lock',
         },
-        'filename_regex': 'collection.json',
+        'filename_regex': r'collection.json',
     },
     
     # ------------------------------------------------------------------
@@ -261,7 +261,7 @@ IDENTIFIERS = [
             'mets': 'mets.xml',
             'xml': 'mets.xml',
         },
-        'filename_regex': 'entity.json',
+        'filename_regex': r'entity.json',
     },
     
     # ------------------------------------------------------------------
@@ -333,7 +333,7 @@ IDENTIFIERS = [
             'mets': 'mets.xml',
             'xml': 'mets.xml',
         },
-        'filename_regex': 'entity.json',
+        'filename_regex': r'entity.json',
     },
     
     # ------------------------------------------------------------------
@@ -493,6 +493,6 @@ IDENTIFIERS = [
             'access': '{id}-a.jpg',
             'json': '{id}.json',
         },
-        'filename_regex': '-([\d]+)-([\w]+)-([\w\d]+).json',
+        'filename_regex': r'-([\d]+)-([\w]+)-([\w\d]+).json',
     },
 ]
